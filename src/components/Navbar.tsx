@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +23,13 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -31,16 +40,27 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-2xl font-bold text-santaran-terracotta">Santaran</span>
-          <span className="font-display text-xl text-santaran-teal">Art</span>
+          <motion.span 
+            className="font-display text-2xl font-bold text-santaran-terracotta"
+            whileHover={{ scale: 1.05 }}
+          >
+            Santaran
+          </motion.span>
+          <motion.span 
+            className="font-display text-xl text-santaran-teal"
+            whileHover={{ scale: 1.05 }}
+          >
+            Art
+          </motion.span>
         </Link>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-2">
-          <Link to="/" className="nav-link active">Home</Link>
-          <Link to="/#about" className="nav-link">About</Link>
+          <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>Home</Link>
+          <Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>About</Link>
+          <Link to="/exhibitions" className={`nav-link ${isActive('/exhibitions') ? 'active' : ''}`}>Exhibitions</Link>
+          <Link to="/gallery" className={`nav-link ${isActive('/gallery') ? 'active' : ''}`}>Gallery</Link>
           <Link to="/#programs" className="nav-link">Programs</Link>
-          <Link to="/#projects" className="nav-link">Projects</Link>
           <Link to="/#contact" className="nav-link">Contact</Link>
           <a 
             href="#donate" 
@@ -61,12 +81,18 @@ const Navbar = () => {
       
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md shadow-lg absolute top-full left-0 right-0 p-4 animate-fade-in-up">
+        <motion.div 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden bg-white/95 backdrop-blur-md shadow-lg absolute top-full left-0 right-0 p-4"
+        >
           <div className="flex flex-col space-y-2">
-            <Link to="/" className="nav-link active" onClick={toggleMobileMenu}>Home</Link>
-            <Link to="/#about" className="nav-link" onClick={toggleMobileMenu}>About</Link>
+            <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`} onClick={toggleMobileMenu}>Home</Link>
+            <Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`} onClick={toggleMobileMenu}>About</Link>
+            <Link to="/exhibitions" className={`nav-link ${isActive('/exhibitions') ? 'active' : ''}`} onClick={toggleMobileMenu}>Exhibitions</Link>
+            <Link to="/gallery" className={`nav-link ${isActive('/gallery') ? 'active' : ''}`} onClick={toggleMobileMenu}>Gallery</Link>
             <Link to="/#programs" className="nav-link" onClick={toggleMobileMenu}>Programs</Link>
-            <Link to="/#projects" className="nav-link" onClick={toggleMobileMenu}>Projects</Link>
             <Link to="/#contact" className="nav-link" onClick={toggleMobileMenu}>Contact</Link>
             <a 
               href="#donate" 
@@ -76,7 +102,7 @@ const Navbar = () => {
               Support Us
             </a>
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   );
