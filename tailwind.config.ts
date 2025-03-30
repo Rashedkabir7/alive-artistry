@@ -64,12 +64,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				santaran: {
-					terracotta: '#C95D2C',
-					teal: '#1D6A6A',
-					cream: '#F8F3E6',
-					gold: '#E6B30E',
-					brown: '#8B4513',
-					olive: '#556B2F'
+					vermilion: '#DE4D31', // more vibrant terracotta
+					jade: '#158A8A',      // deeper teal
+					cream: '#FAF5E9',     // slightly warmer cream
+					amber: '#F9A826',     // richer gold
+					indigo: '#375375',    // deep blue
+					sienna: '#8B4D21',    // richer brown
+					sage: '#6B8E4E'       // richer olive
 				}
 			},
 			borderRadius: {
@@ -119,6 +120,14 @@ export default {
 				'fade-in-up': {
 					'0%': { opacity: '0', transform: 'translateY(20px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' },
+				},
+				'paint-stroke': {
+					'0%': { transform: 'scaleX(0)', transformOrigin: 'left' },
+					'100%': { transform: 'scaleX(1)', transformOrigin: 'left' },
+				},
+				'palette-rotate': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' },
 				}
 			},
 			animation: {
@@ -127,10 +136,14 @@ export default {
 				'float': 'float 6s ease-in-out infinite',
 				'wave': 'wave 2.5s ease-in-out infinite',
 				'grow': 'grow 0.3s ease-out forwards',
-				'fade-in-up': 'fade-in-up 0.5s ease-out forwards'
+				'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
+				'paint-stroke': 'paint-stroke 0.5s ease-out forwards',
+				'palette-rotate': 'palette-rotate 8s linear infinite'
 			},
 			backgroundImage: {
 				'hero-pattern': "url('/public/lovable-uploads/ab8abc5e-5120-4d3b-acd0-73c7a45a5cd7.png')",
+				'brush-texture': "url('https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=1000')",
+				'canvas-texture': "url('https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=1000')"
 			}
 		}
 	},

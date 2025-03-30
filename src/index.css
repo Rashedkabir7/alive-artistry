@@ -7,8 +7,8 @@
 
 @layer base {
   :root {
-    --background: 40 40% 97%;
-    --foreground: 20 40% 15%;
+    --background: 36 30% 97%;
+    --foreground: 24 35% 15%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -16,24 +16,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 16 64% 48%;
-    --primary-foreground: 40 33% 96%;
+    --primary: 22 68% 48%;
+    --primary-foreground: 36 33% 96%;
 
-    --secondary: 180 58% 27%;
-    --secondary-foreground: 40 33% 96%;
+    --secondary: 175 62% 30%;
+    --secondary-foreground: 36 33% 96%;
 
-    --muted: 40 20% 92%;
+    --muted: 36 20% 92%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 42 80% 48%;
+    --accent: 42 85% 52%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 20 20% 80%;
+    --border: 24 25% 80%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 16 64% 48%;
+    --ring: 22 68% 48%;
 
     --radius: 0.5rem;
   }
@@ -45,19 +45,19 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 16 64% 48%;
+    --primary: 22 68% 48%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 180 58% 27%;
+    --secondary: 175 62% 30%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 42 80% 48%;
+    --accent: 42 85% 52%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 42 80% 48%;
+    --ring: 42 85% 52%;
   }
 }
 
@@ -76,7 +76,7 @@
   }
   
   ::selection {
-    @apply bg-santaran-terracotta/30 text-santaran-terracotta;
+    @apply bg-santaran-vermilion/30 text-santaran-vermilion;
   }
 }
 
@@ -98,7 +98,7 @@
   }
   
   .program-card {
-    @apply relative bg-white p-6 rounded-lg shadow-md border-2 border-santaran-teal/20 hover:border-santaran-teal transition-all duration-500 hover:shadow-xl overflow-hidden cursor-pointer;
+    @apply relative bg-white p-6 rounded-lg shadow-md border-2 border-santaran-jade/20 hover:border-santaran-jade transition-all duration-500 hover:shadow-xl overflow-hidden cursor-pointer;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
   
@@ -107,7 +107,7 @@
   }
   
   .program-card::before {
-    @apply content-[''] absolute top-0 left-0 w-1 h-full bg-santaran-terracotta transform origin-bottom scale-y-0 transition-transform duration-300;
+    @apply content-[''] absolute top-0 left-0 w-1 h-full bg-santaran-vermilion transform origin-bottom scale-y-0 transition-transform duration-300;
   }
   
   .program-card:hover::before {
@@ -124,11 +124,11 @@
   }
   
   .nav-link {
-    @apply relative text-lg font-medium px-3 py-2 transition-colors hover:text-santaran-teal;
+    @apply relative text-lg font-medium px-3 py-2 transition-colors hover:text-santaran-jade;
   }
   
   .nav-link::after {
-    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-santaran-teal origin-bottom-right transition-transform duration-300;
+    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-santaran-jade origin-bottom-right transition-transform duration-300;
   }
   
   .nav-link:hover::after {
@@ -136,11 +136,11 @@
   }
   
   .nav-link.active {
-    @apply text-santaran-terracotta;
+    @apply text-santaran-vermilion;
   }
   
   .nav-link.active::after {
-    @apply scale-x-100 bg-santaran-terracotta;
+    @apply scale-x-100 bg-santaran-vermilion;
   }
   
   .btn {
@@ -148,11 +148,11 @@
   }
   
   .btn-primary {
-    @apply bg-santaran-terracotta text-white hover:bg-santaran-terracotta/90 active:scale-95;
+    @apply bg-santaran-vermilion text-white hover:bg-santaran-vermilion/90 active:scale-95;
   }
   
   .btn-outline {
-    @apply border-2 border-santaran-teal text-santaran-teal hover:bg-santaran-teal hover:text-white active:scale-95;
+    @apply border-2 border-santaran-jade text-santaran-jade hover:bg-santaran-jade hover:text-white active:scale-95;
   }
   
   .text-balance {
@@ -160,11 +160,27 @@
   }
   
   .artistic-input {
-    @apply bg-transparent border-b-2 border-santaran-teal/50 focus:border-santaran-teal px-0 py-2 outline-none transition-all w-full;
+    @apply bg-transparent border-b-2 border-santaran-jade/50 focus:border-santaran-jade px-0 py-2 outline-none transition-all w-full;
   }
   
   .glassmorphic {
     @apply bg-white/70 backdrop-blur-md shadow-lg border border-white/20 rounded-xl;
+  }
+
+  .art-button {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-300 bg-gradient-to-r from-santaran-vermilion to-santaran-amber text-white font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 active:translate-y-0;
+  }
+
+  .art-button-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-300 border-2 border-santaran-jade bg-transparent text-santaran-jade font-medium hover:bg-santaran-jade/10 active:bg-santaran-jade/20;
+  }
+
+  .art-button-subtle {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-md transition-all duration-300 bg-santaran-cream text-santaran-indigo font-medium hover:bg-santaran-cream/80 active:bg-santaran-cream/70;
+  }
+
+  .art-icon-button {
+    @apply inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-santaran-jade/20 text-santaran-jade transition-all duration-300 hover:bg-santaran-jade hover:text-white shadow-md hover:shadow-lg;
   }
 }
 
@@ -178,10 +194,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C95D2C;
+  background: #DE4D31;
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1D6A6A;
+  background: #158A8A;
 }
