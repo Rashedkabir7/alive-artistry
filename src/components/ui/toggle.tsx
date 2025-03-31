@@ -2,7 +2,7 @@
 import * as React from "react"
 import * as TogglePrimitive from "@radix-ui/react-toggle"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Palette, Brush, Flower, Frame, PencilLine, GalleryHorizontal } from "lucide-react"
+import { Palette, Brush, Flower, Frame, PencilLine, GalleryHorizontal, Paintbrush } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -15,12 +15,15 @@ const toggleVariants = cva(
         outline:
           "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
         artistic: 
-          "bg-white border-2 border-santaran-jade/20 text-santaran-indigo hover:bg-santaran-cream/80 data-[state=on]:bg-santaran-vermilion",
+          "bg-white border-2 border-santaran-jade/20 text-santaran-indigo hover:bg-santaran-cream/80 data-[state=on]:bg-santaran-vermilion shadow-md backdrop-blur-sm",
+        fancy:
+          "bg-gradient-to-br from-santaran-cream to-white border-2 border-santaran-terracotta/30 text-santaran-indigo hover:border-santaran-terracotta transition-all duration-300 data-[state=on]:bg-gradient-to-br data-[state=on]:from-santaran-vermilion data-[state=on]:to-santaran-amber data-[state=on]:border-santaran-amber",
       },
       size: {
         default: "h-10 px-3",
         sm: "h-9 px-2.5",
         lg: "h-11 px-5",
+        xl: "h-12 px-6",
       },
     },
     defaultVariants: {
@@ -38,6 +41,7 @@ export const ArtToggleIcons = {
   Frame: () => <Frame className="w-4 h-4 mr-2" />,
   Pencil: () => <PencilLine className="w-4 h-4 mr-2" />,
   Gallery: () => <GalleryHorizontal className="w-4 h-4 mr-2" />,
+  Paintbrush: () => <Paintbrush className="w-5 h-5 mr-2" />,
 }
 
 interface ToggleProps extends 
@@ -67,4 +71,3 @@ const Toggle = React.forwardRef<
 Toggle.displayName = TogglePrimitive.Root.displayName
 
 export { Toggle, toggleVariants }
-
