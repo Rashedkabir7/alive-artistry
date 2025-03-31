@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface Project {
   id: string;
@@ -70,6 +71,47 @@ const projects: Project[] = [
 ];
 
 const ProjectsSection = () => {
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+
+  // Animation variants for text
+  const titleContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const titleCharVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 200
+      }
+    }
+  };
+  
+  const categoryVariants = {
+    initial: { opacity: 0, scale: 0.8 },
+    animate: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      }
+    }
+  };
+
   return (
     <section id="projects" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -84,9 +126,12 @@ const ProjectsSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project) => (
-            <div 
+            <motion.div 
               key={project.id} 
               className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+              onMouseEnter={() => setHoveredProject(project.id)}
+              onMouseLeave={() => setHoveredProject(null)}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10"></div>
               
@@ -97,21 +142,47 @@ const ProjectsSection = () => {
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <span className="inline-block px-2 py-1 bg-santaran-terracotta/90 text-white text-xs rounded mb-2">
+                <motion.div
+                  variants={categoryVariants}
+                  initial="initial"
+                  animate="animate"
+                  className="inline-block px-2 py-1 bg-santaran-terracotta/90 text-white text-xs rounded mb-2"
+                >
                   {project.category}
-                </span>
-                <h3 className="text-white font-display text-xl mb-1">{project.title}</h3>
+                </motion.div>
+                
+                <motion.div
+                  variants={titleContainerVariants}
+                  initial="hidden"
+                  animate={hoveredProject === project.id ? "visible" : "hidden"}
+                  className="mb-1"
+                >
+                  <h3 className="text-white font-display text-xl">
+                    {project.title.split('').map((char, index) => (
+                      <motion.span
+                        key={index}
+                        variants={titleCharVariants}
+                        className="inline-block"
+                        style={{ display: "inline-block" }}
+                      >
+                        {char === ' ' ? '\u00A0' : char}
+                      </motion.span>
+                    ))}
+                  </h3>
+                </motion.div>
+                
                 <p className="text-white/80 text-sm mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {project.description}
                 </p>
-                <a 
+                <motion.a 
                   href={`#project-${project.id}`} 
                   className="inline-flex items-center text-santaran-cream hover:text-santaran-gold transition-colors text-sm font-medium"
+                  whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 >
                   Learn more <ArrowRight size={14} className="ml-1" />
-                </a>
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         
