@@ -1,145 +1,244 @@
 
 import React, { useState } from 'react';
-import { MapPin, Mail, Phone, Send } from 'lucide-react';
+import { MapPin, Mail, Phone, Send, Check, AlertCircle, Loader2 } from 'lucide-react';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { toast } from "sonner";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+
+// Form schema with validation rules
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters" })
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  
+  // Initialize form with react-hook-form and zod validation
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: ""
+    }
   });
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+
+  // Form submission handler
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    
+    try {
+      // In a real app, you would send this data to your backend
+      console.log('Form submitted:', data);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Show success state
+      setSubmitSuccess(true);
+      toast.success("Message sent successfully! We'll get back to you soon.");
+      
+      // Reset the form
+      form.reset();
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would normally process the form data
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
-    // Show success message (in a real app, you'd use a toast or alert)
-    alert('Thank you for your message! We will get back to you soon.');
-  };
-  
+
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="heading-lg text-santaran-teal mb-4">Get in Touch</h2>
+    <section id="contact" className="py-20 bg-white relative overflow-hidden">
+      {/* Artistic background elements */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-santaran-cream opacity-20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-santaran-jade opacity-10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center mb-16 relative">
+          <h2 className="heading-lg text-santaran-teal mb-4 font-serif">Get in Touch</h2>
           <div className="w-24 h-1 bg-santaran-terracotta mx-auto"></div>
-          <p className="mt-6 text-lg max-w-2xl mx-auto">
+          <p className="mt-6 text-lg max-w-2xl mx-auto text-gray-700">
             Have questions about our programs or interested in collaborating? 
             We'd love to hear from you.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h3 className="heading-md text-santaran-terracotta mb-6">Contact Information</h3>
+          {/* Contact Information */}
+          <div className="bg-white/50 p-8 rounded-lg backdrop-blur-sm shadow-lg border border-santaran-jade/10 transform transition-transform duration-500 hover:shadow-xl relative z-10">
+            <h3 className="heading-md text-santaran-terracotta mb-6 font-serif">Contact Information</h3>
             
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="mr-4 mt-1 bg-santaran-teal/10 p-3 rounded-full">
-                  <MapPin className="text-santaran-teal" size={24} />
+            <div className="space-y-8">
+              <div className="flex items-start group">
+                <div className="mr-4 mt-1 bg-gradient-to-br from-santaran-teal to-santaran-jade p-3 rounded-full text-white shadow-md group-hover:shadow-lg transition-all duration-300">
+                  <MapPin className="text-white" size={24} />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-lg">Our Location</h4>
+                <div className="transform transition-transform group-hover:translate-x-1 duration-300">
+                  <h4 className="font-semibold text-lg text-santaran-indigo">Our Location</h4>
                   <p className="text-gray-600">Chittagong, Bangladesh</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="mr-4 mt-1 bg-santaran-teal/10 p-3 rounded-full">
-                  <Mail className="text-santaran-teal" size={24} />
+              <div className="flex items-start group">
+                <div className="mr-4 mt-1 bg-gradient-to-br from-santaran-teal to-santaran-jade p-3 rounded-full text-white shadow-md group-hover:shadow-lg transition-all duration-300">
+                  <Mail className="text-white" size={24} />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-lg">Email Us</h4>
+                <div className="transform transition-transform group-hover:translate-x-1 duration-300">
+                  <h4 className="font-semibold text-lg text-santaran-indigo">Email Us</h4>
                   <p className="text-gray-600">contact@santaranart.org</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="mr-4 mt-1 bg-santaran-teal/10 p-3 rounded-full">
-                  <Phone className="text-santaran-teal" size={24} />
+              <div className="flex items-start group">
+                <div className="mr-4 mt-1 bg-gradient-to-br from-santaran-teal to-santaran-jade p-3 rounded-full text-white shadow-md group-hover:shadow-lg transition-all duration-300">
+                  <Phone className="text-white" size={24} />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-lg">Call Us</h4>
+                <div className="transform transition-transform group-hover:translate-x-1 duration-300">
+                  <h4 className="font-semibold text-lg text-santaran-indigo">Call Us</h4>
                   <p className="text-gray-600">+880 123 456 7890</p>
                 </div>
               </div>
             </div>
             
             <div className="mt-12">
-              <h3 className="heading-sm text-santaran-terracotta mb-4">Follow Us</h3>
+              <h3 className="heading-sm text-santaran-terracotta mb-6 font-serif">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-santaran-teal text-white rounded-full flex items-center justify-center hover:bg-santaran-terracotta transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                <a href="#" className="w-12 h-12 bg-gradient-to-br from-santaran-teal to-santaran-jade text-white rounded-full flex items-center justify-center hover:from-santaran-terracotta hover:to-santaran-amber transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
-                <a href="#" className="w-10 h-10 bg-santaran-teal text-white rounded-full flex items-center justify-center hover:bg-santaran-terracotta transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <a href="#" className="w-12 h-12 bg-gradient-to-br from-santaran-teal to-santaran-jade text-white rounded-full flex items-center justify-center hover:from-santaran-terracotta hover:to-santaran-amber transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-                <a href="#" className="w-10 h-10 bg-santaran-teal text-white rounded-full flex items-center justify-center hover:bg-santaran-terracotta transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                <a href="#" className="w-12 h-12 bg-gradient-to-br from-santaran-teal to-santaran-jade text-white rounded-full flex items-center justify-center hover:from-santaran-terracotta hover:to-santaran-amber transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                 </a>
               </div>
             </div>
           </div>
           
-          <div>
-            <div className="bg-santaran-cream/30 p-8 rounded-lg shadow-md">
-              <h3 className="heading-md text-santaran-terracotta mb-6">Send Us a Message</h3>
+          {/* Contact Form */}
+          <div className="relative">
+            <div className="bg-gradient-to-br from-santaran-cream/30 to-white p-8 rounded-lg shadow-lg border border-santaran-jade/10 relative z-10 overflow-hidden">
+              {/* Decorative art elements */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-santaran-amber/10 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-santaran-teal/5 rounded-full blur-3xl"></div>
               
-              <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                  <label htmlFor="name" className="block text-gray-700 mb-2">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
+              <h3 className="heading-md text-santaran-terracotta mb-6 font-serif">Send Us a Message</h3>
+              
+              {submitSuccess && (
+                <Alert className="mb-6 bg-santaran-jade/10 border-santaran-jade text-santaran-indigo animate-fade-in">
+                  <Check className="h-4 w-4 text-santaran-jade" />
+                  <AlertTitle>Success!</AlertTitle>
+                  <AlertDescription>
+                    Thank you for your message. We'll get back to you soon.
+                  </AlertDescription>
+                </Alert>
+              )}
+              
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <FormField
+                    control={form.control}
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-santaran-teal"
-                    required
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-santaran-indigo">Your Name</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            className="border-santaran-jade/20 focus-visible:ring-santaran-teal/50"
+                            disabled={isSubmitting}
+                            placeholder="Enter your name"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                
-                <div className="mb-4">
-                  <label htmlFor="email" className="block text-gray-700 mb-2">Your Email</label>
-                  <input
-                    type="email"
-                    id="email"
+                  
+                  <FormField
+                    control={form.control}
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-santaran-teal"
-                    required
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-santaran-indigo">Your Email</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            type="email"
+                            className="border-santaran-jade/20 focus-visible:ring-santaran-teal/50"
+                            disabled={isSubmitting}
+                            placeholder="Enter your email"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-gray-700 mb-2">Your Message</label>
-                  <textarea
-                    id="message"
+                  
+                  <FormField
+                    control={form.control}
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-santaran-teal"
-                    required
-                  ></textarea>
-                </div>
-                
-                <button 
-                  type="submit" 
-                  className="bg-santaran-terracotta hover:bg-santaran-terracotta/90 text-white px-6 py-3 rounded-md transition-colors flex items-center justify-center w-full"
-                >
-                  Send Message
-                  <Send size={18} className="ml-2" />
-                </button>
-              </form>
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-santaran-indigo">Your Message</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            {...field}
+                            rows={5}
+                            className="border-santaran-jade/20 focus-visible:ring-santaran-teal/50 resize-none"
+                            disabled={isSubmitting}
+                            placeholder="What would you like to tell us?"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <Button 
+                    type="submit" 
+                    variant="artistic"
+                    className="w-full bg-gradient-to-br from-santaran-teal to-santaran-jade hover:from-santaran-terracotta hover:to-santaran-amber text-white transition-all duration-300 group"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </Form>
             </div>
           </div>
         </div>
