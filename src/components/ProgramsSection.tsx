@@ -39,17 +39,43 @@ const programs: Program[] = [
 const ProgramsSection = () => {
   const [activeProgram, setActiveProgram] = useState<string | null>(null);
   
-  // Text animation variants
+  // Enhanced text animation variants
   const letterVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 20, rotate: -5 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
+      rotate: 0,
       transition: {
         delay: i * 0.05,
-        duration: 0.4,
+        duration: 0.5,
+        type: "spring",
+        stiffness: 100,
+        damping: 10
       },
     }),
+    hover: (i: number) => ({
+      y: [0, -10, 0],
+      color: ["#2A7D6A", "#D96941", "#2A7D6A"],
+      transition: {
+        duration: 0.5,
+        delay: i * 0.05,
+        repeat: 0,
+        repeatType: "mirror" as const,
+      }
+    })
+  };
+
+  // Container animation for the entire title
+  const titleContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.3
+      }
+    }
   };
   
   return (
@@ -68,8 +94,8 @@ const ProgramsSection = () => {
           {programs.map((program) => (
             <div 
               key={program.id}
-              className={`program-card group cursor-pointer transition-all duration-300 ${
-                activeProgram === program.id ? 'border-santaran-terracotta scale-105' : ''
+              className={`program-card group cursor-pointer transition-all duration-500 ${
+                activeProgram === program.id ? 'border-santaran-terracotta scale-105 shadow-lg' : ''
               }`}
               onMouseEnter={() => setActiveProgram(program.id)}
               onMouseLeave={() => setActiveProgram(null)}
@@ -78,7 +104,8 @@ const ProgramsSection = () => {
                 className="text-5xl mb-4 transition-transform duration-300 group-hover:scale-110"
                 whileHover={{ 
                   rotate: [0, -10, 10, -5, 5, 0],
-                  transition: { duration: 0.6 }
+                  scale: [1, 1.2, 1],
+                  transition: { duration: 0.8, ease: "easeInOut" }
                 }}
               >
                 {program.icon}
@@ -89,32 +116,46 @@ const ProgramsSection = () => {
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-santaran-terracotta" 
                   initial={{ scaleX: 0 }}
                   animate={activeProgram === program.id ? { scaleX: 1 } : { scaleX: 0 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 />
-                <span className="relative">
+                
+                {/* Program title with letter animation */}
+                <motion.span 
+                  className="relative inline-block"
+                  variants={titleContainerVariants}
+                  initial="hidden"
+                  animate={activeProgram === program.id ? "visible" : "hidden"}
+                >
                   {program.title.split('').map((letter, i) => (
                     <motion.span
                       key={i}
                       custom={i}
                       initial="hidden"
                       animate={activeProgram === program.id ? "visible" : "hidden"}
+                      whileHover="hover"
                       variants={letterVariants}
                       className="inline-block"
                       style={{ 
                         display: "inline-block",
-                        transformOrigin: "bottom"
+                        transformOrigin: "bottom center"
                       }}
                     >
                       {letter === ' ' ? '\u00A0' : letter}
                     </motion.span>
                   ))}
-                </span>
+                </motion.span>
               </h3>
               
               <p className="text-gray-600">
                 {program.description}
               </p>
-              <div className="mt-4 h-1 w-0 bg-santaran-gold transition-all duration-300 group-hover:w-full"></div>
+              
+              <motion.div 
+                className="mt-4 h-1 bg-santaran-gold"
+                initial={{ width: 0 }}
+                animate={{ width: activeProgram === program.id ? "100%" : 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              />
             </div>
           ))}
         </div>
