@@ -174,7 +174,8 @@ const FeaturedProgramSection: React.FC = () => {
               <div className="flex items-center gap-4">
                 <Button asChild>
                   <a href={currentProgram.link}>
-                    Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                    Learn More
+                    <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
                 </Button>
                 
@@ -231,7 +232,6 @@ const FeaturedProgramSection: React.FC = () => {
                       value={program.id} 
                       aria-label={`View ${program.title} program`}
                       disabled={isAnimating}
-                      variant="fancy"
                       className="px-4 py-2 rounded-md"
                     >
                       {program.title}
