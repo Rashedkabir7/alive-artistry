@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -86,7 +85,6 @@ const FeaturedProgramSection: React.FC = () => {
     }
   };
 
-  // Advanced text animation variants with 3D rotation and color transitions
   const letterVariants = {
     hidden: { opacity: 0, y: 20, rotateY: 90 },
     visible: (i: number) => ({
@@ -172,11 +170,9 @@ const FeaturedProgramSection: React.FC = () => {
               </motion.p>
               
               <div className="flex items-center gap-4">
-                <Button>
-                  <a href={currentProgram.link} className="flex items-center">
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
+                <Button onClick={() => window.location.href = currentProgram.link}>
+                  Learn More
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
                 
                 <div className="flex items-center space-x-2">
