@@ -39,29 +39,31 @@ const programs: Program[] = [
 const ProgramsSection = () => {
   const [activeProgram, setActiveProgram] = useState<string | null>(null);
   
-  // Enhanced text animation variants
+  // Advanced text animation variants with 3D rotation and color transitions
   const letterVariants = {
-    hidden: { opacity: 0, y: 20, rotate: -5 },
+    hidden: { opacity: 0, y: 20, rotateY: 90 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      rotate: 0,
+      rotateY: 0,
       transition: {
         delay: i * 0.05,
-        duration: 0.5,
+        duration: 0.6,
         type: "spring",
         stiffness: 100,
-        damping: 10
+        damping: 12
       },
     }),
     hover: (i: number) => ({
-      y: [0, -10, 0],
-      color: ["#2A7D6A", "#D96941", "#2A7D6A"],
+      y: [0, -8, 0],
+      color: ["#2A7D6A", "#D96941", "#F9A826", "#2A7D6A"],
+      scale: [1, 1.2, 1],
       transition: {
-        duration: 0.5,
-        delay: i * 0.05,
+        duration: 0.8,
+        delay: i * 0.03,
         repeat: 0,
         repeatType: "mirror" as const,
+        ease: "easeInOut"
       }
     })
   };
@@ -72,8 +74,8 @@ const ProgramsSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.3
+        staggerChildren: 0.05,
+        delayChildren: 0.2
       }
     }
   };
@@ -92,19 +94,24 @@ const ProgramsSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {programs.map((program) => (
-            <div 
+            <motion.div 
               key={program.id}
               className={`program-card group cursor-pointer transition-all duration-500 ${
-                activeProgram === program.id ? 'border-santaran-terracotta scale-105 shadow-lg' : ''
+                activeProgram === program.id ? 'border-santaran-terracotta shadow-xl' : ''
               }`}
               onMouseEnter={() => setActiveProgram(program.id)}
               onMouseLeave={() => setActiveProgram(null)}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <motion.div 
-                className="text-5xl mb-4 transition-transform duration-300 group-hover:scale-110"
+                className="text-5xl mb-4 transition-transform duration-300"
                 whileHover={{ 
                   rotate: [0, -10, 10, -5, 5, 0],
-                  scale: [1, 1.2, 1],
+                  scale: [1, 1.3, 1],
                   transition: { duration: 0.8, ease: "easeInOut" }
                 }}
               >
@@ -113,31 +120,31 @@ const ProgramsSection = () => {
               
               <h3 className="heading-sm text-santaran-teal mb-3 group-hover:text-santaran-terracotta transition-colors relative overflow-hidden">
                 <motion.div 
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-santaran-terracotta" 
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-santaran-terracotta via-santaran-gold to-santaran-terracotta" 
                   initial={{ scaleX: 0 }}
                   animate={activeProgram === program.id ? { scaleX: 1 } : { scaleX: 0 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
                 />
                 
-                {/* Program title with letter animation */}
+                {/* Animated program title with 3D effect */}
                 <motion.span 
-                  className="relative inline-block"
+                  className="relative inline-block perspective-effect"
                   variants={titleContainerVariants}
                   initial="hidden"
-                  animate={activeProgram === program.id ? "visible" : "hidden"}
+                  animate="visible"
+                  style={{ perspective: "800px" }}
                 >
                   {program.title.split('').map((letter, i) => (
                     <motion.span
                       key={i}
                       custom={i}
-                      initial="hidden"
-                      animate={activeProgram === program.id ? "visible" : "hidden"}
-                      whileHover="hover"
                       variants={letterVariants}
-                      className="inline-block"
+                      whileHover="hover"
+                      className="inline-block cursor-pointer"
                       style={{ 
                         display: "inline-block",
-                        transformOrigin: "bottom center"
+                        transformOrigin: "center",
+                        transformStyle: "preserve-3d"
                       }}
                     >
                       {letter === ' ' ? '\u00A0' : letter}
@@ -151,12 +158,12 @@ const ProgramsSection = () => {
               </p>
               
               <motion.div 
-                className="mt-4 h-1 bg-santaran-gold"
+                className="mt-4 h-1 bg-gradient-to-r from-santaran-teal via-santaran-jade to-santaran-gold"
                 initial={{ width: 0 }}
-                animate={{ width: activeProgram === program.id ? "100%" : 0 }}
+                animate={{ width: activeProgram === program.id ? "100%" : "0%" }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
