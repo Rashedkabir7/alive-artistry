@@ -1,6 +1,9 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 interface Program {
   id: string;
@@ -79,13 +82,16 @@ const ProgramsSection = () => {
       }
     }
   };
-  
+
   return (
-    <section id="programs" className="py-20 bg-santaran-cream/50">
+    <section id="programs" className="py-20 bg-santaran-cream/50 relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-santaran-vermilion/5 blur-3xl"></div>
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-santaran-jade/5 blur-3xl"></div>
+      
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="heading-lg text-santaran-teal mb-4">Our Key Programs</h2>
-          <div className="w-24 h-1 bg-santaran-terracotta mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-santaran-vermilion to-santaran-amber mx-auto"></div>
           <p className="mt-6 text-lg max-w-2xl mx-auto">
             The key operations of Santaran Art Organization focus on nurturing creativity, 
             preserving cultural heritage, and promoting art as a medium for positive change.
@@ -97,7 +103,7 @@ const ProgramsSection = () => {
             <motion.div 
               key={program.id}
               className={`program-card group cursor-pointer transition-all duration-500 ${
-                activeProgram === program.id ? 'border-santaran-terracotta shadow-xl' : ''
+                activeProgram === program.id ? 'border-santaran-vermilion shadow-xl' : ''
               }`}
               onMouseEnter={() => setActiveProgram(program.id)}
               onMouseLeave={() => setActiveProgram(null)}
@@ -118,9 +124,9 @@ const ProgramsSection = () => {
                 {program.icon}
               </motion.div>
               
-              <h3 className="heading-sm text-santaran-teal mb-3 group-hover:text-santaran-terracotta transition-colors relative overflow-hidden">
+              <h3 className="heading-sm text-santaran-teal mb-3 group-hover:text-santaran-vermilion transition-colors relative overflow-hidden">
                 <motion.div 
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-santaran-terracotta via-santaran-gold to-santaran-terracotta" 
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-santaran-vermilion via-santaran-gold to-santaran-vermilion" 
                   initial={{ scaleX: 0 }}
                   animate={activeProgram === program.id ? { scaleX: 1 } : { scaleX: 0 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
@@ -165,6 +171,14 @@ const ProgramsSection = () => {
               />
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Button asChild>
+            <Link to="/programs">
+              View All Programs <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

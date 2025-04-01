@@ -12,6 +12,7 @@ import Gallery from "./pages/Gallery";
 import About from "./pages/About";
 import Exhibitions from "./pages/Exhibitions";
 import Contact from "./pages/Contact";
+import Programs from "./pages/Programs";
 import NotFound from "./pages/NotFound";
 
 // Create a client
@@ -31,6 +32,7 @@ const App: React.FC = () => {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/about" element={<About />} />
               <Route path="/exhibitions" element={<Exhibitions />} />
+              <Route path="/programs" element={<Programs />} />
               <Route path="/contact" element={<Contact />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
