@@ -135,7 +135,10 @@ const Programs: React.FC = () => {
               </motion.div>
               <h3 className="heading-md text-santaran-teal mb-4">Exciting Programs Coming Soon!</h3>
               <p className="text-gray-600 mb-6">Stay tuned for our upcoming initiatives.</p>
-              <Button className="mt-4" icon="Calendar">Get Notified</Button>
+              <Button className="mt-4">
+                <Calendar className="mr-2 h-4 w-4" />
+                Get Notified
+              </Button>
             </div>
           </TabsContent>
           
@@ -143,7 +146,10 @@ const Programs: React.FC = () => {
             <div className="text-center py-12">
               <h3 className="heading-md text-santaran-teal mb-4">Archive Under Development</h3>
               <p className="text-gray-600 mb-6">Our program archives are being digitized. Check back soon.</p>
-              <Button variant="outline" className="mt-4" icon="BookOpen">View Gallery Instead</Button>
+              <Button variant="outline" className="mt-4">
+                <BookOpen className="mr-2 h-4 w-4" />
+                View Gallery Instead
+              </Button>
             </div>
           </TabsContent>
         </Tabs>
@@ -222,7 +228,10 @@ const Programs: React.FC = () => {
                 transition={{ duration: 0.7, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                <Button>Join Our Mission <ArrowRight className="ml-2 w-4 h-4" /></Button>
+                <Button>
+                  Join Our Mission 
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
               </motion.div>
             </div>
             
@@ -290,9 +299,9 @@ const Programs: React.FC = () => {
               </p>
               
               <div className="flex flex-wrap justify-center gap-4 mb-8">
-                <Button variant="outline" icon="Brush">Volunteer</Button>
-                <Button icon="Gallery">Participate</Button>
-                <Button variant="outline" icon="Palette">Support Us</Button>
+                <Button variant="outline">Volunteer</Button>
+                <Button>Participate</Button>
+                <Button variant="outline">Support Us</Button>
               </div>
               
               <motion.div 
@@ -431,3 +440,4 @@ const StatCard: React.FC<{ number: string; title: string }> = ({ number, title }
 };
 
 export default Programs;
+
