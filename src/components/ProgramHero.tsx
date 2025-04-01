@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { Sparkles, Leaf, Palette } from 'lucide-react';
 import AnimatedHeading from '@/components/AnimatedHeading';
+import ArtisticArrow from '@/components/ArtisticArrow';
 
 const ProgramHero: React.FC = () => {
   const scrollToContent = () => {
@@ -13,17 +14,26 @@ const ProgramHero: React.FC = () => {
   };
   
   return (
-    <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-santaran-jade/10 via-santaran-cream to-santaran-amber/10 z-0"></div>
+    <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+      {/* Background with improved gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-santaran-jade/20 via-santaran-cream to-santaran-amber/20 z-0"></div>
       
-      {/* Decorative Elements */}
+      {/* Artistic pattern overlay */}
+      <div className="absolute inset-0 opacity-5" 
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '30px 30px'
+        }} 
+      />
+      
+      {/* Decorative Elements with enhanced animations */}
       <motion.div 
         className="absolute top-20 left-20 w-40 h-40 rounded-full bg-santaran-vermilion/10 mix-blend-multiply"
         animate={{ 
           scale: [1, 1.2, 1],
           x: [0, 10, 0],
           y: [0, -10, 0],
+          rotate: [0, 10, 0]
         }}
         transition={{ 
           duration: 8, 
@@ -33,11 +43,12 @@ const ProgramHero: React.FC = () => {
       />
       
       <motion.div 
-        className="absolute bottom-20 right-20 w-60 h-60 rounded-full bg-santaran-jade/10 mix-blend-multiply"
+        className="absolute bottom-20 right-20 w-60 h-60 rounded-full bg-santaran-jade/15 mix-blend-multiply"
         animate={{ 
           scale: [1, 1.1, 1],
           x: [0, -15, 0],
           y: [0, 15, 0],
+          rotate: [0, -5, 0]
         }}
         transition={{ 
           duration: 10, 
@@ -47,7 +58,7 @@ const ProgramHero: React.FC = () => {
       />
       
       <motion.div 
-        className="absolute top-1/2 right-1/4 w-20 h-20 rounded-full bg-santaran-amber/10 mix-blend-multiply"
+        className="absolute top-1/2 right-1/4 w-20 h-20 rounded-full bg-santaran-amber/15 mix-blend-multiply"
         animate={{ 
           scale: [1, 1.3, 1],
           x: [0, 20, 0],
@@ -59,6 +70,44 @@ const ProgramHero: React.FC = () => {
           repeatType: "reverse" 
         }}
       />
+      
+      {/* Floating artistic elements */}
+      <motion.div 
+        className="absolute top-[30%] left-[15%] text-santaran-terracotta/70"
+        animate={{ 
+          y: [0, -15, 0],
+          rotate: [0, 10, 0],
+          opacity: [0.5, 0.8, 0.5]
+        }}
+        transition={{ duration: 7, repeat: Infinity }}
+      >
+        <Palette size={28} />
+      </motion.div>
+      
+      <motion.div 
+        className="absolute bottom-[25%] right-[20%] text-santaran-jade/70"
+        animate={{ 
+          y: [0, 10, 0],
+          rotate: [0, -15, 0],
+          opacity: [0.5, 0.9, 0.5]
+        }}
+        transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+      >
+        <Leaf size={24} />
+      </motion.div>
+      
+      <motion.div 
+        className="absolute top-[20%] right-[25%] text-santaran-amber/70"
+        animate={{ 
+          y: [0, -10, 0],
+          x: [0, 10, 0],
+          opacity: [0.6, 1, 0.6],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{ duration: 6, repeat: Infinity, delay: 1 }}
+      >
+        <Sparkles size={26} />
+      </motion.div>
       
       {/* Content */}
       <div className="container mx-auto px-4 z-10 text-center">
@@ -93,28 +142,20 @@ const ProgramHero: React.FC = () => {
         <motion.div
           className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ 
-            opacity: { delay: 1.2, duration: 0.7 },
-            y: { duration: 1.5, repeat: Infinity, repeatType: "reverse" }
-          }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.7 }}
           onClick={scrollToContent}
         >
           <div className="flex flex-col items-center">
             <span className="text-sm text-gray-500 mb-2">Discover More</span>
-            <motion.div
-              animate={{ 
-                y: [0, 5, 0],
-                transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
-              }}
-            >
-              <svg className="h-6 w-6 text-santaran-vermilion" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </motion.div>
+            <ArtisticArrow direction="down" size="md" color="text-santaran-vermilion" animate={true} />
           </div>
         </motion.div>
       </div>
+      
+      {/* Artistic corner decorations */}
+      <div className="absolute top-8 left-8 w-20 h-20 border-t-2 border-l-2 border-santaran-teal/40"></div>
+      <div className="absolute bottom-8 right-8 w-20 h-20 border-b-2 border-r-2 border-santaran-vermilion/40"></div>
     </section>
   );
 };

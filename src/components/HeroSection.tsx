@@ -1,7 +1,9 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownCircle, Circle, Star, Sun } from 'lucide-react';
+import { ArrowDownCircle, Circle, Star, Sun, Sparkles, Leaf, Palette } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import AnimatedHeading from '@/components/AnimatedHeading';
 
 const HeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -23,18 +25,23 @@ const HeroSection: React.FC = () => {
       speedX: number;
       speedY: number;
       color: string;
+      opacity: number;
+      shape: string;
     }[] = [];
     
-    const colors = ['#C95D2C', '#1D6A6A', '#E6B30E', '#8B4513'];
+    const colors = ['#C95D2C', '#1D6A6A', '#E6B30E', '#8B4513', '#9b87f5', '#6E59A5'];
+    const shapes = ['circle', 'square', 'triangle', 'star'];
     
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 80; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 5 + 1,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        color: colors[Math.floor(Math.random() * colors.length)]
+        size: Math.random() * 6 + 1,
+        speedX: (Math.random() - 0.5) * 0.7,
+        speedY: (Math.random() - 0.5) * 0.7,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        opacity: Math.random() * 0.6 + 0.2,
+        shape: shapes[Math.floor(Math.random() * shapes.length)]
       });
     }
     
@@ -43,9 +50,44 @@ const HeroSection: React.FC = () => {
       
       particles.forEach((particle) => {
         ctx.fillStyle = particle.color;
+        ctx.globalAlpha = particle.opacity;
+        
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        
+        switch(particle.shape) {
+          case 'square':
+            ctx.rect(particle.x, particle.y, particle.size, particle.size);
+            break;
+          case 'triangle':
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(particle.x + particle.size, particle.y + particle.size);
+            ctx.lineTo(particle.x - particle.size, particle.y + particle.size);
+            break;
+          case 'star':
+            const spikes = 5;
+            const outerRadius = particle.size;
+            const innerRadius = particle.size / 2;
+            
+            for (let i = 0; i < spikes * 2; i++) {
+              const radius = i % 2 === 0 ? outerRadius : innerRadius;
+              const angle = (Math.PI / spikes) * i;
+              const x = particle.x + Math.cos(angle) * radius;
+              const y = particle.y + Math.sin(angle) * radius;
+              
+              if (i === 0) {
+                ctx.moveTo(x, y);
+              } else {
+                ctx.lineTo(x, y);
+              }
+            }
+            break;
+          default:
+            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        }
+        
+        ctx.closePath();
         ctx.fill();
+        ctx.globalAlpha = 1;
         
         particle.x += particle.speedX;
         particle.y += particle.speedY;
@@ -110,6 +152,18 @@ const HeroSection: React.FC = () => {
       </motion.div>
       
       <motion.div 
+        className="absolute top-[20%] right-[25%] text-santaran-terracotta/80"
+        animate={{ 
+          scale: [1, 1.3, 1],
+          opacity: [0.5, 0.9, 0.5],
+          rotate: [0, 180, 360]
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
+      >
+        <Palette size={24} />
+      </motion.div>
+      
+      <motion.div 
         className="absolute bottom-[30%] right-[15%] text-santaran-terracotta"
         animate={{ 
           scale: [1, 1.2, 1],
@@ -118,6 +172,30 @@ const HeroSection: React.FC = () => {
         transition={{ duration: 4, repeat: Infinity, delay: 1 }}
       >
         <Star size={24} />
+      </motion.div>
+
+      <motion.div 
+        className="absolute bottom-[50%] left-[15%] text-santaran-jade"
+        animate={{ 
+          scale: [1, 1.4, 1],
+          opacity: [0.4, 0.8, 0.4],
+          y: [0, -15, 0]
+        }}
+        transition={{ duration: 6, repeat: Infinity, delay: 2 }}
+      >
+        <Leaf size={20} />
+      </motion.div>
+
+      <motion.div 
+        className="absolute top-[30%] left-[25%] text-santaran-amber"
+        animate={{ 
+          scale: [1, 1.5, 1],
+          opacity: [0.5, 1, 0.5],
+          rotate: [0, 45, 0]
+        }}
+        transition={{ duration: 7, repeat: Infinity, delay: 1.5 }}
+      >
+        <Sparkles size={18} />
       </motion.div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -142,32 +220,22 @@ const HeroSection: React.FC = () => {
                 transition={{ delay: 0.8, duration: 0.5 }}
               />
               
-              <h1 className="heading-xl mb-6 relative">
-                <motion.span 
-                  className="text-santaran-terracotta block"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                  Art
-                </motion.span>
-                <motion.span 
-                  className="text-santaran-teal"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                >
-                  for Dignifying 
-                </motion.span>
-                <motion.span 
-                  className="text-santaran-brown block md:inline"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.5 }}
-                >
-                  Life
-                </motion.span>
-              </h1>
+              <AnimatedHeading
+                text="Art for Dignifying Life"
+                tag="h1" 
+                className="heading-xl mb-6 relative"
+                color="text-santaran-terracotta"
+                animation="letter-by-letter"
+              />
+              
+              <motion.p 
+                className="font-playfair text-xl italic text-santaran-brown"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+              >
+                Connecting Indigenous Knowledge, Art & Culture
+              </motion.p>
             </div>
             
             <motion.p 
@@ -188,28 +256,30 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.5 }}
             >
-              <motion.a 
-                href="#programs" 
-                className="relative group overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className="absolute inset-0 w-full h-full bg-santaran-terracotta transform transition-transform group-hover:scale-x-0 origin-right"></span>
-                <span className="absolute inset-0 w-full h-full bg-santaran-teal transform scale-x-0 transition-transform group-hover:scale-x-100 origin-left"></span>
-                <span className="relative px-8 py-3 text-white text-lg font-medium block rounded-full">
-                  Explore Programs
-                </span>
-              </motion.a>
+              <Link to="/programs">
+                <motion.button 
+                  className="relative group overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="absolute inset-0 w-full h-full bg-santaran-terracotta transform transition-transform group-hover:scale-x-0 origin-right"></span>
+                  <span className="absolute inset-0 w-full h-full bg-santaran-teal transform scale-x-0 transition-transform group-hover:scale-x-100 origin-left"></span>
+                  <span className="relative px-8 py-3 text-white text-lg font-medium block rounded-full">
+                    Explore Programs
+                  </span>
+                </motion.button>
+              </Link>
               
-              <motion.a 
-                href="#about" 
-                className="relative px-8 py-3 rounded-full border-2 border-santaran-teal text-santaran-teal hover:text-white text-lg font-medium overflow-hidden group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className="absolute inset-0 w-full h-full bg-santaran-teal transform scale-x-0 transition-transform group-hover:scale-x-100 origin-left"></span>
-                <span className="relative block">Learn More</span>
-              </motion.a>
+              <Link to="/about">
+                <motion.button 
+                  className="relative px-8 py-3 rounded-full border-2 border-santaran-teal text-santaran-teal hover:text-white text-lg font-medium overflow-hidden group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="absolute inset-0 w-full h-full bg-santaran-teal transform scale-x-0 transition-transform group-hover:scale-x-100 origin-left"></span>
+                  <span className="relative block">Learn More</span>
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
           
@@ -261,7 +331,7 @@ const HeroSection: React.FC = () => {
                 }}
               >
                 <img
-                  src="/public/lovable-uploads/e04b0dc7-2eda-4b22-b81d-9d2151bc534f.png"
+                  src="/lovable-uploads/e04b0dc7-2eda-4b22-b81d-9d2151bc534f.png"
                   alt="Yanbriksha - Banyan tree of knowledge"
                   className="w-[80%] h-auto object-contain drop-shadow-xl"
                 />
@@ -279,6 +349,48 @@ const HeroSection: React.FC = () => {
                 }}
               >
                 <div className="w-[50%] h-[50%] bg-santaran-terracotta/10 blur-3xl rounded-full"></div>
+              </motion.div>
+              
+              {/* Added floating elements */}
+              <motion.div
+                className="absolute top-[15%] right-[10%]"
+                animate={{ 
+                  y: [0, -8, 0],
+                  rotate: [0, 5, 0],
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{ 
+                  duration: 5,
+                  repeat: Infinity, 
+                  repeatType: "reverse" 
+                }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=200"
+                  alt="Artistic element" 
+                  className="w-12 h-12 rounded-full object-cover drop-shadow-lg"
+                />
+              </motion.div>
+              
+              <motion.div
+                className="absolute bottom-[20%] left-[10%]"
+                animate={{ 
+                  y: [0, 8, 0],
+                  rotate: [0, -5, 0],
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{ 
+                  duration: 4.5,
+                  delay: 0.5,
+                  repeat: Infinity, 
+                  repeatType: "reverse" 
+                }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=200"
+                  alt="Artistic element" 
+                  className="w-10 h-10 rounded-full object-cover drop-shadow-lg"
+                />
               </motion.div>
             </div>
           </motion.div>

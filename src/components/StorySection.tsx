@@ -1,8 +1,11 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Palette, Sparkles, Leaf } from 'lucide-react';
+import AnimatedHeading from '@/components/AnimatedHeading';
 
 interface StorySectionProps {
+  id?: string;
   title: string;
   subtitle: string;
   content: string;
@@ -12,6 +15,7 @@ interface StorySectionProps {
 }
 
 const StorySection: React.FC<StorySectionProps> = ({
+  id,
   title,
   subtitle,
   content,
@@ -47,8 +51,19 @@ const StorySection: React.FC<StorySectionProps> = ({
     [imagePosition === 'left' ? 5 : -5, 0]
   );
 
+  // Random artistic icon based on section
+  const getRandomIcon = () => {
+    const icons = [
+      <Palette className="text-santaran-vermilion/70" size={24} />,
+      <Sparkles className="text-santaran-amber/70" size={24} />,
+      <Leaf className="text-santaran-jade/70" size={24} />
+    ];
+    return icons[Math.floor(Math.random() * icons.length)];
+  };
+
   return (
     <motion.section 
+      id={id}
       ref={sectionRef}
       className={`py-32 ${backgroundColor} overflow-hidden`}
       style={{ opacity }}
@@ -87,13 +102,45 @@ const StorySection: React.FC<StorySectionProps> = ({
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <h3 className="text-white font-display text-2xl">{subtitle}</h3>
+                <div className="flex items-center gap-2">
+                  <motion.div 
+                    animate={{ 
+                      rotate: [0, 10, -10, 0],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ duration: 5, repeat: Infinity }}
+                  >
+                    {getRandomIcon()}
+                  </motion.div>
+                  <h3 className="text-white font-display text-2xl">{subtitle}</h3>
+                </div>
               </motion.div>
             </div>
             
-            {/* Decorative elements */}
+            {/* Enhanced decorative elements */}
             <div className="absolute -bottom-6 -right-6 w-32 h-32 border-b-4 border-r-4 border-santaran-terracotta opacity-60 hidden md:block" />
             <div className="absolute -top-6 -left-6 w-24 h-24 border-t-4 border-l-4 border-santaran-teal opacity-60 hidden md:block" />
+            
+            {/* Floating artistic dots */}
+            <motion.div
+              className="absolute -top-8 right-8 w-6 h-6 rounded-full bg-santaran-amber/30"
+              animate={{ 
+                y: [0, -15, 0],
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 5, repeat: Infinity }}
+            />
+            
+            <motion.div
+              className="absolute -bottom-4 left-10 w-4 h-4 rounded-full bg-santaran-vermilion/30"
+              animate={{ 
+                y: [0, 10, 0],
+                scale: [1, 1.3, 1],
+                opacity: [0.3, 0.7, 0.3]
+              }}
+              transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+            />
           </motion.div>
           
           {/* Text Section */}
@@ -121,15 +168,13 @@ const StorySection: React.FC<StorySectionProps> = ({
               </motion.h3>
             </div>
             
-            <motion.h2 
+            <AnimatedHeading
+              text={title}
+              tag="h2"
               className="heading-lg"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              {title}
-            </motion.h2>
+              color="text-santaran-teal"
+              animation="letter-by-letter"
+            />
             
             <motion.p 
               className="text-xl leading-relaxed"
@@ -149,14 +194,33 @@ const StorySection: React.FC<StorySectionProps> = ({
             />
             
             <motion.a
-              href="#learn-more"
+              href={`#${id}-more`}
               className="inline-flex items-center text-lg font-medium text-santaran-teal group"
               whileHover={{ x: 10 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <span>Learn more</span>
-              <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-2">→</span>
+              <motion.span 
+                className="ml-2 transform transition-transform"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                →
+              </motion.span>
             </motion.a>
+            
+            {/* Artistic floating element */}
+            <motion.div
+              className="absolute bottom-10 right-0 text-santaran-teal/10 hidden lg:block"
+              style={{ fontSize: "120px", fontFamily: "serif", fontWeight: "bold" }}
+              animate={{ 
+                opacity: [0.1, 0.2, 0.1],
+                rotate: [0, 5, 0]
+              }}
+              transition={{ duration: 8, repeat: Infinity }}
+            >
+              A
+            </motion.div>
           </motion.div>
         </div>
       </div>

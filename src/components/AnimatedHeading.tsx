@@ -2,13 +2,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type AnimationType = 'letter-by-letter' | 'wave' | 'fade' | 'slide' | 'scale';
+
 interface AnimatedHeadingProps {
   text: string;
-  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  tag: HeadingTag;
   className?: string;
   color?: string;
-  animation?: 'wave' | 'paint' | 'rotate' | 'scale' | 'typewriter';
-  once?: boolean;
+  animation?: AnimationType;
+  staggerDelay?: number;
+  duration?: number;
 }
 
 const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
@@ -16,188 +20,158 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
   tag = 'h2',
   className = '',
   color = 'text-santaran-teal',
-  animation = 'wave',
-  once = true
+  animation = 'letter-by-letter',
+  staggerDelay = 0.03,
+  duration = 0.5
 }) => {
+  // Variants for letter animations
   const letterVariants = {
-    wave: {
-      hidden: { opacity: 0, y: 20 },
-      visible: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-          delay: i * 0.05,
-          duration: 0.6,
-          type: "spring",
-          stiffness: 100,
-          damping: 12
-        },
-      }),
-      hover: (i: number) => ({
-        y: [0, -8, 0],
-        color: ["#2A7D6A", "#D96941", "#F9A826", "#2A7D6A"],
-        scale: [1, 1.2, 1],
-        transition: {
-          duration: 0.8,
-          delay: i * 0.03,
-          repeat: 0,
-          repeatType: "mirror" as const,
-          ease: "easeInOut"
-        }
-      })
-    },
-    paint: {
-      hidden: { opacity: 0 },
-      visible: (i: number) => ({
-        opacity: 1,
-        transition: {
-          delay: i * 0.1,
-          duration: 1
-        }
-      }),
-      hover: {
-        y: [0, -5, 0],
-        transition: {
-          duration: 0.3
-        }
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * staggerDelay,
+        duration: duration,
+        ease: "easeOut"
       }
-    },
-    rotate: {
-      hidden: { opacity: 0, rotateY: 90 },
-      visible: (i: number) => ({
-        opacity: 1,
-        rotateY: 0,
-        transition: {
-          delay: i * 0.07,
-          duration: 0.8,
-          type: "spring",
-          stiffness: 100,
-          damping: 10
-        }
-      }),
-      hover: (i: number) => ({
-        rotateY: [0, 180, 0],
-        transition: {
-          duration: 1.2,
-          delay: i * 0.05,
-        }
-      })
-    },
-    scale: {
-      hidden: { opacity: 0, scale: 0.5 },
-      visible: (i: number) => ({
-        opacity: 1,
-        scale: 1,
-        transition: {
-          delay: i * 0.04,
-          duration: 0.5
-        }
-      }),
-      hover: {
-        scale: 1.2,
-        color: ["#2A7D6A", "#D96941", "#F9A826", "#2A7D6A"],
-        transition: {
-          duration: 0.4
-        }
-      }
-    },
-    typewriter: {
-      hidden: { opacity: 0, width: 0 },
-      visible: {
-        opacity: 1,
-        width: "100%",
-        transition: {
-          delay: 0.2,
-          duration: 1.5,
-          ease: "easeInOut",
-        }
-      }
-    }
+    })
   };
 
-  const containerVariants = {
+  // Variants for wave animation
+  const waveVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * staggerDelay,
+        duration: duration,
+        ease: "easeOut"
+      }
+    }),
+    hover: (i: number) => ({
+      y: [-2, -10, -2],
+      transition: {
+        duration: 0.5,
+        delay: i * 0.05,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut"
+      }
+    })
+  };
+
+  // Variants for fade animation
+  const fadeVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.2
+        duration: duration * 1.5,
+        ease: "easeOut"
       }
     }
   };
 
-  const renderTypewriterHeading = () => {
-    return (
-      <motion.div
-        className="relative overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once }}
-      >
-        <motion.span 
-          className={`${className} ${color} inline-block`}
-          variants={letterVariants.typewriter}
-        >
-          {text}
-        </motion.span>
-        <motion.div 
-          className="absolute right-0 top-0 h-full w-1 bg-santaran-vermilion"
-          animate={{ 
-            opacity: [1, 0, 1],
-            transition: { duration: 1, repeat: Infinity }
-          }}
-        />
-      </motion.div>
-    );
-  };
-
-  const renderLetterByLetter = () => {
-    return (
-      <motion.div 
-        className={`overflow-hidden inline-block ${className} ${color}`}
-        style={{ perspective: "800px" }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once }}
-        variants={containerVariants}
-      >
-        {text.split('').map((letter, i) => (
-          <motion.span
-            key={i}
-            custom={i}
-            variants={letterVariants[animation]}
-            whileHover="hover"
-            className="inline-block cursor-pointer"
-            style={{ 
-              display: "inline-block",
-              transformOrigin: "center",
-              transformStyle: "preserve-3d"
-            }}
-          >
-            {letter === ' ' ? '\u00A0' : letter}
-          </motion.span>
-        ))}
-      </motion.div>
-    );
-  };
-
-  const HeadingTag = ({ children }: { children: React.ReactNode }) => {
-    switch (tag) {
-      case 'h1': return <h1>{children}</h1>;
-      case 'h2': return <h2>{children}</h2>;
-      case 'h3': return <h3>{children}</h3>;
-      case 'h4': return <h4>{children}</h4>;
-      case 'h5': return <h5>{children}</h5>;
-      case 'h6': return <h6>{children}</h6>;
-      default: return <h2>{children}</h2>;
+  // Variants for slide animation
+  const slideVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: duration,
+        ease: "easeOut"
+      }
     }
   };
 
-  return (
-    <HeadingTag>
-      {animation === 'typewriter' ? renderTypewriterHeading() : renderLetterByLetter()}
-    </HeadingTag>
-  );
+  // Variants for scale animation
+  const scaleVariants = {
+    hidden: { opacity: 0, scale: 0.7 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: duration,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  // Get the appropriate variants based on animation type
+  const getVariants = () => {
+    switch(animation) {
+      case 'wave':
+        return waveVariants;
+      case 'fade':
+        return fadeVariants;
+      case 'slide': 
+        return slideVariants;
+      case 'scale':
+        return scaleVariants;
+      case 'letter-by-letter':
+      default:
+        return letterVariants;
+    }
+  };
+
+  // Split text into words and then letters for staggered animations
+  const words = text.split(' ');
+  
+  // Render tag with appropriate variants
+  const renderAnimatedHeading = () => {
+    const variants = getVariants();
+    
+    // For animations that animate the entire text block
+    if (animation === 'fade' || animation === 'slide' || animation === 'scale') {
+      return React.createElement(
+        tag,
+        { className: `${className} ${color}` },
+        <motion.span
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={variants}
+        >
+          {text}
+        </motion.span>
+      );
+    }
+    
+    // For letter-by-letter or wave animations
+    return React.createElement(
+      tag,
+      { className: `${className} ${color}` },
+      <motion.span
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="inline-block overflow-hidden"
+      >
+        {words.map((word, wordIndex) => (
+          <span key={`word-${wordIndex}`} className="inline-block">
+            {word.split('').map((letter, letterIndex) => (
+              <motion.span
+                key={`letter-${wordIndex}-${letterIndex}`}
+                custom={(wordIndex * 10) + letterIndex} // Custom value for staggered animations
+                variants={variants}
+                whileHover={animation === 'wave' ? "hover" : undefined}
+                className="inline-block"
+                style={{ display: 'inline-block' }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+            {wordIndex !== words.length - 1 && <span>&nbsp;</span>}
+          </span>
+        ))}
+      </motion.span>
+    );
+  };
+
+  return renderAnimatedHeading();
 };
 
 export default AnimatedHeading;
