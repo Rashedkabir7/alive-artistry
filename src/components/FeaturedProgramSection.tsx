@@ -172,8 +172,8 @@ const FeaturedProgramSection: React.FC = () => {
               </motion.p>
               
               <div className="flex items-center gap-4">
-                <Button asChild>
-                  <a href={currentProgram.link}>
+                <Button>
+                  <a href={currentProgram.link} className="flex items-center">
                     Learn More
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
