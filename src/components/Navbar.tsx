@@ -129,7 +129,7 @@ const Navbar = () => {
             { path: "/about", label: "About" },
             { path: "/exhibitions", label: "Exhibitions" },
             { path: "/gallery", label: "Gallery" },
-            { path: "/#programs", label: "Programs" },
+            { path: "/programs", label: "Programs" },
             { path: "/#contact", label: "Contact" }
           ].map((item, i) => (
             <motion.div
@@ -230,7 +230,7 @@ const Navbar = () => {
                 { path: "/about", label: "About" },
                 { path: "/exhibitions", label: "Exhibitions" },
                 { path: "/gallery", label: "Gallery" },
-                { path: "/#programs", label: "Programs" },
+                { path: "/programs", label: "Programs" },
                 { path: "/#contact", label: "Contact" }
               ].map((item, i) => (
                 <motion.div

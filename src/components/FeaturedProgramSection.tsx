@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { useNavigate } from 'react-router-dom';
 
 interface Program {
   id: string;
@@ -23,7 +24,7 @@ const programs: Program[] = [
     category: "Environmental Art",
     year: "2023",
     image: "/lovable-uploads/ab8abc5e-5120-4d3b-acd0-73c7a45a5cd7.png",
-    link: "#harith"
+    link: "/programs#harith"
   },
   {
     id: "kalpapuri",
@@ -31,8 +32,8 @@ const programs: Program[] = [
     description: "A program dedicated to children's art education and psychological development through artistic expression. We create safe spaces for young minds to explore creativity and build confidence.",
     category: "Children's Art",
     year: "2021",
-    image: "/placeholder.svg",
-    link: "#kalpapuri"
+    image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=1200",
+    link: "/programs#kalpapuri"
   },
   {
     id: "shikar",
@@ -40,8 +41,8 @@ const programs: Program[] = [
     description: "Preserving traditional folk arts and crafts of Bangladesh through documentation, training workshops, and exhibitions. We work with master artisans to pass down endangered cultural practices to new generations.",
     category: "Folk Arts",
     year: "2019",
-    image: "/placeholder.svg",
-    link: "#shikar"
+    image: "https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=1200",
+    link: "/programs#shikar"
   },
   {
     id: "artfactory",
@@ -49,14 +50,15 @@ const programs: Program[] = [
     description: "An incubator for experimental contemporary art practices that pushes boundaries and explores new artistic territories. Young artists collaborate on innovative projects across various media.",
     category: "Contemporary Art",
     year: "2022",
-    image: "/placeholder.svg",
-    link: "#artfactory"
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+    link: "/programs#artfactory"
   }
 ];
 
 const FeaturedProgramSection: React.FC = () => {
   const [activeProgram, setActiveProgram] = useState<string>(programs[0].id);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const currentProgram = programs.find(prog => prog.id === activeProgram) || programs[0];
 
@@ -115,7 +117,7 @@ const FeaturedProgramSection: React.FC = () => {
   };
 
   const handleLearnMoreClick = () => {
-    window.location.href = currentProgram.link;
+    navigate(currentProgram.link);
   };
 
   return (
