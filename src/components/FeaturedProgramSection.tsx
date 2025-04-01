@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -113,6 +114,10 @@ const FeaturedProgramSection: React.FC = () => {
     })
   };
 
+  const handleLearnMoreClick = () => {
+    window.location.href = currentProgram.link;
+  };
+
   return (
     <section className="py-20 px-4 md:px-8 lg:px-12 bg-santaran-cream relative overflow-hidden">
       <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-santaran-vermilion/5 blur-3xl"></div>
@@ -170,7 +175,7 @@ const FeaturedProgramSection: React.FC = () => {
               </motion.p>
               
               <div className="flex items-center gap-4">
-                <Button onClick={() => window.location.href = currentProgram.link}>
+                <Button onClick={handleLearnMoreClick}>
                   Learn More
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
