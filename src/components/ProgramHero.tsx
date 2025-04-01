@@ -17,7 +17,7 @@ const ProgramHero: React.FC = () => {
         damping: 10
       }
     }),
-    hover: (i: number) => ({
+    whileHover: (i: number) => ({
       y: [0, -15, 0],
       color: ["#2A7D6A", "#DE4D31", "#F9A826", "#2A7D6A"],
       scale: [1, 1.2, 1],
@@ -26,7 +26,7 @@ const ProgramHero: React.FC = () => {
         duration: 0.8,
         delay: i * 0.03,
         repeat: 0,
-        repeatType: "reverse",
+        repeatType: "reverse" as const,
         ease: "easeInOut"
       }
     })
@@ -102,7 +102,7 @@ const ProgramHero: React.FC = () => {
               custom={i}
               initial="initial"
               animate="animate"
-              whileHover="hover"
+              whileHover="whileHover"
               variants={letterVariants}
               style={{ 
                 transformStyle: "preserve-3d",
