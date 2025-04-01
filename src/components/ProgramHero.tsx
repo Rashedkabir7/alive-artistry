@@ -2,37 +2,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import AnimatedHeading from '@/components/AnimatedHeading';
 
 const ProgramHero: React.FC = () => {
-  const letterVariants = {
-    initial: { y: -100, opacity: 0 },
-    animate: (i: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.8,
-        type: "spring",
-        stiffness: 100,
-        damping: 10
-      }
-    }),
-    whileHover: (i: number) => ({
-      y: [0, -15, 0],
-      color: ["#2A7D6A", "#DE4D31", "#F9A826", "#2A7D6A"],
-      scale: [1, 1.2, 1],
-      rotateY: [0, 20, 0],
-      transition: {
-        duration: 0.8,
-        delay: i * 0.03,
-        repeat: 0,
-        repeatType: "reverse" as const,
-        ease: "easeInOut"
-      }
-    })
+  const scrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
   };
-
-  const title = "Our Programs";
   
   return (
     <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
@@ -94,25 +72,13 @@ const ProgramHero: React.FC = () => {
           </span>
         </motion.div>
         
-        <h1 className="heading-xl text-santaran-teal mb-6 perspective-effect" style={{ perspective: "1000px" }}>
-          {title.split('').map((letter, i) => (
-            <motion.span
-              key={i}
-              className="inline-block cursor-default mx-0.5"
-              custom={i}
-              initial="initial"
-              animate="animate"
-              whileHover="whileHover"
-              variants={letterVariants}
-              style={{ 
-                transformStyle: "preserve-3d",
-                display: "inline-block"
-              }}
-            >
-              {letter === ' ' ? '\u00A0' : letter}
-            </motion.span>
-          ))}
-        </h1>
+        <AnimatedHeading 
+          text="Our Programs"
+          tag="h1"
+          className="heading-xl mb-6"
+          color="text-santaran-teal"
+          animation="wave"
+        />
         
         <motion.p 
           className="text-xl max-w-2xl mx-auto text-gray-600 mb-12"
@@ -132,16 +98,20 @@ const ProgramHero: React.FC = () => {
             opacity: { delay: 1.2, duration: 0.7 },
             y: { duration: 1.5, repeat: Infinity, repeatType: "reverse" }
           }}
-          onClick={() => {
-            window.scrollTo({
-              top: window.innerHeight,
-              behavior: 'smooth'
-            });
-          }}
+          onClick={scrollToContent}
         >
           <div className="flex flex-col items-center">
             <span className="text-sm text-gray-500 mb-2">Discover More</span>
-            <ChevronDown className="text-santaran-vermilion h-6 w-6" />
+            <motion.div
+              animate={{ 
+                y: [0, 5, 0],
+                transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+              }}
+            >
+              <svg className="h-6 w-6 text-santaran-vermilion" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </motion.div>
           </div>
         </motion.div>
       </div>

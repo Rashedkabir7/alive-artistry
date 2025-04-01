@@ -1,10 +1,12 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { useNavigate } from 'react-router-dom';
+import AnimatedHeading from '@/components/AnimatedHeading';
+import ArtisticArrow from '@/components/ArtisticArrow';
 
 interface Program {
   id: string;
@@ -24,7 +26,7 @@ const programs: Program[] = [
     category: "Environmental Art",
     year: "2023",
     image: "/lovable-uploads/ab8abc5e-5120-4d3b-acd0-73c7a45a5cd7.png",
-    link: "/programs#harith"
+    link: "/programs/harith"
   },
   {
     id: "kalpapuri",
@@ -33,7 +35,7 @@ const programs: Program[] = [
     category: "Children's Art",
     year: "2021",
     image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=1200",
-    link: "/programs#kalpapuri"
+    link: "/programs/kalpapuri"
   },
   {
     id: "shikar",
@@ -42,7 +44,7 @@ const programs: Program[] = [
     category: "Folk Arts",
     year: "2019",
     image: "https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=1200",
-    link: "/programs#shikar"
+    link: "/programs/shikar"
   },
   {
     id: "artfactory",
@@ -51,7 +53,7 @@ const programs: Program[] = [
     category: "Contemporary Art",
     year: "2022",
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
-    link: "/programs#artfactory"
+    link: "/programs/artfactory"
   }
 ];
 
@@ -88,34 +90,6 @@ const FeaturedProgramSection: React.FC = () => {
     }
   };
 
-  const letterVariants = {
-    hidden: { opacity: 0, y: 20, rotateY: 90 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      rotateY: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.6,
-        type: "spring",
-        stiffness: 100,
-        damping: 12
-      },
-    }),
-    hover: (i: number) => ({
-      y: [0, -8, 0],
-      color: ["#2A7D6A", "#D96941", "#F9A826", "#2A7D6A"],
-      scale: [1, 1.2, 1],
-      transition: {
-        duration: 0.8,
-        delay: i * 0.03,
-        repeat: 0,
-        repeatType: "mirror" as const,
-        ease: "easeInOut"
-      }
-    })
-  };
-
   const handleLearnMoreClick = () => {
     navigate(currentProgram.link);
   };
@@ -143,27 +117,21 @@ const FeaturedProgramSection: React.FC = () => {
                 <h3 className="mt-4 mb-2 text-santaran-amber">
                   {currentProgram.category} • {currentProgram.year}
                 </h3>
-                <h2 className="heading-md text-santaran-teal mb-3" style={{ perspective: "800px" }}>
-                  {currentProgram.title.split('').map((letter, i) => (
-                    <motion.span
-                      key={i}
-                      custom={i}
-                      variants={letterVariants}
-                      initial="hidden"
-                      animate="visible"
-                      whileHover="hover"
-                      className="inline-block cursor-pointer"
-                      style={{ 
-                        display: "inline-block",
-                        transformOrigin: "center",
-                        transformStyle: "preserve-3d"
-                      }}
-                    >
-                      {letter === ' ' ? '\u00A0' : letter}
-                    </motion.span>
-                  ))}
-                </h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-santaran-vermilion to-santaran-amber"></div>
+                
+                <AnimatedHeading 
+                  text={currentProgram.title}
+                  tag="h2"
+                  className="heading-md mb-3"
+                  color="text-santaran-teal"
+                  animation="wave"
+                />
+                
+                <motion.div 
+                  className="w-24 h-1 bg-gradient-to-r from-santaran-vermilion to-santaran-amber"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.5 }}
+                />
               </div>
               
               <motion.p 
@@ -179,7 +147,22 @@ const FeaturedProgramSection: React.FC = () => {
               <div className="flex items-center gap-4">
                 <Button onClick={handleLearnMoreClick}>
                   Learn More
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <motion.div
+                    className="ml-2"
+                    animate={{ 
+                      x: [0, 5, 0],
+                      rotate: [-5, 5, -5, 5, 0]
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      ease: "easeInOut",
+                      times: [0, 0.2, 1]
+                    }}
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                  </motion.div>
                 </Button>
                 
                 <div className="flex items-center space-x-2">
@@ -188,14 +171,14 @@ const FeaturedProgramSection: React.FC = () => {
                     className="p-2 rounded-full border border-gray-300 hover:bg-white hover:border-santaran-jade transition-colors"
                     disabled={isAnimating}
                   >
-                    <ArrowLeft className="h-4 w-4" />
+                    <ArtisticArrow direction="left" size="sm" animate={false} />
                   </button>
                   <button 
                     onClick={goToNextProgram} 
                     className="p-2 rounded-full border border-gray-300 hover:bg-white hover:border-santaran-jade transition-colors"
                     disabled={isAnimating}
                   >
-                    <ArrowRight className="h-4 w-4" />
+                    <ArtisticArrow direction="right" size="sm" animate={false} />
                   </button>
                 </div>
               </div>
