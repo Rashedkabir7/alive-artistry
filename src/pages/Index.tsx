@@ -28,6 +28,8 @@ const Index = () => {
         content="Santaran has been a pioneer in fostering indigenous art forms and cultural preservation since 1998. Our organization has grown from a small collective to a recognized cultural institution that bridges traditional wisdom with contemporary expression."
         imageUrl="https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=2000"
         imagePosition="right"
+        backgroundColor="bg-santaran-cream/70"
+        id="our-story"
       />
       <TestimonialsSection />
       <ContactSection />

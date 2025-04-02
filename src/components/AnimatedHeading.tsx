@@ -126,7 +126,7 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
     }
   };
 
-  // Variants for paint animation
+  // Variants for paint animation with enhanced artistic effect
   const paintVariants = {
     hidden: { opacity: 0, pathLength: 0 },
     visible: {
@@ -186,66 +186,128 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
       );
     }
     
-    // For paint animation (SVG-based)
+    // For paint animation (SVG-based) with enhanced artistic look
     if (animation === 'paint') {
       return React.createElement(
         tag,
-        { className: `${className} ${color}` },
-        <svg
-          width="100%"
-          height="auto"
-          viewBox={`0 0 ${text.length * 20} 40`}
-          style={{ overflow: 'visible', maxWidth: '100%' }}
-        >
-          <motion.text
-            x="10"
-            y="30"
-            fill="currentColor"
-            fontSize="24"
-            fontFamily="inherit"
-            fontWeight="inherit"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={paintVariants}
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeLinejoin="round"
+        { className: `${className} ${color} relative` },
+        <>
+          {/* Background texture for paint effect */}
+          <div 
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1579547945413-497e1b99dac0?q=80&w=400')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              mixBlendMode: 'overlay',
+            }}
+          ></div>
+          
+          <svg
+            width="100%"
+            height="auto"
+            viewBox={`0 0 ${text.length * 20} 40`}
+            style={{ overflow: 'visible', maxWidth: '100%' }}
           >
-            {text}
-          </motion.text>
-        </svg>
+            {/* Paint drip effect */}
+            {Array.from({ length: Math.min(text.length, 5) }).map((_, i) => (
+              <motion.path
+                key={`drip-${i}`}
+                d={`M${(text.length * 10) * (i+1)/(5+1)} 30 Q${(text.length * 10) * (i+1)/(5+1)} 50 ${(text.length * 10) * (i+1)/(5+1) + (i % 2 === 0 ? 5 : -5)} ${50 + (i+1) * 10}`}
+                stroke="currentColor"
+                strokeWidth="1"
+                fill="none"
+                strokeOpacity="0.3"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 0.3 }}
+                viewport={{ once: true }}
+                transition={{ duration: duration * 1.5, delay: duration + (i * 0.2) }}
+              />
+            ))}
+            
+            {/* Main text with paint stroke effect */}
+            <motion.text
+              x="10"
+              y="30"
+              fill="currentColor"
+              fontSize="24"
+              fontFamily="inherit"
+              fontWeight="inherit"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={paintVariants}
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinejoin="round"
+            >
+              {text}
+            </motion.text>
+            
+            {/* Subtle highlight effect */}
+            <motion.text
+              x="10"
+              y="30"
+              fill="none"
+              fontSize="24"
+              fontFamily="inherit"
+              fontWeight="inherit"
+              stroke="white"
+              strokeWidth="0.5"
+              strokeOpacity="0.2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 0.2 }}
+              viewport={{ once: true }}
+              transition={{ duration: duration, delay: duration }}
+            >
+              {text}
+            </motion.text>
+          </svg>
+        </>
       );
     }
     
-    // For letter-by-letter or wave animations
+    // For letter-by-letter or wave animations with enhanced artistic styling
     return React.createElement(
       tag,
-      { className: `${className} ${color}` },
-      <motion.span
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="inline-block overflow-hidden"
-      >
-        {words.map((word, wordIndex) => (
-          <span key={`word-${wordIndex}`} className="inline-block">
-            {word.split('').map((letter, letterIndex) => (
-              <motion.span
-                key={`letter-${wordIndex}-${letterIndex}`}
-                custom={(wordIndex * 10) + letterIndex} // Custom value for staggered animations
-                variants={variants}
-                whileHover={animation === 'wave' ? "hover" : undefined}
-                className="inline-block"
-                style={{ display: 'inline-block' }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-            {wordIndex !== words.length - 1 && <span>&nbsp;</span>}
-          </span>
-        ))}
-      </motion.span>
+      { className: `${className} ${color} relative` },
+      <>
+        {/* Optional artistic underline */}
+        {(animation === 'letter-by-letter' || animation === 'wave') && (
+          <motion.div
+            className="absolute bottom-0 left-0 h-0.5 bg-current opacity-20"
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: duration * 2, delay: duration }}
+          />
+        )}
+      
+        <motion.span
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="inline-block overflow-hidden"
+        >
+          {words.map((word, wordIndex) => (
+            <span key={`word-${wordIndex}`} className="inline-block">
+              {word.split('').map((letter, letterIndex) => (
+                <motion.span
+                  key={`letter-${wordIndex}-${letterIndex}`}
+                  custom={(wordIndex * 10) + letterIndex} // Custom value for staggered animations
+                  variants={variants}
+                  whileHover={animation === 'wave' ? "hover" : undefined}
+                  className="inline-block"
+                  style={{ display: 'inline-block' }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+              {wordIndex !== words.length - 1 && <span>&nbsp;</span>}
+            </span>
+          ))}
+        </motion.span>
+      </>
     );
   };
 
