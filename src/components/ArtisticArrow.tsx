@@ -36,23 +36,43 @@ const ArtisticArrow: React.FC<ArtisticArrowProps> = ({
     }
   };
 
-  // Fixed animations to use only two keyframes
+  // Fixed animations to use only two keyframes and specify the correct type for repeatType
   const animations = {
     right: {
       x: [0, 5],
-      transition: { duration: 0.75, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
+      transition: { 
+        duration: 0.75, 
+        repeat: Infinity, 
+        repeatType: "reverse" as const, 
+        ease: "easeInOut" 
+      }
     },
     left: {
       x: [0, -5],
-      transition: { duration: 0.75, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
+      transition: { 
+        duration: 0.75, 
+        repeat: Infinity, 
+        repeatType: "reverse" as const, 
+        ease: "easeInOut" 
+      }
     },
     up: {
       y: [0, -5],
-      transition: { duration: 0.75, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
+      transition: { 
+        duration: 0.75, 
+        repeat: Infinity, 
+        repeatType: "reverse" as const, 
+        ease: "easeInOut" 
+      }
     },
     down: {
       y: [0, 5],
-      transition: { duration: 0.75, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
+      transition: { 
+        duration: 0.75, 
+        repeat: Infinity, 
+        repeatType: "reverse" as const, 
+        ease: "easeInOut" 
+      }
     }
   };
 
