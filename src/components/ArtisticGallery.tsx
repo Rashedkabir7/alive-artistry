@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArtisticArrow from './ArtisticArrow';
 
@@ -17,7 +17,7 @@ interface ArtisticGalleryProps {
 }
 
 const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
-  images,
+  images = [],
   autoPlay = true,
   interval = 5000,
   className = '',
@@ -25,32 +25,54 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isReady, setIsReady] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Clear the timer on component unmount
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, []);
 
   // Ensure the component is fully mounted before animations begin
   useEffect(() => {
+    // If no images, don't set ready
+    if (images.length === 0) {
+      return;
+    }
+    
     setIsReady(true);
     
     if (!autoPlay) return;
     
-    const timer = setInterval(() => {
+    // Use the ref to store the timer ID
+    timerRef.current = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, interval);
     
-    return () => clearInterval(timer);
-  }, [autoPlay, interval, images.length]);
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [autoPlay, interval, images.length, images]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
+    if (images.length <= 1) return;
     setDirection(-1);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
+  }, [images.length]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
+    if (images.length <= 1) return;
     setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+  }, [images.length]);
 
-  // Simplified variants to avoid complex calculations that might cause errors
+  // Simplified variants using static values instead of complex calculations
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? '100%' : '-100%',
@@ -66,8 +88,17 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
     }),
   };
 
-  // If not ready or no images, show a placeholder
-  if (!isReady || images.length === 0) {
+  // If no images, show a placeholder
+  if (images.length === 0) {
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        <div className="aspect-[16/9] rounded-lg overflow-hidden bg-gray-200 animate-pulse"></div>
+      </div>
+    );
+  }
+
+  // If not ready, show a loading placeholder
+  if (!isReady) {
     return (
       <div className={`relative overflow-hidden ${className}`}>
         <div className="aspect-[16/9] rounded-lg overflow-hidden bg-gray-200 animate-pulse"></div>
@@ -94,8 +125,8 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
               alt={images[currentIndex].alt}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-              {images[currentIndex].caption && (
+            {images[currentIndex].caption && (
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -104,13 +135,13 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
                 >
                   {images[currentIndex].caption}
                 </motion.p>
-              )}
-            </div>
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Navigation buttons */}
+      {/* Navigation buttons - only show if more than one image */}
       {images.length > 1 && (
         <div className="absolute top-1/2 left-0 right-0 flex justify-between px-4 transform -translate-y-1/2 pointer-events-none">
           <button 
@@ -130,7 +161,7 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
         </div>
       )}
 
-      {/* Dots indicator */}
+      {/* Dots indicator - only show if more than one image */}
       {images.length > 1 && (
         <div className="flex justify-center space-x-2 mt-4">
           {images.map((_, index) => (
