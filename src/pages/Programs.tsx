@@ -33,7 +33,7 @@ const programsData: Program[] = [
     category: "Environmental Art",
     year: "2023-Present",
     status: "ongoing",
-    image: "/lovable-uploads/ab8abc5e-5120-4d3b-acd0-73c7a45a5cd7.png",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200",
     icon: "🌿",
     location: "Various locations across Bangladesh"
   },
@@ -55,7 +55,7 @@ const programsData: Program[] = [
     category: "Folk Arts",
     year: "2019-Present",
     status: "ongoing",
-    image: "https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1200",
     icon: "🧶",
     location: "Rural regions of Bangladesh"
   },
@@ -66,7 +66,7 @@ const programsData: Program[] = [
     category: "Contemporary Art",
     year: "2022-Present",
     status: "ongoing",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200",
     icon: "🎨",
     location: "Dhaka Art District"
   },
@@ -77,7 +77,7 @@ const programsData: Program[] = [
     category: "International Exchange",
     year: "2024",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=1200",
     icon: "🌉",
     location: "Global"
   },
@@ -120,7 +120,7 @@ const featuredWorkData = [
   {
     title: "River Cleaning Art Project",
     category: "Harith",
-    image: "https://images.unsplash.com/photo-1481070414801-51fd732d7184?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200",
     description: "Community-based art installation using recycled materials from river cleanup"
   },
   {
@@ -132,7 +132,7 @@ const featuredWorkData = [
   {
     title: "Folk Art Documentation",
     category: "Shikar",
-    image: "https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1200",
     description: "Preserving traditional craft techniques through digital archives"
   }
 ];

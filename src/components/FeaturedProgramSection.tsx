@@ -25,7 +25,7 @@ const programs: Program[] = [
     description: "Our flagship environmental art program focusing on ecological awareness and sustainability through creative expression. Artists engage with environmental issues through installations, workshops, and community projects.",
     category: "Environmental Art",
     year: "2023",
-    image: "/lovable-uploads/ab8abc5e-5120-4d3b-acd0-73c7a45a5cd7.png",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200",
     link: "/programs/harith"
   },
   {
@@ -43,7 +43,7 @@ const programs: Program[] = [
     description: "Preserving traditional folk arts and crafts of Bangladesh through documentation, training workshops, and exhibitions. We work with master artisans to pass down endangered cultural practices to new generations.",
     category: "Folk Arts",
     year: "2019",
-    image: "https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1200",
     link: "/programs/shikar"
   },
   {
@@ -52,7 +52,7 @@ const programs: Program[] = [
     description: "An incubator for experimental contemporary art practices that pushes boundaries and explores new artistic territories. Young artists collaborate on innovative projects across various media.",
     category: "Contemporary Art",
     year: "2022",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200",
     link: "/programs/artfactory"
   }
 ];

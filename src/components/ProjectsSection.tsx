@@ -17,56 +17,56 @@ const projects: Project[] = [
     title: "Environmental Art Camp",
     description: "Immersive outdoor experiences combining art and nature conservation.",
     category: "Harith",
-    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=500"
   },
   {
     id: "dharitri",
     title: "Dharitri",
     description: "Eco-tourism project promoting sustainable travel and environmental awareness.",
     category: "Harith",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=500"
   },
   {
     id: "kalpaloker",
     title: "Kalpaloker Citra",
     description: "Workshop projects for children to explore creativity and artistic expression.",
     category: "Kalpapuri",
-    image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=500"
   },
   {
     id: "kalpapuri-school",
     title: "Kalpapuri School of Arts & Crafts",
     description: "Creative education project training the next generation of artists.",
     category: "Kalpapuri",
-    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1617160701438-9b02ab6515c9?q=80&w=500"
   },
   {
     id: "folk-triennial",
     title: "Karnaphuli Folk Triennial",
     description: "Celebration of traditional folk arts and crafts held every three years.",
     category: "Shikar",
-    image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=500"
   },
   {
     id: "kandrabindu",
     title: "Kandrabindu",
     description: "Project of product design, development & marketing of traditional crafts.",
     category: "Shikar",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=500"
   },
   {
     id: "residency",
     title: "Artist Residency Program",
     description: "Hosting artists from around the world for cultural exchange and collaboration.",
     category: "Art Factory",
-    image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500"
   },
   {
     id: "young-exhibition",
     title: "Young Art Exhibition",
     description: "Showcasing works by emerging talent and supporting their artistic growth.",
     category: "Art Factory",
-    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500"
   }
 ];
 
