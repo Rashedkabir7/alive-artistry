@@ -51,12 +51,12 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
       }
     }),
     hover: (i: number) => ({
-      y: [-2, -10, -2],
+      y: [-2, -10],
       transition: {
         duration: 0.5,
         delay: i * 0.05,
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "reverse" as const,
         ease: "easeInOut"
       }
     })

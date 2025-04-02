@@ -10,6 +10,7 @@ import StorySection from '@/components/StorySection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import FeaturedProgramSection from '@/components/FeaturedProgramSection';
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <FeaturedProgramSection />
       <ProjectsSection />
       <SubprogramsSection />
       <YearlyOutcomeSection />

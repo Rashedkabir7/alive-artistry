@@ -143,10 +143,15 @@ const HeroSection: React.FC = () => {
       <motion.div 
         className="absolute top-40 left-[10%] text-santaran-gold"
         animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.6, 1, 0.6]
+          scale: [1, 1.2],
+          opacity: [0.6, 1]
         }}
-        transition={{ duration: 5, repeat: Infinity }}
+        transition={{ 
+          duration: 2.5,
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+          ease: "easeInOut"
+        }}
       >
         <Sun size={30} />
       </motion.div>
@@ -154,11 +159,16 @@ const HeroSection: React.FC = () => {
       <motion.div 
         className="absolute top-[20%] right-[25%] text-santaran-terracotta/80"
         animate={{ 
-          scale: [1, 1.3, 1],
-          opacity: [0.5, 0.9, 0.5],
-          rotate: [0, 180, 360]
+          scale: [1, 1.3],
+          opacity: [0.5, 0.9],
+          rotate: [0, 180]
         }}
-        transition={{ duration: 8, repeat: Infinity }}
+        transition={{ 
+          duration: 4,
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+          ease: "easeInOut"
+        }}
       >
         <Palette size={24} />
       </motion.div>
@@ -166,10 +176,16 @@ const HeroSection: React.FC = () => {
       <motion.div 
         className="absolute bottom-[30%] right-[15%] text-santaran-terracotta"
         animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.6, 1, 0.6]
+          scale: [1, 1.2],
+          opacity: [0.6, 1]
         }}
-        transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+        transition={{ 
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+          ease: "easeInOut",
+          delay: 1
+        }}
       >
         <Star size={24} />
       </motion.div>
@@ -177,11 +193,17 @@ const HeroSection: React.FC = () => {
       <motion.div 
         className="absolute bottom-[50%] left-[15%] text-santaran-jade"
         animate={{ 
-          scale: [1, 1.4, 1],
-          opacity: [0.4, 0.8, 0.4],
-          y: [0, -15, 0]
+          scale: [1, 1.4],
+          opacity: [0.4, 0.8],
+          y: [0, -15]
         }}
-        transition={{ duration: 6, repeat: Infinity, delay: 2 }}
+        transition={{ 
+          duration: 3,
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+          ease: "easeInOut",
+          delay: 2
+        }}
       >
         <Leaf size={20} />
       </motion.div>
@@ -189,11 +211,17 @@ const HeroSection: React.FC = () => {
       <motion.div 
         className="absolute top-[30%] left-[25%] text-santaran-amber"
         animate={{ 
-          scale: [1, 1.5, 1],
-          opacity: [0.5, 1, 0.5],
-          rotate: [0, 45, 0]
+          scale: [1, 1.5],
+          opacity: [0.5, 1],
+          rotate: [0, 45]
         }}
-        transition={{ duration: 7, repeat: Infinity, delay: 1.5 }}
+        transition={{ 
+          duration: 3.5,
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+          ease: "easeInOut",
+          delay: 1.5
+        }}
       >
         <Sparkles size={18} />
       </motion.div>
@@ -223,13 +251,14 @@ const HeroSection: React.FC = () => {
               <AnimatedHeading
                 text="Art for Dignifying Life"
                 tag="h1" 
-                className="heading-xl mb-6 relative"
+                className="heading-xl mb-6 relative font-display"
                 color="text-santaran-terracotta"
-                animation="letter-by-letter"
+                animation="paint"
+                duration={1.5}
               />
               
               <motion.p 
-                className="font-playfair text-xl italic text-santaran-brown"
+                className="font-display text-xl italic text-santaran-brown"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
@@ -258,26 +287,21 @@ const HeroSection: React.FC = () => {
             >
               <Link to="/programs">
                 <motion.button 
-                  className="relative group overflow-hidden"
+                  className="art-button"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="absolute inset-0 w-full h-full bg-santaran-terracotta transform transition-transform group-hover:scale-x-0 origin-right"></span>
-                  <span className="absolute inset-0 w-full h-full bg-santaran-teal transform scale-x-0 transition-transform group-hover:scale-x-100 origin-left"></span>
-                  <span className="relative px-8 py-3 text-white text-lg font-medium block rounded-full">
-                    Explore Programs
-                  </span>
+                  Explore Programs
                 </motion.button>
               </Link>
               
               <Link to="/about">
                 <motion.button 
-                  className="relative px-8 py-3 rounded-full border-2 border-santaran-teal text-santaran-teal hover:text-white text-lg font-medium overflow-hidden group"
+                  className="art-button-outline"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="absolute inset-0 w-full h-full bg-santaran-teal transform scale-x-0 transition-transform group-hover:scale-x-100 origin-left"></span>
-                  <span className="relative block">Learn More</span>
+                  Learn More
                 </motion.button>
               </Link>
             </motion.div>
@@ -322,12 +346,13 @@ const HeroSection: React.FC = () => {
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ 
-                  y: [0, -10, 0],
+                  y: [0, -10]
                 }}
                 transition={{ 
-                  duration: 6, 
+                  duration: 3, 
                   repeat: Infinity, 
-                  repeatType: "reverse" 
+                  repeatType: "reverse" as const,
+                  ease: "easeInOut"
                 }}
               >
                 <img
@@ -341,11 +366,13 @@ const HeroSection: React.FC = () => {
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ 
-                  opacity: [0.4, 0.8, 0.4],
+                  opacity: [0.4, 0.8]
                 }}
                 transition={{ 
-                  duration: 4, 
+                  duration: 2, 
                   repeat: Infinity,
+                  repeatType: "reverse" as const,
+                  ease: "easeInOut"
                 }}
               >
                 <div className="w-[50%] h-[50%] bg-santaran-terracotta/10 blur-3xl rounded-full"></div>
@@ -355,14 +382,15 @@ const HeroSection: React.FC = () => {
               <motion.div
                 className="absolute top-[15%] right-[10%]"
                 animate={{ 
-                  y: [0, -8, 0],
-                  rotate: [0, 5, 0],
-                  opacity: [0.7, 1, 0.7]
+                  y: [0, -8],
+                  rotate: [0, 5],
+                  opacity: [0.7, 1]
                 }}
                 transition={{ 
-                  duration: 5,
+                  duration: 2.5,
                   repeat: Infinity, 
-                  repeatType: "reverse" 
+                  repeatType: "reverse" as const,
+                  ease: "easeInOut" 
                 }}
               >
                 <img 
@@ -375,15 +403,16 @@ const HeroSection: React.FC = () => {
               <motion.div
                 className="absolute bottom-[20%] left-[10%]"
                 animate={{ 
-                  y: [0, 8, 0],
-                  rotate: [0, -5, 0],
-                  opacity: [0.7, 1, 0.7]
+                  y: [0, 8],
+                  rotate: [0, -5],
+                  opacity: [0.7, 1]
                 }}
                 transition={{ 
-                  duration: 4.5,
+                  duration: 2.5,
                   delay: 0.5,
                   repeat: Infinity, 
-                  repeatType: "reverse" 
+                  repeatType: "reverse" as const,
+                  ease: "easeInOut" 
                 }}
               >
                 <img 
@@ -399,14 +428,16 @@ const HeroSection: React.FC = () => {
         <motion.div 
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
           animate={{ 
-            y: [0, 10, 0],
+            y: [0, 10]
           }}
           transition={{ 
-            duration: 2, 
+            duration: 1, 
             repeat: Infinity,
+            repeatType: "reverse" as const,
+            ease: "easeInOut"
           }}
         >
-          <a href="#manifesto" className="block text-santaran-teal hover:text-santaran-terracotta transition-colors">
+          <a href="#about" className="block text-santaran-teal hover:text-santaran-terracotta transition-colors">
             <ArrowDownCircle size={36} />
           </a>
         </motion.div>
@@ -416,3 +447,4 @@ const HeroSection: React.FC = () => {
 };
 
 export default HeroSection;
+
