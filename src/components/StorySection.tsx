@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Palette, Sparkles, Leaf } from 'lucide-react';
@@ -105,10 +104,15 @@ const StorySection: React.FC<StorySectionProps> = ({
                 <div className="flex items-center gap-2">
                   <motion.div 
                     animate={{ 
-                      rotate: [0, 10, -10, 0],
-                      scale: [1, 1.1, 1]
+                      rotate: [0, 10],
+                      scale: [1, 1.1]
                     }}
-                    transition={{ duration: 5, repeat: Infinity }}
+                    transition={{ 
+                      duration: 2.5,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      ease: "easeInOut"
+                    }}
                   >
                     {getRandomIcon()}
                   </motion.div>
@@ -121,25 +125,36 @@ const StorySection: React.FC<StorySectionProps> = ({
             <div className="absolute -bottom-6 -right-6 w-32 h-32 border-b-4 border-r-4 border-santaran-terracotta opacity-60 hidden md:block" />
             <div className="absolute -top-6 -left-6 w-24 h-24 border-t-4 border-l-4 border-santaran-teal opacity-60 hidden md:block" />
             
-            {/* Floating artistic dots */}
+            {/* Floating artistic dots - FIXED to use only two keyframes */}
             <motion.div
               className="absolute -top-8 right-8 w-6 h-6 rounded-full bg-santaran-amber/30"
               animate={{ 
-                y: [0, -15, 0],
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3]
+                y: [0, -15],
+                scale: [1, 1.2],
+                opacity: [0.3, 0.6]
               }}
-              transition={{ duration: 5, repeat: Infinity }}
+              transition={{ 
+                duration: 2.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut"
+              }}
             />
             
             <motion.div
               className="absolute -bottom-4 left-10 w-4 h-4 rounded-full bg-santaran-vermilion/30"
               animate={{ 
-                y: [0, 10, 0],
-                scale: [1, 1.3, 1],
-                opacity: [0.3, 0.7, 0.3]
+                y: [0, 10],
+                scale: [1, 1.3],
+                opacity: [0.3, 0.7]
               }}
-              transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+                delay: 1
+              }}
             />
           </motion.div>
           
@@ -214,10 +229,15 @@ const StorySection: React.FC<StorySectionProps> = ({
               className="absolute bottom-10 right-0 text-santaran-teal/10 hidden lg:block"
               style={{ fontSize: "120px", fontFamily: "serif", fontWeight: "bold" }}
               animate={{ 
-                opacity: [0.1, 0.2, 0.1],
-                rotate: [0, 5, 0]
+                opacity: [0.1, 0.2],
+                rotate: [0, 5]
               }}
-              transition={{ duration: 8, repeat: Infinity }}
+              transition={{ 
+                duration: 4,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut"
+              }}
             >
               A
             </motion.div>

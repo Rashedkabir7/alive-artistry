@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import AnimatedHeading from '@/components/AnimatedHeading';
 import ArtisticArrow from '@/components/ArtisticArrow';
@@ -150,15 +149,14 @@ const FeaturedProgramSection: React.FC = () => {
                   <motion.div
                     className="ml-2"
                     animate={{ 
-                      x: [0, 5, 0],
-                      rotate: [-5, 5, -5, 5, 0]
+                      x: [0, 5],
+                      rotate: [-5, 5]
                     }}
                     transition={{
-                      duration: 1.5,
+                      duration: 0.75,
                       repeat: Infinity,
-                      repeatType: "loop",
+                      repeatType: "reverse",
                       ease: "easeInOut",
-                      times: [0, 0.2, 1]
                     }}
                   >
                     <ArrowRight className="h-4 w-4" />

@@ -36,22 +36,23 @@ const ArtisticArrow: React.FC<ArtisticArrowProps> = ({
     }
   };
 
+  // Fixed animations to use only two keyframes
   const animations = {
     right: {
-      x: [0, 5, 0],
-      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+      x: [0, 5],
+      transition: { duration: 0.75, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
     },
     left: {
-      x: [0, -5, 0],
-      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+      x: [0, -5],
+      transition: { duration: 0.75, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
     },
     up: {
-      y: [0, -5, 0],
-      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+      y: [0, -5],
+      transition: { duration: 0.75, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
     },
     down: {
-      y: [0, 5, 0],
-      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+      y: [0, 5],
+      transition: { duration: 0.75, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
     }
   };
 

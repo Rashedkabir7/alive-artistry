@@ -26,60 +26,68 @@ const ProgramHero: React.FC = () => {
         }} 
       />
       
-      {/* Decorative Elements with enhanced animations */}
+      {/* Decorative Elements with enhanced animations - FIXED to use only two keyframes with spring */}
       <motion.div 
         className="absolute top-20 left-20 w-40 h-40 rounded-full bg-santaran-vermilion/10 mix-blend-multiply"
         animate={{ 
-          scale: [1, 1.2, 1],
-          x: [0, 10, 0],
-          y: [0, -10, 0],
-          rotate: [0, 10, 0]
+          scale: [1, 1.2],
+          x: [0, 10],
+          y: [0, -10],
+          rotate: [0, 10]
         }}
         transition={{ 
-          duration: 8, 
+          duration: 4,
           repeat: Infinity, 
-          repeatType: "reverse" 
+          repeatType: "reverse",
+          ease: "easeInOut"
         }}
       />
       
       <motion.div 
         className="absolute bottom-20 right-20 w-60 h-60 rounded-full bg-santaran-jade/15 mix-blend-multiply"
         animate={{ 
-          scale: [1, 1.1, 1],
-          x: [0, -15, 0],
-          y: [0, 15, 0],
-          rotate: [0, -5, 0]
+          scale: [1, 1.1],
+          x: [0, -15],
+          y: [0, 15],
+          rotate: [0, -5]
         }}
         transition={{ 
-          duration: 10, 
+          duration: 5, 
           repeat: Infinity, 
-          repeatType: "reverse" 
+          repeatType: "reverse",
+          ease: "easeInOut"
         }}
       />
       
       <motion.div 
         className="absolute top-1/2 right-1/4 w-20 h-20 rounded-full bg-santaran-amber/15 mix-blend-multiply"
         animate={{ 
-          scale: [1, 1.3, 1],
-          x: [0, 20, 0],
-          y: [0, 20, 0],
+          scale: [1, 1.3],
+          x: [0, 20],
+          y: [0, 20],
         }}
         transition={{ 
-          duration: 6, 
+          duration: 3, 
           repeat: Infinity, 
-          repeatType: "reverse" 
+          repeatType: "reverse",
+          ease: "easeInOut"
         }}
       />
       
-      {/* Floating artistic elements */}
+      {/* Floating artistic elements - FIXED to use only two keyframes or change transition type */}
       <motion.div 
         className="absolute top-[30%] left-[15%] text-santaran-terracotta/70"
         animate={{ 
-          y: [0, -15, 0],
-          rotate: [0, 10, 0],
-          opacity: [0.5, 0.8, 0.5]
+          y: [0, -15],
+          rotate: [0, 10],
+          opacity: [0.5, 0.8]
         }}
-        transition={{ duration: 7, repeat: Infinity }}
+        transition={{ 
+          duration: 3.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }}
       >
         <Palette size={28} />
       </motion.div>
@@ -87,11 +95,17 @@ const ProgramHero: React.FC = () => {
       <motion.div 
         className="absolute bottom-[25%] right-[20%] text-santaran-jade/70"
         animate={{ 
-          y: [0, 10, 0],
-          rotate: [0, -15, 0],
-          opacity: [0.5, 0.9, 0.5]
+          y: [0, 10],
+          rotate: [0, -15],
+          opacity: [0.5, 0.9]
         }}
-        transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+        transition={{ 
+          duration: 2.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+          delay: 0.5
+        }}
       >
         <Leaf size={24} />
       </motion.div>
@@ -99,12 +113,18 @@ const ProgramHero: React.FC = () => {
       <motion.div 
         className="absolute top-[20%] right-[25%] text-santaran-amber/70"
         animate={{ 
-          y: [0, -10, 0],
-          x: [0, 10, 0],
-          opacity: [0.6, 1, 0.6],
-          scale: [1, 1.2, 1]
+          y: [0, -10],
+          x: [0, 10],
+          opacity: [0.6, 1],
+          scale: [1, 1.2]
         }}
-        transition={{ duration: 6, repeat: Infinity, delay: 1 }}
+        transition={{ 
+          duration: 3,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+          delay: 1
+        }}
       >
         <Sparkles size={26} />
       </motion.div>
