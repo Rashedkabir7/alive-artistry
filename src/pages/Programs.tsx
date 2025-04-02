@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -12,6 +11,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AnimatedHeading from "@/components/AnimatedHeading";
 import ArtisticArrow from "@/components/ArtisticArrow";
+import SubprogramsSection from "@/components/SubprogramsSection";
+import YearlyOutcomeSection from "@/components/YearlyOutcomeSection";
 
 interface Program {
   id: string;
@@ -140,7 +141,6 @@ const featuredWorkData = [
 const Programs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("all");
 
-  // Filter programs based on active tab
   const filteredPrograms = programsData.filter(program => {
     if (activeTab === "all") return true;
     return program.status === activeTab;
@@ -150,20 +150,19 @@ const Programs: React.FC = () => {
     <div className="bg-santaran-cream min-h-screen overflow-x-hidden">
       <Navbar />
       
-      {/* Hero Section */}
       <ProgramHero />
       
-      {/* Featured Program Section */}
       <FeaturedProgramSection />
       
-      {/* Program Details Section with Tabs */}
+      <SubprogramsSection />
+      
       <section className="py-20 px-4 md:px-8 lg:px-12 container mx-auto">
         <div className="mb-16 text-center">
           <AnimatedHeading 
             text="Explore Our Initiatives"
             tag="h2"
-            className="heading-lg mb-6"
-            color="text-santaran-jade"
+            className="heading-lg mb-6 bg-gradient-to-r from-santaran-vermilion via-santaran-amber to-santaran-jade bg-clip-text text-transparent"
+            color=""
             animation="typewriter"
           />
           <div className="w-32 h-1 bg-gradient-to-r from-santaran-vermilion to-santaran-amber mx-auto"></div>
@@ -253,7 +252,8 @@ const Programs: React.FC = () => {
         </Tabs>
       </section>
       
-      {/* Program Philosophy Section with improved visuals */}
+      <YearlyOutcomeSection />
+      
       <section className="py-20 px-4 md:px-8 lg:px-12 bg-white relative overflow-hidden">
         <div className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-santaran-vermilion/5 blur-3xl"></div>
         <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-santaran-jade/5 blur-3xl"></div>
@@ -305,7 +305,10 @@ const Programs: React.FC = () => {
                       }}
                     >
                       <svg className="text-santaran-jade h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 4V20M4 12H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 21L11.8999 20.8499C11.2053 20.0974 10.7234 19.6499 10.2764 19.3183C9.78535 18.9603 9.26138 18.6849 8.71573 18.499C8.22321 18.3337 7.71221 18.25 7 18.25V17.25C7.86789 17.25 8.52332 17.3575 9.13202 17.5679C9.77957 17.7909 10.3879 18.1249 10.9479 18.5224C11.4752 18.8949 12.0053 19.3899 12.7211 20.1628L12.9 20.35L13.0999 20.1628C13.8275 19.3788 14.3654 18.8793 14.9007 18.5038C15.4665 18.1052 16.0796 17.7741 16.7302 17.5557C17.3253 17.3566 17.9669 17.25 18.8 17.25V18.25C18.097 18.25 17.5958 18.3316 17.1132 18.4932C16.5729 18.6749 16.0545 18.9461 15.5689 19.2996C15.1261 19.6265 14.6482 20.0705 13.9401 20.8499L13.84 20.9599L12 21Z" fill="currentColor"/>
+                        <path d="M19 13.25C21.0711 13.25 22.75 11.5711 22.75 9.5C22.75 7.42893 21.0711 5.75 19 5.75C16.9289 5.75 15.25 7.42893 15.25 9.5C15.25 11.5711 16.9289 13.25 19 13.25Z" stroke="currentColor" strokeWidth="1.5"/>
+                        <path d="M16 3.75H8C5.92893 3.75 4.25 5.42893 4.25 7.5C4.25 9.57107 5.92893 11.25 8 11.25L9.5 11.25" stroke="currentColor" strokeWidth="1.5"/>
+                        <path d="M7 14.25C4.92893 14.25 3.25 15.9289 3.25 18C3.25 20.0711 4.92893 21.75 7 21.75C9.07107 21.75 10.75 20.0711 10.75 18C10.75 15.9289 9.07107 14.25 7 14.25Z" stroke="currentColor" strokeWidth="1.5"/>
                       </svg>
                     </motion.div>
                   </div>
@@ -371,7 +374,6 @@ const Programs: React.FC = () => {
         </div>
       </section>
       
-      {/* Enhanced Program Impact Stats with visual elements */}
       <section className="py-16 px-4 md:px-8 lg:px-12 bg-gradient-to-br from-santaran-jade/10 via-santaran-cream/70 to-santaran-amber/10">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
@@ -405,7 +407,6 @@ const Programs: React.FC = () => {
         </div>
       </section>
 
-      {/* New: Featured Work Showcase */}
       <section className="py-16 px-4 md:px-8 lg:px-12 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
@@ -436,7 +437,7 @@ const Programs: React.FC = () => {
                     alt={item.title} 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
                     <span className="px-2 py-1 bg-santaran-jade text-white text-xs rounded-full">{item.category}</span>
                   </div>
@@ -451,7 +452,6 @@ const Programs: React.FC = () => {
         </div>
       </section>
       
-      {/* Visual Get Involved CTA */}
       <section className="py-20 px-4 md:px-8 lg:px-12">
         <div className="container mx-auto max-w-5xl relative">
           <motion.div 
@@ -539,7 +539,6 @@ const Programs: React.FC = () => {
   );
 };
 
-// ProgramCard Component with improved visuals and ID anchor
 const ProgramCard: React.FC<{
   program: Program;
 }> = ({ program }) => {
@@ -605,7 +604,6 @@ const ProgramCard: React.FC<{
   );
 };
 
-// Enhanced StatCard Component with artistic animations
 const StatCard: React.FC<{ number: string; title: string; icon: React.ReactNode }> = ({ number, title, icon }) => {
   return (
     <motion.div
