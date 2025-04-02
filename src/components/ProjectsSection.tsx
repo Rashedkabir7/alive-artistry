@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ArtisticArrow from '@/components/ArtisticArrow';
 
@@ -300,11 +300,11 @@ const ProjectsSection = () => {
                     Learn more 
                     <motion.div
                       animate={{ 
-                        x: hoveredProject === project.id ? [0, 5, 0] : 0,
+                        x: hoveredProject === project.id ? [0, 5] : 0,
                         transition: { 
                           duration: 1, 
                           repeat: hoveredProject === project.id ? Infinity : 0,
-                          repeatType: "loop" 
+                          repeatType: "reverse" 
                         }
                       }}
                     >
@@ -318,8 +318,13 @@ const ProjectsSection = () => {
                     className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-santaran-amber flex items-center justify-center shadow-lg"
                     initial={{ scale: 0 }}
                     animate={{ 
-                      scale: hoveredProject === project.id ? [1, 1.2, 1] : 1,
-                      transition: { duration: 0.4, type: "spring" }
+                      scale: hoveredProject === project.id ? [1, 1.2] : 1,
+                      transition: { 
+                        duration: 0.4, 
+                        type: "spring",
+                        repeat: hoveredProject === project.id ? Infinity : 0,
+                        repeatType: "reverse"
+                      }
                     }}
                   >
                     <span className="text-xs font-bold text-white">+</span>
@@ -339,8 +344,12 @@ const ProjectsSection = () => {
             <motion.div
               className="ml-2"
               animate={{ 
-                x: [0, 5, 0],
-                transition: { duration: 1.5, repeat: Infinity, repeatType: "loop" }
+                x: [0, 5],
+                transition: { 
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }
               }}
             >
               <ArtisticArrow direction="right" size="sm" />

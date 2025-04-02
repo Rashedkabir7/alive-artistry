@@ -58,10 +58,10 @@ const ProgramsSection = () => {
       },
     }),
     hover: (i: number) => ({
-      y: [0, -8, 0],
-      color: ["#2A7D6A", "#D96941", "#F9A826", "#2A7D6A"],
-      scale: [1, 1.2, 1],
-      textShadow: ["0 0 0px rgba(0,0,0,0)", "0 0 15px rgba(249,168,38,0.5)", "0 0 0px rgba(0,0,0,0)"],
+      y: [0, -8],
+      color: ["#2A7D6A", "#D96941"],
+      scale: [1, 1.2],
+      textShadow: ["0 0 0px rgba(0,0,0,0)", "0 0 15px rgba(249,168,38,0.5)"],
       transition: {
         duration: 0.8,
         delay: i * 0.03,
@@ -114,8 +114,8 @@ const ProgramsSection = () => {
       <motion.div 
         className="absolute top-1/4 left-1/3 w-20 h-20 rounded-full bg-santaran-amber/10"
         animate={{ 
-          scale: [1, 1.5, 1],
-          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.5],
+          opacity: [0.3, 0.6],
         }}
         transition={{ 
           duration: 8, 
@@ -127,8 +127,8 @@ const ProgramsSection = () => {
       <motion.div 
         className="absolute bottom-1/3 right-1/4 w-32 h-32 rounded-full bg-santaran-jade/10"
         animate={{ 
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.5, 0.2],
+          scale: [1, 1.3],
+          opacity: [0.2, 0.5],
         }}
         transition={{ 
           duration: 12, 
@@ -211,9 +211,14 @@ const ProgramsSection = () => {
                 <motion.div 
                   className="text-5xl mb-4 transition-transform duration-300 relative z-10"
                   whileHover={{ 
-                    rotate: [0, -10, 10, -5, 5, 0],
-                    scale: [1, 1.3, 1],
-                    transition: { duration: 0.8, ease: "easeInOut" }
+                    rotate: [0, -10],
+                    scale: [1, 1.3],
+                    transition: { 
+                      duration: 0.8, 
+                      ease: "easeInOut",
+                      repeat: 1,
+                      repeatType: "reverse"
+                    }
                   }}
                 >
                   {program.icon}
@@ -300,15 +305,14 @@ const ProgramsSection = () => {
             <motion.div
               className="ml-2 relative z-10"
               animate={{ 
-                x: [0, 5, 0],
-                rotate: [-5, 5, -5, 5, 0]
+                x: [0, 5],
+                rotate: [-5, 5]
               }}
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                repeatType: "loop",
-                ease: "easeInOut",
-                times: [0, 0.2, 1]
+                repeatType: "reverse",
+                ease: "easeInOut"
               }}
             >
               <Paintbrush className="w-4 h-4 text-white" />
