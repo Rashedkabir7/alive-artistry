@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -34,7 +35,7 @@ const programsData: Program[] = [
     category: "Environmental Art",
     year: "2023-Present",
     status: "ongoing",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1439853949127-fa647821eba0?q=80&w=1200",
     icon: "🌿",
     location: "Various locations across Bangladesh"
   },
@@ -45,7 +46,7 @@ const programsData: Program[] = [
     category: "Children's Art",
     year: "2021-Present",
     status: "ongoing",
-    image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1200",
     icon: "👧",
     location: "Chittagong & Dhaka"
   },
@@ -56,7 +57,7 @@ const programsData: Program[] = [
     category: "Folk Arts",
     year: "2019-Present",
     status: "ongoing",
-    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1577083287809-1c774a469596?q=80&w=1200",
     icon: "🧶",
     location: "Rural regions of Bangladesh"
   },
@@ -67,7 +68,7 @@ const programsData: Program[] = [
     category: "Contemporary Art",
     year: "2022-Present",
     status: "ongoing",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1200",
     icon: "🎨",
     location: "Dhaka Art District"
   },
@@ -100,7 +101,7 @@ const programsData: Program[] = [
     category: "Community Art",
     year: "2017-2019",
     status: "past",
-    image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1597215737412-4bbe759ae8c8?q=80&w=1200",
     icon: "🌊",
     location: "Riverine areas of Bangladesh"
   },
@@ -121,19 +122,19 @@ const featuredWorkData = [
   {
     title: "River Cleaning Art Project",
     category: "Harith",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?q=80&w=1200",
     description: "Community-based art installation using recycled materials from river cleanup"
   },
   {
     title: "Children's Imagination Workshop",
     category: "Kalpapuri",
-    image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1511205889974-2b9e001f9ba5?q=80&w=1200",
     description: "Creative expression workshops for underprivileged children"
   },
   {
     title: "Folk Art Documentation",
     category: "Shikar",
-    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1578926318661-3af11b5b05d7?q=80&w=1200",
     description: "Preserving traditional craft techniques through digital archives"
   }
 ];

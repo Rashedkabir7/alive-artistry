@@ -20,7 +20,7 @@ const projects: Project[] = [
     title: "Harith",
     description: "Immersive outdoor experiences combining art and nature conservation.",
     category: "Environmental Art",
-    image: "https://images.unsplash.com/photo-1501542089326-c6030e7d9384?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=500", // Updated nature conservation image
     hasSubprograms: true
   },
   {
@@ -28,7 +28,7 @@ const projects: Project[] = [
     title: "Kalpapuri",
     description: "Creative education project training the next generation of artists.",
     category: "Children's Art",
-    image: "https://images.unsplash.com/photo-1611559410629-f9602e91c236?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=500", // Updated children's art image
     hasSubprograms: true
   },
   {
@@ -36,7 +36,7 @@ const projects: Project[] = [
     title: "Shikar",
     description: "Celebration of traditional folk arts and crafts held every three years.",
     category: "Folk Arts",
-    image: "https://images.unsplash.com/photo-1582210449638-91b2e7825b02?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1577083287809-1c774a469596?q=80&w=500", // Updated folk arts image
     hasSubprograms: true
   },
   {
@@ -44,7 +44,7 @@ const projects: Project[] = [
     title: "Art Factory",
     description: "Hosting artists from around the world for cultural exchange and collaboration.",
     category: "Contemporary Art",
-    image: "https://images.unsplash.com/photo-1543857778-c4a1a9e0615f?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=500", // Updated contemporary art image
     hasSubprograms: true
   },
   {
@@ -52,28 +52,28 @@ const projects: Project[] = [
     title: "Art Bridge",
     description: "International artist exchange program fostering cross-cultural dialogue.",
     category: "International Exchange",
-    image: "https://images.unsplash.com/photo-1608228088998-57828365d486?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=500" // Updated international exchange image
   },
   {
     id: "digital-aesthetics",
     title: "Digital Aesthetics",
     description: "Exploration of digital and new media art forms including virtual reality.",
     category: "Digital Art",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500" // Updated digital art image
   },
   {
     id: "river-traces",
     title: "River Traces",
     description: "Community-based art project exploring Bangladesh's riverine heritage.",
     category: "Community Art",
-    image: "https://images.unsplash.com/photo-1597215737412-4bbe759ae8c8?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1597215737412-4bbe759ae8c8?q=80&w=500" // Updated riverine heritage image
   },
   {
     id: "artist-village",
     title: "Artist Village",
     description: "Rural artist residency program facilitating urban-rural artistic collaboration.",
     category: "Residency",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=500" // Updated rural landscape image
   }
 ];
 

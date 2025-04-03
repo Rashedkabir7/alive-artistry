@@ -84,7 +84,7 @@ const StorySection: React.FC<StorySectionProps> = ({
         transition={{
           duration: 6,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut"
         }}
       >
@@ -100,7 +100,7 @@ const StorySection: React.FC<StorySectionProps> = ({
         transition={{
           duration: 5,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut",
           delay: 1
         }}
@@ -169,7 +169,7 @@ const StorySection: React.FC<StorySectionProps> = ({
                     transition={{ 
                       duration: 2.5,
                       repeat: Infinity,
-                      repeatType: "reverse" as const,
+                      repeatType: "reverse",
                       ease: "easeInOut"
                     }}
                   >
@@ -195,7 +195,7 @@ const StorySection: React.FC<StorySectionProps> = ({
               transition={{ 
                 duration: 2.5,
                 repeat: Infinity,
-                repeatType: "reverse" as const,
+                repeatType: "reverse",
                 ease: "easeInOut"
               }}
             />
@@ -210,7 +210,7 @@ const StorySection: React.FC<StorySectionProps> = ({
               transition={{ 
                 duration: 2,
                 repeat: Infinity,
-                repeatType: "reverse" as const,
+                repeatType: "reverse",
                 ease: "easeInOut",
                 delay: 1
               }}
@@ -258,7 +258,7 @@ const StorySection: React.FC<StorySectionProps> = ({
               transition={{ 
                 duration: 6,
                 repeat: Infinity,
-                repeatType: "reverse" as const,
+                repeatType: "reverse",
                 ease: "easeInOut"
               }}
             >
@@ -368,7 +368,7 @@ const StorySection: React.FC<StorySectionProps> = ({
               transition={{ 
                 duration: 4,
                 repeat: Infinity,
-                repeatType: "reverse" as const,
+                repeatType: "reverse",
                 ease: "easeInOut"
               }}
             >

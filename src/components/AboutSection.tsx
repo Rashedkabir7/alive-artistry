@@ -1,8 +1,9 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Palette, Heart, Leaf, Feather, Sparkles } from 'lucide-react';
+import { Palette, Heart, Leaf, Feather, Sparkles, Brush, GitCommit } from 'lucide-react';
 import AnimatedHeading from '@/components/AnimatedHeading';
+import { Card, CardContent } from '@/components/ui/card';
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -16,6 +17,16 @@ const AboutSection = () => {
   
   const philosophyOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 1, 1]);
   const philosophyScale = useTransform(scrollYProgress, [0, 0.3, 1], [0.8, 1, 1]);
+
+  const milestones = [
+    { year: "1998", title: "Formation", description: "Santaran begins as a small collective of artists in Chittagong" },
+    { year: "2001", title: "First Exhibition", description: "Hosted first collaborative show focusing on folk traditions" },
+    { year: "2008", title: "Official Registration", description: "Registered under Ministry of Social Welfare, Bangladesh" },
+    { year: "2010", title: "Harith Launch", description: "Started environmental art initiative across rural Bangladesh" },
+    { year: "2014", title: "Folk Arts Revival", description: "Launched Shikar to document and preserve traditional crafts" },
+    { year: "2018", title: "20 Year Anniversary", description: "Celebrated two decades with nationwide exhibitions" },
+    { year: "2021", title: "Children's Initiative", description: "Began Kalpapuri program focused on young artists" }
+  ];
   
   return (
     <motion.section 
@@ -40,7 +51,7 @@ const AboutSection = () => {
         transition={{ 
           duration: 4,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut"
         }}
       ></motion.div>
@@ -54,7 +65,7 @@ const AboutSection = () => {
         transition={{ 
           duration: 3.5,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut"
         }}
       ></motion.div>
@@ -96,7 +107,7 @@ const AboutSection = () => {
             transition={{ 
               duration: 5,
               repeat: Infinity,
-              repeatType: "reverse" as const
+              repeatType: "reverse"
             }}
           />
           
@@ -148,14 +159,14 @@ const AboutSection = () => {
               transition={{ 
                 duration: 8,
                 repeat: Infinity,
-                repeatType: "reverse" as const,
+                repeatType: "reverse",
                 ease: "easeInOut"
               }}
             />
           </motion.div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <motion.div 
             className="space-y-6"
             style={{ y }}
@@ -288,8 +299,12 @@ const AboutSection = () => {
           >
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-700">
               <div className="bg-santaran-cream p-10 rounded-lg border-2 border-santaran-teal/20 fancy-border artistic-card relative overflow-hidden">
-                {/* Artistic background pattern */}
-                <div className="absolute inset-0 opacity-5 dotted-pattern"></div>
+                {/* Updated artistic background pattern */}
+                <div className="absolute inset-0 opacity-5">
+                  <div className="absolute inset-0 bg-repeat opacity-10" style={{
+                    backgroundImage: "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.2\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
+                  }}></div>
+                </div>
                 
                 {/* Enhanced animated leaf icon */}
                 <motion.div 
@@ -356,7 +371,7 @@ const AboutSection = () => {
                       transition={{
                         duration: 1.5,
                         repeat: Infinity,
-                        repeatType: "reverse" as const
+                        repeatType: "reverse"
                       }}
                     >
                       <Sparkles size={12} />
@@ -378,7 +393,7 @@ const AboutSection = () => {
                     transition={{ 
                       duration: 2,
                       repeat: Infinity,
-                      repeatType: "reverse" as const,
+                      repeatType: "reverse",
                       ease: "easeInOut"
                     }}
                   >
@@ -426,7 +441,7 @@ const AboutSection = () => {
               transition={{ 
                 duration: 3,
                 repeat: Infinity,
-                repeatType: "reverse" as const,
+                repeatType: "reverse",
                 ease: "easeInOut"
               }}
             />
@@ -439,7 +454,7 @@ const AboutSection = () => {
               transition={{ 
                 duration: 4,
                 repeat: Infinity,
-                repeatType: "reverse" as const,
+                repeatType: "reverse",
                 ease: "easeInOut",
                 delay: 1
               }}
@@ -458,6 +473,143 @@ const AboutSection = () => {
               }}
             />
           </motion.div>
+        </div>
+
+        {/* NEW: Journey Timeline Section */}
+        <div className="mt-16 mb-20">
+          <AnimatedHeading
+            text="Our Artistic Journey"
+            tag="h3"
+            className="heading-md mb-12 text-center"
+            color="text-santaran-teal"
+            animation="wave"
+          />
+          
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-santaran-vermilion via-santaran-amber to-santaran-jade"></div>
+            
+            <div className="space-y-24">
+              {milestones.map((milestone, index) => (
+                <motion.div 
+                  key={milestone.year}
+                  className={`relative flex ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-center`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  {/* Year bubble */}
+                  <motion.div 
+                    className="absolute left-1/2 transform -translate-x-1/2 z-10 bg-white border-4 border-santaran-amber rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <span className="text-santaran-teal font-bold">{milestone.year}</span>
+                  </motion.div>
+                  
+                  {/* Content card */}
+                  <Card className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8'} hover:shadow-lg transition-shadow duration-300`}>
+                    <CardContent className="p-6">
+                      <div className="mb-2 flex items-center">
+                        <motion.div 
+                          animate={{ rotate: [0, 360] }}
+                          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                          className="mr-2"
+                        >
+                          {index % 4 === 0 && <Brush className="text-santaran-vermilion" size={16} />}
+                          {index % 4 === 1 && <Sparkles className="text-santaran-amber" size={16} />}
+                          {index % 4 === 2 && <GitCommit className="text-santaran-jade" size={16} />}
+                          {index % 4 === 3 && <Palette className="text-santaran-teal" size={16} />}
+                        </motion.div>
+                        <h4 className="font-bold text-lg text-santaran-terracotta">{milestone.title}</h4>
+                      </div>
+                      <p className="text-gray-600">{milestone.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* NEW: Core Values Section */}
+        <div className="mt-24">
+          <AnimatedHeading
+            text="Our Core Values"
+            tag="h3"
+            className="heading-md mb-10 text-center"
+            color="text-santaran-vermilion"
+            animation="typewriter"
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <motion.div 
+              className="p-8 rounded-lg bg-gradient-to-br from-white to-santaran-cream border border-santaran-amber/20 shadow-md relative overflow-hidden"
+              whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div 
+                className="absolute -right-4 -top-4 text-santaran-vermilion/10"
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              >
+                <Palette size={80} />
+              </motion.div>
+              
+              <div className="relative z-10">
+                <h4 className="text-xl font-display font-bold mb-4 text-santaran-teal">Cultural Preservation</h4>
+                <p className="text-gray-600">Preserving indigenous artistic traditions and knowledge systems as living heritage for future generations.</p>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="p-8 rounded-lg bg-gradient-to-br from-white to-santaran-cream border border-santaran-amber/20 shadow-md relative overflow-hidden"
+              whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <motion.div 
+                className="absolute -right-4 -top-4 text-santaran-amber/10"
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              >
+                <Heart size={80} />
+              </motion.div>
+              
+              <div className="relative z-10">
+                <h4 className="text-xl font-display font-bold mb-4 text-santaran-amber">Community Engagement</h4>
+                <p className="text-gray-600">Involving communities in artistic processes to foster deeper connections and cultural ownership.</p>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="p-8 rounded-lg bg-gradient-to-br from-white to-santaran-cream border border-santaran-amber/20 shadow-md relative overflow-hidden"
+              whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <motion.div 
+                className="absolute -right-4 -top-4 text-santaran-jade/10"
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              >
+                <Leaf size={80} />
+              </motion.div>
+              
+              <div className="relative z-10">
+                <h4 className="text-xl font-display font-bold mb-4 text-santaran-jade">Environmental Harmony</h4>
+                <p className="text-gray-600">Creating art that respects and reflects the delicate balance between humans and the natural world.</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </motion.section>
