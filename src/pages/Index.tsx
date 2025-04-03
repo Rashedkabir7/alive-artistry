@@ -11,7 +11,6 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import FeaturedProgramSection from '@/components/FeaturedProgramSection';
-import ArtisticGalleryImages from '@/components/ArtisticGalleryImages';
 
 const Index = () => {
   return (
@@ -23,15 +22,6 @@ const Index = () => {
       <ProjectsSection />
       <SubprogramsSection />
       <YearlyOutcomeSection />
-      
-      {/* Gallery showcase before the Story section */}
-      <section className="py-16 bg-white/80">
-        <div className="container mx-auto px-4">
-          <h2 className="heading-md text-center mb-10 text-santaran-teal">Our Artistic Perspectives</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-santaran-amber to-santaran-teal mx-auto mb-12"></div>
-          <ArtisticGalleryImages category="all" autoPlay={true} interval={4000} className="max-w-4xl mx-auto" />
-        </div>
-      </section>
       
       <StorySection 
         title="Our Story"
