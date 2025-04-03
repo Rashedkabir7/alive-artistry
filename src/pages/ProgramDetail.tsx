@@ -1,13 +1,16 @@
 
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimatedHeading from '@/components/AnimatedHeading';
 import ArtisticArrow from '@/components/ArtisticArrow';
 import { Button } from '@/components/ui/button';
-import { Paintbrush, Palette, Frame, Users, Clock, MapPin } from 'lucide-react';
+import { Paintbrush, Palette, Frame, Users, Clock, MapPin, Calendar, Download, Mail, Share2, PlayCircle } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { toast } from "sonner";
 
 interface ProgramDetail {
   id: string;
@@ -22,6 +25,27 @@ interface ProgramDetail {
   location: string;
   team: string[];
   objectives: string[];
+  schedule?: Array<{
+    date: string;
+    title: string;
+    description: string;
+  }>;
+  resources?: Array<{
+    title: string;
+    description: string;
+    type: string;
+    url: string;
+  }>;
+  testimonials?: Array<{
+    name: string;
+    role: string;
+    quote: string;
+    image: string;
+  }>;
+  faq?: Array<{
+    question: string;
+    answer: string;
+  }>;
 }
 
 const programsData: Record<string, ProgramDetail> = {
@@ -37,7 +61,8 @@ const programsData: Record<string, ProgramDetail> = {
     gallery: [
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200",
       "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1200",
-      "https://images.unsplash.com/photo-1501542089326-c6030e7d9384?q=80&w=1200"
+      "https://images.unsplash.com/photo-1501542089326-c6030e7d9384?q=80&w=1200",
+      "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=1200"
     ],
     location: "Various locations across Bangladesh",
     team: ["Rehana Zaman", "Kamal Ahmed", "Nasreen Khan", "Environmental Artists Collective"],
@@ -46,6 +71,56 @@ const programsData: Record<string, ProgramDetail> = {
       "Establish sustainable art practices in local communities",
       "Document ecological changes through visual narratives",
       "Foster connections between artists and environmental scientists"
+    ],
+    schedule: [
+      {
+        date: "March 15, 2023",
+        title: "Workshop: Art from Recycled Materials",
+        description: "A hands-on workshop teaching participants to create art pieces using recycled materials collected from local beaches."
+      },
+      {
+        date: "June 8, 2023",
+        title: "Exhibition: Nature's Voice",
+        description: "A collaborative exhibition showcasing artworks that highlight the impact of climate change on local ecosystems."
+      },
+      {
+        date: "September 22, 2023",
+        title: "Community Project: River Cleanup & Art Installation",
+        description: "Community-led cleanup of the Karnaphuli River, followed by an art installation created with collected waste materials."
+      },
+      {
+        date: "December 5, 2023",
+        title: "Symposium: Art as Environmental Advocacy",
+        description: "A gathering of artists, environmentalists, and community leaders to discuss the role of art in environmental conservation."
+      }
+    ],
+    resources: [
+      {
+        title: "Sustainable Art Techniques Guide",
+        description: "A comprehensive manual for creating art with minimal environmental impact.",
+        type: "PDF",
+        url: "#"
+      },
+      {
+        title: "Environmental Art Documentary",
+        description: "Documentary film showcasing Harith's impact on local communities and ecosystems.",
+        type: "Video",
+        url: "#"
+      }
+    ],
+    testimonials: [
+      {
+        name: "Dr. Fatima Rahman",
+        role: "Environmental Scientist",
+        quote: "Harith has succeeded where traditional advocacy often fails - it connects people emotionally to environmental issues through the universal language of art.",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300"
+      },
+      {
+        name: "Mohammad Ali",
+        role: "Community Participant",
+        quote: "Participating in Harith's river cleanup project changed how I see waste. Now I don't just see garbage, I see potential for creative expression and transformation.",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300"
+      }
     ]
   },
   "kalpapuri": {
@@ -60,7 +135,8 @@ const programsData: Record<string, ProgramDetail> = {
     gallery: [
       "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1200",
       "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200",
-      "https://images.unsplash.com/photo-1602975256463-2b8557d13e77?q=80&w=1200"
+      "https://images.unsplash.com/photo-1602975256463-2b8557d13e77?q=80&w=1200",
+      "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1200"
     ],
     location: "Chittagong & Dhaka",
     team: ["Fahmida Rahman", "Saiful Islam", "Child Psychology Unit", "Volunteer Artist Network"],
@@ -69,6 +145,51 @@ const programsData: Record<string, ProgramDetail> = {
       "Develop fine motor skills through creative activities",
       "Build confidence through exhibition of children's artwork",
       "Create intergenerational dialogue through collaborative projects"
+    ],
+    schedule: [
+      {
+        date: "Every Saturday",
+        title: "Youth Art Workshop",
+        description: "Weekly workshops for children ages 6-12, exploring different artistic mediums and techniques."
+      },
+      {
+        date: "Bimonthly",
+        title: "Teen Artist Mentorship",
+        description: "One-on-one mentoring sessions for talented teenagers interested in pursuing art professionally."
+      },
+      {
+        date: "Quarterly",
+        title: "Young Artists Exhibition",
+        description: "Exhibitions showcasing the work of program participants, giving children the experience of a professional gallery showing."
+      }
+    ],
+    resources: [
+      {
+        title: "Children's Art Activities Guide",
+        description: "Collection of age-appropriate art activities for parents and educators.",
+        type: "PDF",
+        url: "#"
+      },
+      {
+        title: "Art Therapy Basics",
+        description: "Introduction to using art as a therapeutic tool for children experiencing trauma or stress.",
+        type: "Manual",
+        url: "#"
+      }
+    ],
+    testimonials: [
+      {
+        name: "Nadia Huq",
+        role: "Parent",
+        quote: "Since joining Kalpapuri, my daughter has become more confident and expressive. The program has given her a voice through art that she couldn't find through words.",
+        image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=300"
+      },
+      {
+        name: "Arif Rahman",
+        role: "Child Psychologist",
+        quote: "The approach Kalpapuri takes to children's artistic development is deeply aligned with psychological research on emotional development and expression.",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300"
+      }
     ]
   },
   "shikar": {
@@ -83,7 +204,8 @@ const programsData: Record<string, ProgramDetail> = {
     gallery: [
       "https://images.unsplash.com/photo-1577083287809-1c774a469596?q=80&w=1200",
       "https://images.unsplash.com/photo-1563380451434-9e326bb820bb?q=80&w=1200",
-      "https://images.unsplash.com/photo-1567361672830-f7aa558027a2?q=80&w=1200"
+      "https://images.unsplash.com/photo-1567361672830-f7aa558027a2?q=80&w=1200",
+      "https://images.unsplash.com/photo-1493130952181-47e36589f64d?q=80&w=1200"
     ],
     location: "Rural regions of Bangladesh",
     team: ["Abdul Karim", "Nusrat Jahan", "Regional Artisan Collectives", "Cultural Documentation Team"],
@@ -92,6 +214,61 @@ const programsData: Record<string, ProgramDetail> = {
       "Create economic opportunities for traditional artisans",
       "Innovate contemporary applications for traditional skills",
       "Facilitate intergenerational knowledge transfer"
+    ],
+    schedule: [
+      {
+        date: "Year-round",
+        title: "Artisan Apprenticeships",
+        description: "Young artists are paired with master artisans to learn traditional techniques through hands-on practice."
+      },
+      {
+        date: "Monthly",
+        title: "Traditional Arts Market",
+        description: "Monthly marketplace where artisans can sell their handcrafted products directly to consumers, with fair pricing support."
+      },
+      {
+        date: "Biannually",
+        title: "Folk Arts Festival",
+        description: "Celebration of traditional arts featuring performances, demonstrations, and exhibitions from across Bangladesh."
+      }
+    ],
+    resources: [
+      {
+        title: "Traditional Craft Techniques Archive",
+        description: "Digital archive of traditional craft techniques, including high-definition process videos.",
+        type: "Online Archive",
+        url: "#"
+      },
+      {
+        title: "Folk Arts Business Guide",
+        description: "Practical guide for artisans on sustainable business practices and marketing for traditional crafts.",
+        type: "PDF",
+        url: "#"
+      }
+    ],
+    testimonials: [
+      {
+        name: "Rashid Ahmed",
+        role: "Master Weaver",
+        quote: "Shikar has given me hope that the techniques my family has practiced for generations will not be lost. Now I have young apprentices eager to learn and innovate.",
+        image: "https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?q=80&w=300"
+      },
+      {
+        name: "Sadia Khan",
+        role: "Apprentice",
+        quote: "Learning these traditional skills has connected me to my cultural heritage in ways I never expected. Now I'm developing contemporary designs using ancient techniques.",
+        image: "https://images.unsplash.com/photo-1531123414780-f74242c2b052?q=80&w=300"
+      }
+    ],
+    faq: [
+      {
+        question: "How can I participate in Shikar as an artisan?",
+        answer: "Traditional artisans can apply through our website or contact our regional coordinators. We're always looking for master craftspeople willing to share their knowledge."
+      },
+      {
+        question: "Does Shikar provide financial support to artisans?",
+        answer: "Yes, we provide stipends to both master artisans and apprentices during the knowledge transfer process, and help establish sustainable business models."
+      }
     ]
   },
   "artfactory": {
@@ -106,7 +283,8 @@ const programsData: Record<string, ProgramDetail> = {
     gallery: [
       "https://images.unsplash.com/photo-1582640317571-8e5e21839aae?q=80&w=1200",
       "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1200",
-      "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?q=80&w=1200"
+      "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?q=80&w=1200",
+      "https://images.unsplash.com/photo-1596548438137-d51ea5c83ca5?q=80&w=1200"
     ],
     location: "Dhaka Art District",
     team: ["Tahmina Begum", "Rajon Ali", "Media Art Specialists", "International Artist Network"],
@@ -115,6 +293,51 @@ const programsData: Record<string, ProgramDetail> = {
       "Establish cross-disciplinary collaborations",
       "Develop critical dialogue about contemporary art",
       "Provide professional development for emerging artists"
+    ],
+    schedule: [
+      {
+        date: "Every 3 months",
+        title: "Artist Residencies",
+        description: "Three-month residencies for emerging artists to work on experimental projects with mentorship and resources."
+      },
+      {
+        date: "Weekly",
+        title: "Critical Discussion Forums",
+        description: "Weekly gatherings where artists present their work for peer critique and theoretical discussion."
+      },
+      {
+        date: "Biannually",
+        title: "Experimental Art Exhibition",
+        description: "Major exhibition showcasing the work developed through the Art Factory residencies and collaborations."
+      }
+    ],
+    resources: [
+      {
+        title: "New Media Art Techniques",
+        description: "Guide to digital and hybrid art forms including interactive installations, generative art, and more.",
+        type: "Online Course",
+        url: "#"
+      },
+      {
+        title: "Interdisciplinary Collaboration Toolkit",
+        description: "Methods and frameworks for successful collaboration between artists and other disciplines.",
+        type: "Workshop Materials",
+        url: "#"
+      }
+    ],
+    testimonials: [
+      {
+        name: "Imran Hossain",
+        role: "Emerging Artist",
+        quote: "Art Factory gave me the freedom to take risks that I couldn't take elsewhere. The mentorship and critical feedback transformed my practice completely.",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300"
+      },
+      {
+        name: "Priya Sharma",
+        role: "Curator",
+        quote: "The artists coming out of Art Factory are doing some of the most innovative work in South Asia today. They're redefining what contemporary Bangladeshi art can be.",
+        image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=300"
+      }
     ]
   }
 };
@@ -124,6 +347,7 @@ const ProgramDetail: React.FC = () => {
   const [program, setProgram] = useState<ProgramDetail | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Simulate data fetching
@@ -134,6 +358,31 @@ const ProgramDetail: React.FC = () => {
       setLoading(false);
     }, 500);
   }, [programId]);
+
+  const handleJoinProgram = () => {
+    toast.success(`You've successfully registered for the ${program?.title} program! Check your email for further details.`);
+  };
+
+  const handleDownloadResource = (resource: {title: string, type: string}) => {
+    toast.success(`Downloading ${resource.title} (${resource.type})...`);
+  };
+
+  const handleShare = () => {
+    if (navigator.share && program) {
+      navigator.share({
+        title: `Santaran Art Organization - ${program.title} Program`,
+        text: program.description,
+        url: window.location.href,
+      })
+      .catch(() => {
+        toast.success("Program link copied to clipboard!");
+        navigator.clipboard.writeText(window.location.href);
+      });
+    } else {
+      toast.success("Program link copied to clipboard!");
+      navigator.clipboard.writeText(window.location.href);
+    }
+  };
 
   if (loading) {
     return (
@@ -156,11 +405,20 @@ const ProgramDetail: React.FC = () => {
   if (!program) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-santaran-cream">
-        <h1 className="text-3xl font-display">Program not found</h1>
-        <p className="mt-4">The program you're looking for doesn't exist or has been moved.</p>
-        <Button className="mt-6" onClick={() => window.history.back()}>
-          Go Back
-        </Button>
+        <Navbar />
+        <div className="flex-grow flex flex-col items-center justify-center p-6">
+          <h1 className="text-3xl font-display mb-4">Program not found</h1>
+          <p className="mb-8 text-center">The program you're looking for doesn't exist or has been moved.</p>
+          <div className="flex gap-4">
+            <Button onClick={() => navigate(-1)}>
+              Go Back
+            </Button>
+            <Button variant="outline" asChild>
+              <Link to="/programs">View All Programs</Link>
+            </Button>
+          </div>
+        </div>
+        <Footer />
       </div>
     );
   }
@@ -210,7 +468,7 @@ const ProgramDetail: React.FC = () => {
                   {program.description}
                 </p>
                 
-                <div className="flex items-center gap-4 mb-8">
+                <div className="flex flex-wrap items-center gap-4 mb-8">
                   <div className="flex items-center text-santaran-jade">
                     <Clock className="w-5 h-5 mr-2" />
                     <span>{program.year}</span>
@@ -221,14 +479,18 @@ const ProgramDetail: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <Button>
+                <div className="flex flex-wrap gap-4">
+                  <Button onClick={handleJoinProgram}>
                     Join Program
-                    <Palette className="ml-2 w-4 h-4" />
+                    <Users className="ml-2 w-4 h-4" />
                   </Button>
-                  <Button variant="outline">
-                    Program Gallery
+                  <Button variant="outline" onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}>
+                    View Gallery
                     <Frame className="ml-2 w-4 h-4" />
+                  </Button>
+                  <Button variant="secondary" onClick={handleShare}>
+                    Share
+                    <Share2 className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
               </motion.div>
@@ -263,92 +525,284 @@ const ProgramDetail: React.FC = () => {
         </div>
       </section>
       
-      {/* Content Section */}
+      {/* Content Tabs Section */}
       <section className="py-16 px-4 md:px-8 lg:px-12 bg-white relative">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true }}
-              >
-                <AnimatedHeading 
-                  text="About the Program"
-                  tag="h2"
-                  className="heading-md mb-6"
-                  color="text-santaran-vermilion"
-                  animation="typewriter"
-                />
+          <Tabs defaultValue="about" className="w-full">
+            <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-8">
+              <TabsTrigger value="about">About</TabsTrigger>
+              <TabsTrigger value="schedule">Schedule</TabsTrigger>
+              <TabsTrigger value="resources">Resources</TabsTrigger>
+              <TabsTrigger value="testimonials">Testimonials</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="about">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div className="lg:col-span-2">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.7 }}
+                  >
+                    <AnimatedHeading 
+                      text="About the Program"
+                      tag="h2"
+                      className="heading-md mb-6"
+                      color="text-santaran-vermilion"
+                      animation="typewriter"
+                    />
 
-                <div className="prose prose-lg max-w-none">
-                  <p className="mb-6 text-lg">
-                    {program.fullDescription}
-                  </p>
+                    <div className="prose prose-lg max-w-none">
+                      <p className="mb-6 text-lg">
+                        {program.fullDescription}
+                      </p>
 
-                  <div className="mt-8">
-                    <h3 className="text-xl font-display font-medium text-santaran-teal mb-4">Program Objectives</h3>
-                    <ul className="space-y-3">
-                      {program.objectives.map((objective, index) => (
-                        <motion.li 
+                      <div className="mt-8">
+                        <h3 className="text-xl font-display font-medium text-santaran-teal mb-4">Program Objectives</h3>
+                        <ul className="space-y-3">
+                          {program.objectives.map((objective, index) => (
+                            <motion.li 
+                              key={index}
+                              className="flex items-start"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: index * 0.1 }}
+                            >
+                              <div className="bg-santaran-vermilion/10 text-santaran-vermilion p-2 rounded-full mr-3 mt-0.5">
+                                <Paintbrush className="w-4 h-4" />
+                              </div>
+                              <span>{objective}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <div>
+                  <motion.div
+                    className="bg-santaran-cream/50 p-6 rounded-xl border border-santaran-jade/20"
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7 }}
+                  >
+                    <h3 className="text-xl font-display font-medium text-santaran-teal mb-4">Program Team</h3>
+                    <div className="space-y-3">
+                      {program.team.map((member, index) => (
+                        <div 
                           key={index}
-                          className="flex items-start"
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          viewport={{ once: true }}
+                          className="flex items-center gap-3"
                         >
-                          <div className="bg-santaran-vermilion/10 text-santaran-vermilion p-2 rounded-full mr-3 mt-0.5">
-                            <Paintbrush className="w-4 h-4" />
+                          <div className="bg-santaran-amber/10 text-santaran-amber p-2 rounded-full">
+                            <Users className="w-4 h-4" />
                           </div>
-                          <span>{objective}</span>
-                        </motion.li>
+                          <span>{member}</span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
+
+                    <div className="mt-8 pt-6 border-t border-santaran-jade/10">
+                      <h3 className="text-xl font-display font-medium text-santaran-teal mb-4">Contact</h3>
+                      <p className="mb-4">Interested in this program? Get in touch with our team to learn more about participation opportunities.</p>
+                      <Button className="w-full" asChild>
+                        <Link to="/contact">
+                          Contact Program Coordinator
+                          <Mail className="ml-2 w-4 h-4" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="schedule">
+              {program.schedule ? (
+                <div>
+                  <AnimatedHeading 
+                    text="Program Schedule"
+                    tag="h2"
+                    className="heading-md mb-8"
+                    color="text-santaran-teal"
+                    animation="wave"
+                  />
+                  
+                  <div className="space-y-6">
+                    {program.schedule.map((event, index) => (
+                      <motion.div
+                        key={index}
+                        className="bg-white rounded-lg shadow-md border border-santaran-jade/10 p-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <div className="flex flex-col md:flex-row md:items-center">
+                          <div className="mb-4 md:mb-0 md:mr-6 flex items-center">
+                            <Calendar className="text-santaran-vermilion mr-2" size={20} />
+                            <span className="font-medium">{event.date}</span>
+                          </div>
+                          <div className="flex-grow">
+                            <h4 className="text-lg font-bold mb-2">{event.title}</h4>
+                            <p>{event.description}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  <div className="mt-12 text-center">
+                    <Button onClick={handleJoinProgram}>
+                      Register for Upcoming Events
+                    </Button>
                   </div>
                 </div>
-              </motion.div>
-            </div>
-
-            <div>
-              <motion.div
-                className="bg-santaran-cream/50 p-6 rounded-xl border border-santaran-jade/20"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-xl font-display font-medium text-santaran-teal mb-4">Program Team</h3>
-                <div className="space-y-3">
-                  {program.team.map((member, index) => (
-                    <div 
-                      key={index}
-                      className="flex items-center gap-3"
-                    >
-                      <div className="bg-santaran-amber/10 text-santaran-amber p-2 rounded-full">
-                        <Users className="w-4 h-4" />
-                      </div>
-                      <span>{member}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-santaran-jade/10">
-                  <h3 className="text-xl font-display font-medium text-santaran-teal mb-4">Contact</h3>
-                  <p className="mb-4">Interested in this program? Get in touch with our team to learn more about participation opportunities.</p>
-                  <Button className="w-full">
-                    Contact Program Coordinator
+              ) : (
+                <div className="text-center py-12">
+                  <div className="mb-6">
+                    <Calendar className="w-16 h-16 mx-auto text-santaran-jade/50" />
+                  </div>
+                  <h3 className="text-xl font-medium mb-2">No Schedule Available</h3>
+                  <p className="text-gray-500 mb-8">The schedule for this program will be updated soon.</p>
+                  <Button variant="outline" asChild>
+                    <Link to="/contact">
+                      Get Notified About Updates
+                    </Link>
                   </Button>
                 </div>
-              </motion.div>
-            </div>
-          </div>
+              )}
+            </TabsContent>
+            
+            <TabsContent value="resources">
+              {program.resources ? (
+                <div>
+                  <AnimatedHeading 
+                    text="Program Resources"
+                    tag="h2"
+                    className="heading-md mb-8"
+                    color="text-santaran-teal"
+                    animation="wave"
+                  />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {program.resources.map((resource, index) => (
+                      <motion.div
+                        key={index}
+                        className="bg-white rounded-lg shadow-md border border-santaran-amber/20 p-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        whileHover={{ y: -5 }}
+                      >
+                        <div className="flex items-start">
+                          <div className="mr-4">
+                            {resource.type === 'PDF' && <Download className="text-santaran-vermilion" size={24} />}
+                            {resource.type === 'Video' && <PlayCircle className="text-santaran-vermilion" size={24} />}
+                            {resource.type !== 'PDF' && resource.type !== 'Video' && <Frame className="text-santaran-vermilion" size={24} />}
+                          </div>
+                          <div className="flex-grow">
+                            <div className="flex justify-between items-start">
+                              <h4 className="text-lg font-bold mb-2">{resource.title}</h4>
+                              <span className="bg-santaran-amber/10 text-santaran-amber text-xs px-2 py-1 rounded">
+                                {resource.type}
+                              </span>
+                            </div>
+                            <p className="mb-4 text-gray-600">{resource.description}</p>
+                            <Button size="sm" variant="outline" onClick={() => handleDownloadResource(resource)}>
+                              {resource.type === 'Video' ? 'Watch' : 'Download'}
+                            </Button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <div className="mb-6">
+                    <Frame className="w-16 h-16 mx-auto text-santaran-jade/50" />
+                  </div>
+                  <h3 className="text-xl font-medium mb-2">No Resources Available</h3>
+                  <p className="text-gray-500 mb-8">Resources for this program will be added soon.</p>
+                  <Button variant="outline" asChild>
+                    <Link to="/contact">
+                      Request Materials
+                    </Link>
+                  </Button>
+                </div>
+              )}
+            </TabsContent>
+            
+            <TabsContent value="testimonials">
+              {program.testimonials ? (
+                <div>
+                  <AnimatedHeading 
+                    text="Testimonials"
+                    tag="h2"
+                    className="heading-md mb-8"
+                    color="text-santaran-teal"
+                    animation="wave"
+                  />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {program.testimonials.map((testimonial, index) => (
+                      <motion.div
+                        key={index}
+                        className="bg-white rounded-lg shadow-md border border-santaran-jade/10 p-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <div className="flex items-start">
+                          <div className="mr-4 flex-shrink-0">
+                            <img 
+                              src={testimonial.image} 
+                              alt={testimonial.name} 
+                              className="w-16 h-16 rounded-full object-cover border-2 border-santaran-amber"
+                            />
+                          </div>
+                          <div>
+                            <p className="italic mb-4">"{testimonial.quote}"</p>
+                            <div>
+                              <h4 className="font-bold">{testimonial.name}</h4>
+                              <p className="text-santaran-vermilion text-sm">{testimonial.role}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  <div className="mt-12 text-center">
+                    <p className="mb-6 text-lg">Want to share your experience with {program.title}?</p>
+                    <Button asChild>
+                      <Link to="/contact">
+                        Share Your Feedback
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <div className="mb-6">
+                    <Users className="w-16 h-16 mx-auto text-santaran-jade/50" />
+                  </div>
+                  <h3 className="text-xl font-medium mb-2">No Testimonials Yet</h3>
+                  <p className="text-gray-500 mb-8">Be the first to share your experience with this program!</p>
+                  <Button asChild>
+                    <Link to="/contact">
+                      Submit a Testimonial
+                    </Link>
+                  </Button>
+                </div>
+              )}
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-12 bg-santaran-cream/50">
+      <section id="gallery" className="py-16 px-4 md:px-8 lg:px-12 bg-santaran-cream/50">
         <div className="container mx-auto max-w-6xl">
           <AnimatedHeading 
             text="Program Gallery"
@@ -376,6 +830,7 @@ const ProgramDetail: React.FC = () => {
               <button 
                 className="p-2 rounded-full bg-white border border-santaran-jade/20 shadow-md hover:shadow-lg transition-all"
                 onClick={() => setActiveImageIndex((prev) => (prev === 0 ? program.gallery.length - 1 : prev - 1))}
+                aria-label="Previous image"
               >
                 <ArtisticArrow direction="left" size="sm" />
               </button>
@@ -388,6 +843,7 @@ const ProgramDetail: React.FC = () => {
                       index === activeImageIndex ? 'bg-santaran-vermilion scale-150' : 'bg-santaran-jade/40'
                     }`}
                     onClick={() => setActiveImageIndex(index)}
+                    aria-label={`Show image ${index + 1}`}
                   />
                 ))}
               </div>
@@ -395,16 +851,65 @@ const ProgramDetail: React.FC = () => {
               <button 
                 className="p-2 rounded-full bg-white border border-santaran-jade/20 shadow-md hover:shadow-lg transition-all"
                 onClick={() => setActiveImageIndex((prev) => (prev === program.gallery.length - 1 ? 0 : prev + 1))}
+                aria-label="Next image"
               >
                 <ArtisticArrow direction="right" size="sm" />
               </button>
             </div>
           </div>
+
+          <div className="mt-8 text-center">
+            <Button asChild>
+              <Link to="/gallery">
+                View Full Gallery
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
+      {/* FAQ Section - If Available */}
+      {program.faq && (
+        <section className="py-16 px-4 md:px-8 lg:px-12 bg-white">
+          <div className="container mx-auto max-w-3xl">
+            <AnimatedHeading 
+              text="Frequently Asked Questions"
+              tag="h2"
+              className="heading-md text-center mb-10"
+              color="text-santaran-teal"
+              animation="wave"
+            />
+            
+            <div className="space-y-4">
+              {program.faq.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-santaran-cream/40 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <h3 className="text-lg font-bold mb-2">{item.question}</h3>
+                  <p>{item.answer}</p>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="mt-12 text-center">
+              <p className="mb-4">Have more questions about this program?</p>
+              <Button variant="outline" asChild>
+                <Link to="/contact">
+                  Ask Us
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Related Programs */}
-      <section className="py-16 px-4 md:px-8 lg:px-12 bg-white">
+      <section className="py-16 px-4 md:px-8 lg:px-12 bg-santaran-cream/20">
         <div className="container mx-auto max-w-6xl">
           <AnimatedHeading 
             text="Explore Other Programs"
@@ -421,23 +926,24 @@ const ProgramDetail: React.FC = () => {
               .map(p => (
                 <Link to={`/programs/${p.id}`} key={p.id}>
                   <motion.div 
-                    className="relative overflow-hidden rounded-xl group cursor-pointer"
+                    className="relative overflow-hidden rounded-xl group cursor-pointer h-64"
                     whileHover={{ y: -10, transition: { duration: 0.3 } }}
                   >
-                    <div className="aspect-[4/3] overflow-hidden">
+                    <div className="h-full overflow-hidden">
                       <img 
                         src={p.image} 
                         alt={p.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                     </div>
                     
                     <div className="absolute bottom-4 left-4 right-4">
-                      <span className="text-xs font-medium py-1 px-2 rounded-full bg-santaran-jade text-white">
+                      <span className="text-xs font-medium py-1 px-2 rounded-full bg-santaran-jade text-white mb-2 inline-block">
                         {p.category}
                       </span>
-                      <h3 className="text-white text-xl font-display mt-2">{p.title}</h3>
+                      <h3 className="text-white text-xl font-display">{p.title}</h3>
+                      <p className="text-white/80 text-sm line-clamp-2 mt-1">{p.description}</p>
                     </div>
                   </motion.div>
                 </Link>
@@ -445,7 +951,7 @@ const ProgramDetail: React.FC = () => {
           </div>
 
           <div className="text-center mt-10">
-            <Button onClick={() => window.location.href = "/programs"}>
+            <Button onClick={() => navigate('/programs')}>
               View All Programs
               <motion.div
                 className="ml-2"

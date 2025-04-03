@@ -11,10 +11,16 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import FeaturedProgramSection from '@/components/FeaturedProgramSection';
+import { motion } from 'framer-motion';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-santaran-cream">
+    <motion.div 
+      className="min-h-screen bg-santaran-cream"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <Navbar />
       <HeroSection />
       <AboutSection />
@@ -35,7 +41,7 @@ const Index = () => {
       <TestimonialsSection />
       <ContactSection />
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
