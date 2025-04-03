@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -20,7 +19,7 @@ const projects: Project[] = [
     title: "Harith",
     description: "Immersive outdoor experiences combining art and nature conservation.",
     category: "Environmental Art",
-    image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?q=80&w=500",
     hasSubprograms: true
   },
   {
@@ -28,7 +27,7 @@ const projects: Project[] = [
     title: "Kalpapuri",
     description: "Creative education project training the next generation of artists.",
     category: "Children's Art",
-    image: "https://images.unsplash.com/photo-1607457561901-e6ec3a6d16cf?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=500",
     hasSubprograms: true
   },
   {
@@ -36,7 +35,7 @@ const projects: Project[] = [
     title: "Shikar",
     description: "Celebration of traditional folk arts and crafts held every three years.",
     category: "Folk Arts",
-    image: "https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500",
     hasSubprograms: true
   },
   {
@@ -52,7 +51,7 @@ const projects: Project[] = [
     title: "Art Bridge",
     description: "International artist exchange program fostering cross-cultural dialogue.",
     category: "International Exchange",
-    image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1608228088998-57828365d486?q=80&w=500"
   },
   {
     id: "digital-aesthetics",
@@ -66,14 +65,14 @@ const projects: Project[] = [
     title: "River Traces",
     description: "Community-based art project exploring Bangladesh's riverine heritage.",
     category: "Community Art",
-    image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1627483262769-04d0a1401487?q=80&w=500"
   },
   {
     id: "artist-village",
     title: "Artist Village",
     description: "Rural artist residency program facilitating urban-rural artistic collaboration.",
     category: "Residency",
-    image: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=500"
+    image: "https://images.unsplash.com/photo-1548132143-e0c2f62b8269?q=80&w=500"
   }
 ];
 
@@ -82,7 +81,6 @@ const ProjectsSection = () => {
   const [activeProject, setActiveProject] = useState<string | null>(null);
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
 
-  // Animation variants for text
   const titleContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -122,7 +120,6 @@ const ProjectsSection = () => {
     }
   };
   
-  // Project card variants
   const cardVariants = {
     initial: { 
       y: 20, 
@@ -148,7 +145,6 @@ const ProjectsSection = () => {
     }
   };
 
-  // Auto-rotate through projects
   useEffect(() => {
     if (!autoRotate) return;
     
@@ -212,7 +208,6 @@ const ProjectsSection = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
               
-              {/* Decorative background shapes */}
               <motion.div 
                 className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-gradient-to-br from-santaran-vermilion/20 via-santaran-amber/20 to-santaran-teal/10 blur-xl"
                 animate={{ 

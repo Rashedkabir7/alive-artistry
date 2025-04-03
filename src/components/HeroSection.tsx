@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownCircle, Circle, Star, Sun, Sparkles, Leaf, Palette } from 'lucide-react';
@@ -117,13 +116,11 @@ const HeroSection: React.FC = () => {
   
   return (
     <section className="relative min-h-screen flex items-center pt-16 pb-12 overflow-hidden">
-      {/* Animated Canvas Background */}
       <canvas 
         ref={canvasRef} 
         className="absolute inset-0 z-0 bg-gradient-to-b from-santaran-cream/80 via-white/50 to-santaran-cream/80"
       />
       
-      {/* Decorative Elements */}
       <motion.div 
         className="absolute top-20 right-20 text-santaran-terracotta opacity-20 hidden md:block"
         animate={{ rotate: 360 }}
@@ -314,7 +311,6 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="relative w-full aspect-square max-w-md mx-auto">
-              {/* Decorative circles */}
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center"
                 initial={{ rotate: 0 }}
@@ -342,7 +338,6 @@ const HeroSection: React.FC = () => {
                 <div className="w-[70%] h-[70%] border-2 border-dashed border-santaran-gold/30 rounded-full"></div>
               </motion.div>
               
-              {/* Tree image with animation */}
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ 
@@ -362,7 +357,6 @@ const HeroSection: React.FC = () => {
                 />
               </motion.div>
               
-              {/* Glowing effect */}
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ 
@@ -378,7 +372,6 @@ const HeroSection: React.FC = () => {
                 <div className="w-[50%] h-[50%] bg-santaran-terracotta/10 blur-3xl rounded-full"></div>
               </motion.div>
               
-              {/* Added floating elements */}
               <motion.div
                 className="absolute top-[15%] right-[10%]"
                 animate={{ 
@@ -394,8 +387,8 @@ const HeroSection: React.FC = () => {
                 }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=200"
-                  alt="Artistic element" 
+                  src="https://images.unsplash.com/photo-1616235200784-230bc90dbd8f?q=80&w=200"
+                  alt="Traditional art" 
                   className="w-12 h-12 rounded-full object-cover drop-shadow-lg"
                 />
               </motion.div>
@@ -416,8 +409,8 @@ const HeroSection: React.FC = () => {
                 }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=200"
-                  alt="Artistic element" 
+                  src="https://images.unsplash.com/photo-1508896694512-1eade558679c?q=80&w=200"
+                  alt="Indigenous craft" 
                   className="w-10 h-10 rounded-full object-cover drop-shadow-lg"
                 />
               </motion.div>
@@ -447,4 +440,3 @@ const HeroSection: React.FC = () => {
 };
 
 export default HeroSection;
-
