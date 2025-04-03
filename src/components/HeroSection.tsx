@@ -341,25 +341,6 @@ const HeroSection: React.FC = () => {
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ 
-                  y: [0, -10]
-                }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity, 
-                  repeatType: "reverse" as const,
-                  ease: "easeInOut"
-                }}
-              >
-                <img
-                  src="/lovable-uploads/e04b0dc7-2eda-4b22-b81d-9d2151bc534f.png"
-                  alt="Yanbriksha - Banyan tree of knowledge"
-                  className="w-[80%] h-auto object-contain drop-shadow-xl"
-                />
-              </motion.div>
-              
-              <motion.div 
-                className="absolute inset-0 flex items-center justify-center"
-                animate={{ 
                   opacity: [0.4, 0.8]
                 }}
                 transition={{ 
@@ -370,49 +351,6 @@ const HeroSection: React.FC = () => {
                 }}
               >
                 <div className="w-[50%] h-[50%] bg-santaran-terracotta/10 blur-3xl rounded-full"></div>
-              </motion.div>
-              
-              <motion.div
-                className="absolute top-[15%] right-[10%]"
-                animate={{ 
-                  y: [0, -8],
-                  rotate: [0, 5],
-                  opacity: [0.7, 1]
-                }}
-                transition={{ 
-                  duration: 2.5,
-                  repeat: Infinity, 
-                  repeatType: "reverse" as const,
-                  ease: "easeInOut" 
-                }}
-              >
-                <img 
-                  src="https://images.unsplash.com/photo-1616235200784-230bc90dbd8f?q=80&w=200"
-                  alt="Traditional art" 
-                  className="w-12 h-12 rounded-full object-cover drop-shadow-lg"
-                />
-              </motion.div>
-              
-              <motion.div
-                className="absolute bottom-[20%] left-[10%]"
-                animate={{ 
-                  y: [0, 8],
-                  rotate: [0, -5],
-                  opacity: [0.7, 1]
-                }}
-                transition={{ 
-                  duration: 2.5,
-                  delay: 0.5,
-                  repeat: Infinity, 
-                  repeatType: "reverse" as const,
-                  ease: "easeInOut" 
-                }}
-              >
-                <img 
-                  src="https://images.unsplash.com/photo-1508896694512-1eade558679c?q=80&w=200"
-                  alt="Indigenous craft" 
-                  className="w-10 h-10 rounded-full object-cover drop-shadow-lg"
-                />
               </motion.div>
             </div>
           </motion.div>

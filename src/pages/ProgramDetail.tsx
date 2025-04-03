@@ -33,11 +33,11 @@ const programsData: Record<string, ProgramDetail> = {
     icon: "🌿",
     category: "Environmental Art",
     year: "2023-Present",
-    image: "/lovable-uploads/ab8abc5e-5120-4d3b-acd0-73c7a45a5cd7.png",
+    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200",
     gallery: [
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
-      "https://images.unsplash.com/photo-1501854140801-50d01698950b"
+      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200",
+      "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1200",
+      "https://images.unsplash.com/photo-1501542089326-c6030e7d9384?q=80&w=1200"
     ],
     location: "Various locations across Bangladesh",
     team: ["Rehana Zaman", "Kamal Ahmed", "Nasreen Khan", "Environmental Artists Collective"],
@@ -56,11 +56,11 @@ const programsData: Record<string, ProgramDetail> = {
     icon: "👧",
     category: "Children's Art",
     year: "2021-Present",
-    image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1611559410629-f9602e91c236?q=80&w=1200",
     gallery: [
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027",
-      "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86",
-      "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3"
+      "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1200",
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200",
+      "https://images.unsplash.com/photo-1602975256463-2b8557d13e77?q=80&w=1200"
     ],
     location: "Chittagong & Dhaka",
     team: ["Fahmida Rahman", "Saiful Islam", "Child Psychology Unit", "Volunteer Artist Network"],
@@ -79,11 +79,11 @@ const programsData: Record<string, ProgramDetail> = {
     icon: "🧶",
     category: "Folk Arts & Crafts",
     year: "2019-Present",
-    image: "https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1582210449638-91b2e7825b02?q=80&w=1200",
     gallery: [
-      "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07",
-      "https://images.unsplash.com/photo-1486718448742-163732cd1544",
-      "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e"
+      "https://images.unsplash.com/photo-1577083287809-1c774a469596?q=80&w=1200",
+      "https://images.unsplash.com/photo-1563380451434-9e326bb820bb?q=80&w=1200",
+      "https://images.unsplash.com/photo-1567361672830-f7aa558027a2?q=80&w=1200"
     ],
     location: "Rural regions of Bangladesh",
     team: ["Abdul Karim", "Nusrat Jahan", "Regional Artisan Collectives", "Cultural Documentation Team"],
@@ -102,11 +102,11 @@ const programsData: Record<string, ProgramDetail> = {
     icon: "🎨",
     category: "Contemporary Art",
     year: "2022-Present",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1543857778-c4a1a9e0615f?q=80&w=1200",
     gallery: [
-      "https://images.unsplash.com/photo-1500673922987-e212871fec22",
-      "https://images.unsplash.com/photo-1493397212122-2b85dda8106b",
-      "https://images.unsplash.com/photo-1466442929976-97f336a657be"
+      "https://images.unsplash.com/photo-1582640317571-8e5e21839aae?q=80&w=1200",
+      "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1200",
+      "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?q=80&w=1200"
     ],
     location: "Dhaka Art District",
     team: ["Tahmina Begum", "Rajon Ali", "Media Art Specialists", "International Artist Network"],
