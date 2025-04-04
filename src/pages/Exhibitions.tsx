@@ -380,14 +380,16 @@ const Exhibitions = () => {
                     </h3>
                     
                     <div className="mb-8">
-                      <ArtisticGalleryImages 
-                        category={selectedExhibitionData.tags.includes('folk art') ? 'folk' : 
-                                 selectedExhibitionData.tags.includes('children') ? 'children' :
-                                 selectedExhibitionData.tags.includes('environmental') || selectedExhibitionData.tags.includes('ecology') ? 'nature' : 
-                                 'contemporary'}
-                        autoPlay={true}
-                        interval={4000}
-                      />
+                      <div>
+                        <ArtisticGalleryImages 
+                          category={selectedExhibitionData.tags.includes('folk art') ? 'folk' : 
+                                  selectedExhibitionData.tags.includes('children') ? 'children' :
+                                  selectedExhibitionData.tags.includes('environmental') || selectedExhibitionData.tags.includes('ecology') ? 'nature' : 
+                                  'contemporary'}
+                          autoPlay={true}
+                          interval={4000}
+                        />
+                      </div>
                     </div>
                   </div>
                   
