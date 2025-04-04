@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowRight, Calendar, MapPin, Image, Book, GalleryHorizontal } from 'lucide-react';
+import { ArrowRight, Calendar, MapPin, Image, Book, GalleryHorizontal, Clock, Ticket, Users, Star } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import ArtisticGalleryImages from '@/components/ArtisticGalleryImages';
 
@@ -26,7 +25,17 @@ const exhibitions = [
           "https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=1200",
           "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=1200"
         ],
-        tags: ["environmental", "multimedia", "contemporary"]
+        tags: ["environmental", "multimedia", "contemporary"],
+        openingHours: "10:00 AM - 6:00 PM, Tuesday - Sunday",
+        ticketPrice: "৳300 (Free for students)",
+        upcomingTours: [
+          { date: "June 12, 2023", time: "3:00 PM", guide: "Curator's Tour" },
+          { date: "June 25, 2023", time: "11:00 AM", guide: "Artist-led Tour" }
+        ],
+        liveEvents: [
+          { name: "Artist Talk: Connecting with Nature", date: "June 15, 2023", time: "4:30 PM" },
+          { name: "Workshop: Environmental Art Techniques", date: "June 22, 2023", time: "2:00 PM" }
+        ]
       },
       {
         id: "ex2",
@@ -42,7 +51,17 @@ const exhibitions = [
           "https://images.unsplash.com/photo-1578926288207-32bacb6ee3c6?q=80&w=1200",
           "https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?q=80&w=1200"
         ],
-        tags: ["folk art", "heritage", "traditional"]
+        tags: ["folk art", "heritage", "traditional"],
+        openingHours: "11:00 AM - 7:00 PM, Daily",
+        ticketPrice: "৳250 (Free for members)",
+        upcomingTours: [
+          { date: "June 16, 2023", time: "2:00 PM", guide: "Folk Art History Tour" },
+          { date: "July 8, 2023", time: "3:30 PM", guide: "Artist's Perspective Tour" }
+        ],
+        liveEvents: [
+          { name: "Folk Music Performance", date: "June 20, 2023", time: "5:00 PM" },
+          { name: "Traditional Craft Workshop", date: "July 5, 2023", time: "1:00 PM" }
+        ]
       }
     ]
   },
@@ -181,15 +200,19 @@ const Exhibitions = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="max-w-3xl mx-auto"
           >
-            <h1 className="text-white heading-xl mb-6">Exhibitions</h1>
+            <div className="inline-block px-4 py-1 bg-santaran-amber/80 text-white text-sm font-medium rounded-full mb-4">
+              Now Showing
+            </div>
+            <h1 className="text-white heading-xl mb-6">Live Exhibitions</h1>
             <p className="text-white/90 text-xl md:text-2xl mb-8">
-              Immerse yourself in our curated exhibitions that showcase the intersection of 
+              Experience our curated exhibitions that showcase the intersection of 
               indigenous knowledge, ecology, and contemporary artistic practices.
             </p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-wrap gap-4 justify-center"
             >
               <button 
                 onClick={() => {
@@ -200,8 +223,22 @@ const Exhibitions = () => {
               >
                 View Exhibitions
               </button>
+              <button 
+                className="px-6 py-3 border-2 border-white text-white rounded-full hover:bg-white/10 transition-colors"
+              >
+                Book a Tour
+              </button>
             </motion.div>
           </motion.div>
+        </div>
+        
+        {/* Live indicator */}
+        <div className="absolute top-6 right-6 flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
+          <span className="flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-red-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+          </span>
+          <span className="text-white text-sm font-medium">Live Now</span>
         </div>
       </section>
       
@@ -260,6 +297,16 @@ const Exhibitions = () => {
                             </span>
                             <h3 className="text-white text-2xl font-display font-semibold">{exhibition.title}</h3>
                           </div>
+                          
+                          {category.category === "current" && (
+                            <div className="absolute top-4 right-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full flex items-center">
+                              <span className="flex h-2 w-2 mr-1">
+                                <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-red-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                              </span>
+                              Live Now
+                            </div>
+                          )}
                         </div>
                         
                         <CardContent className="pt-5">
@@ -272,6 +319,12 @@ const Exhibitions = () => {
                               <MapPin size={16} className="mr-2 text-santaran-teal" />
                               <span>{exhibition.location}</span>
                             </div>
+                            {category.category === "current" && exhibition.openingHours && (
+                              <div className="flex items-center">
+                                <Clock size={16} className="mr-2 text-santaran-teal" />
+                                <span>{exhibition.openingHours}</span>
+                              </div>
+                            )}
                           </div>
                           
                           <p className="text-gray-700 line-clamp-2 mb-4">{exhibition.description}</p>
@@ -374,6 +427,31 @@ const Exhibitions = () => {
                       </p>
                     </div>
                     
+                    {selectedExhibitionData.category === "current" && selectedExhibitionData.liveEvents && (
+                      <div className="mb-8">
+                        <h3 className="text-xl font-semibold mb-4 flex items-center">
+                          <Users className="mr-2 text-santaran-teal" size={20} />
+                          Upcoming Live Events
+                        </h3>
+                        <div className="space-y-4">
+                          {selectedExhibitionData.liveEvents?.map((event, index) => (
+                            <div key={index} className="bg-santaran-cream p-4 rounded-lg">
+                              <h4 className="font-semibold text-santaran-teal">{event.name}</h4>
+                              <div className="flex items-center mt-2 text-sm">
+                                <Calendar size={14} className="mr-1 text-santaran-terracotta" />
+                                <span className="mr-3">{event.date}</span>
+                                <Clock size={14} className="mr-1 text-santaran-terracotta" />
+                                <span>{event.time}</span>
+                              </div>
+                              <button className="mt-2 text-sm font-medium text-santaran-jade hover:text-santaran-terracotta transition-colors">
+                                Register to Attend
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
                     <h3 className="text-xl font-semibold mb-4 flex items-center">
                       <GalleryHorizontal className="mr-2 text-santaran-teal" size={20} />
                       Exhibition Gallery
@@ -413,6 +491,26 @@ const Exhibitions = () => {
                         </p>
                       </div>
                       
+                      {selectedExhibitionData.openingHours && (
+                        <div>
+                          <h4 className="font-medium text-santaran-teal">Opening Hours</h4>
+                          <p className="flex items-center">
+                            <Clock size={16} className="mr-2 text-gray-500" />
+                            {selectedExhibitionData.openingHours}
+                          </p>
+                        </div>
+                      )}
+                      
+                      {selectedExhibitionData.ticketPrice && (
+                        <div>
+                          <h4 className="font-medium text-santaran-teal">Admission</h4>
+                          <p className="flex items-center">
+                            <Ticket size={16} className="mr-2 text-gray-500" />
+                            {selectedExhibitionData.ticketPrice}
+                          </p>
+                        </div>
+                      )}
+                      
                       <div>
                         <h4 className="font-medium text-santaran-teal">Curator</h4>
                         <p>{selectedExhibitionData.curator}</p>
@@ -426,6 +524,25 @@ const Exhibitions = () => {
                           ))}
                         </ul>
                       </div>
+                      
+                      {selectedExhibitionData.upcomingTours && (
+                        <div>
+                          <h4 className="font-medium text-santaran-teal">Upcoming Tours</h4>
+                          <div className="space-y-2 mt-2">
+                            {selectedExhibitionData.upcomingTours.map((tour, index) => (
+                              <div key={index} className="text-sm bg-white p-2 rounded border border-gray-100">
+                                <div className="font-medium">{tour.guide}</div>
+                                <div className="flex items-center mt-1 text-gray-600">
+                                  <Calendar size={12} className="mr-1" />
+                                  <span className="mr-2">{tour.date}</span>
+                                  <Clock size={12} className="mr-1" />
+                                  <span>{tour.time}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                       
                       <div>
                         <h4 className="font-medium text-santaran-teal">Tags</h4>
@@ -445,8 +562,30 @@ const Exhibitions = () => {
                         Download Exhibition Catalog
                       </button>
                       
-                      <button className="w-full bg-santaran-terracotta text-white py-3 rounded-lg hover:bg-santaran-terracotta/90 transition-colors">
+                      <button className="w-full bg-santaran-terracotta text-white py-3 rounded-lg hover:bg-santaran-terracotta/90 transition-colors flex justify-center items-center">
+                        <Ticket className="mr-2" size={18} />
+                        Book Tickets Now
+                      </button>
+                      
+                      <button className="w-full border border-santaran-jade text-santaran-jade py-3 rounded-lg hover:bg-santaran-jade/10 transition-colors">
                         Plan Your Visit
+                      </button>
+                    </div>
+                    
+                    <div className="mt-8 pt-6 border-t border-gray-200">
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="font-medium text-santaran-teal">Visitor Reviews</h4>
+                        <div className="flex items-center">
+                          <Star className="w-4 h-4 text-santaran-amber fill-santaran-amber" />
+                          <Star className="w-4 h-4 text-santaran-amber fill-santaran-amber" />
+                          <Star className="w-4 h-4 text-santaran-amber fill-santaran-amber" />
+                          <Star className="w-4 h-4 text-santaran-amber fill-santaran-amber" />
+                          <Star className="w-4 h-4 text-santaran-amber fill-santaran-amber/50" />
+                          <span className="ml-1 text-sm font-medium">4.8</span>
+                        </div>
+                      </div>
+                      <button className="w-full border border-gray-300 text-gray-600 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm">
+                        Read All 24 Reviews
                       </button>
                     </div>
                   </div>

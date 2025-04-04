@@ -55,7 +55,8 @@ const YearlyOutcomeSection = () => {
             {/* Gallery component */}
             <div className="rounded-lg overflow-hidden shadow-xl">
               <div>
-                <ArtisticGalleryImages category="mixed" autoPlay={true} interval={5000} />
+                {/* Changed "mixed" to "contemporary" which is a valid category */}
+                <ArtisticGalleryImages category="contemporary" autoPlay={true} interval={5000} />
               </div>
             </div>
             
