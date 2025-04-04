@@ -348,6 +348,84 @@ const Exhibitions = () => {
                 Past
               </TabsTrigger>
             </TabsList>
+            
+            {/* IMPORTANT FIX: Moving TabsContent inside the Tabs component */}
+            <div className="mt-8 w-full">
+              <TabsContent value="current" className="mt-0">
+                {exhibitionsToShow.length === 0 ? (
+                  <div className="text-center py-16">
+                    <p className="text-gray-500">No exhibitions match your filter criteria.</p>
+                    <Button 
+                      variant="link" 
+                      onClick={() => setSelectedTags([])}
+                      className="mt-2"
+                    >
+                      Clear filters
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {exhibitionsToShow.map((exhibition) => (
+                      <ExhibitionCard 
+                        key={exhibition.id} 
+                        exhibition={exhibition}
+                        onClick={() => handleExhibitionClick(exhibition)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </TabsContent>
+              
+              <TabsContent value="upcoming" className="mt-0">
+                {exhibitionsToShow.length === 0 ? (
+                  <div className="text-center py-16">
+                    <p className="text-gray-500">No exhibitions match your filter criteria.</p>
+                    <Button 
+                      variant="link" 
+                      onClick={() => setSelectedTags([])}
+                      className="mt-2"
+                    >
+                      Clear filters
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {exhibitionsToShow.map((exhibition) => (
+                      <ExhibitionCard 
+                        key={exhibition.id} 
+                        exhibition={exhibition}
+                        onClick={() => handleExhibitionClick(exhibition)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </TabsContent>
+              
+              <TabsContent value="past" className="mt-0">
+                {exhibitionsToShow.length === 0 ? (
+                  <div className="text-center py-16">
+                    <p className="text-gray-500">No exhibitions match your filter criteria.</p>
+                    <Button 
+                      variant="link" 
+                      onClick={() => setSelectedTags([])}
+                      className="mt-2"
+                    >
+                      Clear filters
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {exhibitionsToShow.map((exhibition) => (
+                      <ExhibitionCard 
+                        key={exhibition.id} 
+                        exhibition={exhibition}
+                        onClick={() => handleExhibitionClick(exhibition)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </TabsContent>
+            </div>
           </Tabs>
           
           {/* Filter by tags */}
@@ -383,31 +461,7 @@ const Exhibitions = () => {
           </Accordion>
         </div>
         
-        {/* Exhibition Cards */}
-        <TabsContent value={activeTab} className="mt-0">
-          {exhibitionsToShow.length === 0 ? (
-            <div className="text-center py-16">
-              <p className="text-gray-500">No exhibitions match your filter criteria.</p>
-              <Button 
-                variant="link" 
-                onClick={() => setSelectedTags([])}
-                className="mt-2"
-              >
-                Clear filters
-              </Button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {exhibitionsToShow.map((exhibition) => (
-                <ExhibitionCard 
-                  key={exhibition.id} 
-                  exhibition={exhibition}
-                  onClick={() => handleExhibitionClick(exhibition)}
-                />
-              ))}
-            </div>
-          )}
-        </TabsContent>
+        {/* REMOVED: The original TabsContent that was outside of Tabs */}
       </section>
       
       {/* Visit Information Section */}
