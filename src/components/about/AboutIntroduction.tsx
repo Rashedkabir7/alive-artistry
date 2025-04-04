@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion, MotionValue } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import AboutGallery from './AboutGallery';
 
 interface AboutIntroductionProps {
   y: MotionValue<number>;
