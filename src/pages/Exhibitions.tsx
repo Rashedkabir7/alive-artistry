@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -13,7 +12,6 @@ import ExhibitionCard from '@/components/exhibition/ExhibitionCard';
 import FeaturedExhibition from '@/components/exhibition/FeaturedExhibition';
 import { ExhibitionItem, ExhibitionCategory } from '@/types/exhibition';
 
-// Enhanced exhibitions data
 const exhibitions: ExhibitionCategory[] = [
   {
     category: "current",
@@ -32,7 +30,7 @@ const exhibitions: ExhibitionCategory[] = [
           "https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=1200",
           "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=1200",
           "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=1200",
-          "https://images.unsplash.com/photo-1578301978018-3c28368a712e?q=80&w=1200"
+          "https://images.unsplash.com/photo-1578018390158-3c28368a712e?q=80&w=1200"
         ],
         tags: ["environmental", "multimedia", "contemporary", "sustainability"],
         openingHours: "10:00 AM - 6:00 PM, Tuesday - Sunday",
@@ -235,19 +233,16 @@ const Exhibitions = () => {
 
   const filteredExhibitions = exhibitions.find(category => category.category === activeTab)?.items || [];
   
-  // Get all unique tags across the current category
   const allTags = Array.from(new Set(
     filteredExhibitions.flatMap(exhibition => exhibition.tags)
   ));
   
-  // Filter exhibitions by selected tags if any are selected
   const exhibitionsToShow = selectedTags.length > 0 
     ? filteredExhibitions.filter(ex => 
         ex.tags.some(tag => selectedTags.includes(tag))
       )
     : filteredExhibitions;
   
-  // Find a featured exhibition if available
   const featuredExhibition = filteredExhibitions.find(ex => ex.featured);
 
   const handleExhibitionClick = (exhibition: ExhibitionItem) => {
@@ -267,39 +262,39 @@ const Exhibitions = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       
-      {/* Hero Section with Spiral Background */}
-      <section 
-        className="relative flex items-center justify-center py-20 md:py-32"
-        style={{ 
-          backgroundImage: 'url(public/lovable-uploads/b87a6f13-5cb6-4d05-9c71-ef0e5d753383.png)', 
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60"></div>
+      <section className="relative">
+        <div className="absolute inset-0 overflow-hidden">
+          <img 
+            src="/lovable-uploads/0e3087bd-7bed-4576-aa7e-5d71c02efdca.png"
+            alt="Exhibition hall with spiral ceiling"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
         
-        <div className="container mx-auto px-4 z-10 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-display text-white mb-5"
-          >
-            Exhibitions
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto"
-          >
-            Explore our curated exhibitions showcasing the intersection of 
-            indigenous knowledge, ecology, and contemporary art practices.
-          </motion.p>
+        <div className="relative container mx-auto px-4 py-24 md:py-32 lg:py-40">
+          <div className="text-center">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-display text-white mb-5"
+            >
+              Exhibitions
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto"
+            >
+              Explore our curated exhibitions showcasing the intersection of 
+              indigenous knowledge, ecology, and contemporary art practices.
+            </motion.p>
+          </div>
         </div>
       </section>
       
-      {/* Exhibition Information Banner */}
       <div className="bg-santaran-cream py-4">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -314,7 +309,6 @@ const Exhibitions = () => {
         </div>
       </div>
       
-      {/* Featured Exhibition (if available) */}
       {featuredExhibition && (
         <section className="pt-8 pb-4 px-4 container mx-auto">
           <FeaturedExhibition 
@@ -324,7 +318,6 @@ const Exhibitions = () => {
         </section>
       )}
       
-      {/* Exhibition Tabs */}
       <section className="py-8 px-4 container mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <Tabs defaultValue="current" value={activeTab} onValueChange={setActiveTab}>
@@ -349,7 +342,6 @@ const Exhibitions = () => {
               </TabsTrigger>
             </TabsList>
             
-            {/* IMPORTANT FIX: Moving TabsContent inside the Tabs component */}
             <div className="mt-8 w-full">
               <TabsContent value="current" className="mt-0">
                 {exhibitionsToShow.length === 0 ? (
@@ -428,7 +420,6 @@ const Exhibitions = () => {
             </div>
           </Tabs>
           
-          {/* Filter by tags */}
           <Accordion type="single" collapsible className="w-full md:w-auto">
             <AccordionItem value="filter" className="border-none">
               <AccordionTrigger className="py-2 px-4 bg-gray-100 rounded-lg hover:bg-gray-200 text-sm">
@@ -460,11 +451,8 @@ const Exhibitions = () => {
             </AccordionItem>
           </Accordion>
         </div>
-        
-        {/* REMOVED: The original TabsContent that was outside of Tabs */}
       </section>
       
-      {/* Visit Information Section */}
       <section className="bg-gradient-to-r from-santaran-cream/50 to-white py-12 mt-8">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -489,7 +477,6 @@ const Exhibitions = () => {
         </div>
       </section>
       
-      {/* Exhibition Detail Modal */}
       {selectedExhibition && (
         <ExhibitionDetailModal 
           exhibition={selectedExhibition}
