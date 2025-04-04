@@ -93,12 +93,14 @@ const TestimonialsSection = () => {
               <button 
                 onClick={prevTestimonial}
                 className="w-10 h-10 rounded-full border border-santaran-teal text-santaran-teal hover:bg-santaran-teal hover:text-white transition-colors flex items-center justify-center"
+                aria-label="Previous testimonial"
               >
                 <ArrowLeft size={18} />
               </button>
               <button 
                 onClick={nextTestimonial}
                 className="w-10 h-10 rounded-full border border-santaran-teal text-santaran-teal hover:bg-santaran-teal hover:text-white transition-colors flex items-center justify-center"
+                aria-label="Next testimonial"
               >
                 <ArrowRight size={18} />
               </button>

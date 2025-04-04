@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArtisticArrow from './ArtisticArrow';
@@ -186,6 +187,7 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
           >
             <ArtisticArrow direction="left" size="sm" />
           </motion.button>
+          
           <motion.button 
             onClick={goToNext}
             className="p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transform transition-transform hover:scale-110 pointer-events-auto"
