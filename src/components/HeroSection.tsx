@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownCircle, Circle, Star, Sun, Sparkles, Leaf, Palette } from 'lucide-react';
@@ -146,7 +147,7 @@ const HeroSection: React.FC = () => {
         transition={{ 
           duration: 2.5,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut"
         }}
       >
@@ -163,7 +164,7 @@ const HeroSection: React.FC = () => {
         transition={{ 
           duration: 4,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut"
         }}
       >
@@ -179,7 +180,7 @@ const HeroSection: React.FC = () => {
         transition={{ 
           duration: 2,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut",
           delay: 1
         }}
@@ -197,7 +198,7 @@ const HeroSection: React.FC = () => {
         transition={{ 
           duration: 3,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut",
           delay: 2
         }}
@@ -215,7 +216,7 @@ const HeroSection: React.FC = () => {
         transition={{ 
           duration: 3.5,
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: "reverse",
           ease: "easeInOut",
           delay: 1.5
         }}
@@ -245,14 +246,16 @@ const HeroSection: React.FC = () => {
                 transition={{ delay: 0.8, duration: 0.5 }}
               />
               
-              <AnimatedHeading
-                text="Art for Dignifying Life"
-                tag="h1" 
-                className="heading-xl mb-6 relative font-display"
-                color="text-santaran-terracotta"
-                animation="paint"
-                duration={1.5}
-              />
+              <div>
+                <AnimatedHeading
+                  text="Art for Dignifying Life"
+                  tag="h1" 
+                  className="heading-xl mb-6 relative font-display"
+                  color="text-santaran-terracotta"
+                  animation="paint"
+                  duration={1.5}
+                />
+              </div>
               
               <motion.p 
                 className="font-display text-xl italic text-santaran-brown"
@@ -346,7 +349,7 @@ const HeroSection: React.FC = () => {
                 transition={{ 
                   duration: 2, 
                   repeat: Infinity,
-                  repeatType: "reverse" as const,
+                  repeatType: "reverse",
                   ease: "easeInOut"
                 }}
               >
@@ -364,7 +367,7 @@ const HeroSection: React.FC = () => {
           transition={{ 
             duration: 1, 
             repeat: Infinity,
-            repeatType: "reverse" as const,
+            repeatType: "reverse",
             ease: "easeInOut"
           }}
         >
