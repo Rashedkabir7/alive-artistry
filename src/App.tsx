@@ -14,7 +14,16 @@ import './App.css';
 function App() {
   return (
     <>
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <Suspense 
+        fallback={
+          <div className="min-h-screen flex items-center justify-center bg-santaran-cream">
+            <div className="text-center">
+              <div className="w-16 h-16 border-4 border-santaran-teal border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-santaran-teal text-lg">Loading exhibitions...</p>
+            </div>
+          </div>
+        }
+      >
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
