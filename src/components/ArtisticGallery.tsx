@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArtisticArrow from './ArtisticArrow';
@@ -28,7 +27,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
   const [isAutoPlaying, setIsAutoPlaying] = useState(autoPlay);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Clear the timer on component unmount
   useEffect(() => {
     return () => {
       if (timerRef.current) {
@@ -37,23 +35,18 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
     };
   }, []);
 
-  // Handle auto-play functionality
   useEffect(() => {
-    // If no images or auto-play is off, don't set timer
     if (images.length <= 1 || !isAutoPlaying) {
       return;
     }
     
-    // Mark component as ready
     setIsReady(true);
     
-    // Use the ref to store the timer ID
     timerRef.current = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, interval);
     
-    // Clean up on component unmount or dependency changes
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current);
@@ -62,7 +55,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
     };
   }, [isAutoPlaying, interval, images.length, images]);
 
-  // Effect to set component as ready once images are available
   useEffect(() => {
     if (images.length > 0) {
       setIsReady(true);
@@ -72,7 +64,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
   const goToPrevious = useCallback(() => {
     if (images.length <= 1) return;
     
-    // Pause autoplay temporarily when user interacts
     if (isAutoPlaying) {
       setIsAutoPlaying(false);
       setTimeout(() => setIsAutoPlaying(true), interval! * 2);
@@ -85,7 +76,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
   const goToNext = useCallback(() => {
     if (images.length <= 1) return;
     
-    // Pause autoplay temporarily when user interacts
     if (isAutoPlaying) {
       setIsAutoPlaying(false);
       setTimeout(() => setIsAutoPlaying(true), interval! * 2);
@@ -95,7 +85,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   }, [images.length, isAutoPlaying, interval]);
 
-  // Enhanced animation variants with more dynamic transitions
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? '100%' : '-100%',
@@ -108,7 +97,7 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1], // Custom bezier curve for smoother animation
+        ease: [0.16, 1, 0.3, 1],
       }
     },
     exit: (direction: number) => ({
@@ -121,7 +110,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
     }),
   };
 
-  // If no images, show a placeholder
   if (images.length === 0) {
     return (
       <div className={`relative overflow-hidden ${className}`}>
@@ -130,7 +118,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
     );
   }
 
-  // If not ready, show a loading placeholder
   if (!isReady) {
     return (
       <div className={`relative overflow-hidden ${className}`}>
@@ -152,10 +139,8 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
             exit="exit"
             className="absolute inset-0 w-full h-full"
           >
-            {/* Fancy overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 z-10"></div>
             
-            {/* Dynamic animated pattern overlay */}
             <motion.div 
               className="absolute inset-0 opacity-20 z-0 pointer-events-none"
               initial={{ backgroundPosition: '0% 0%' }}
@@ -168,14 +153,12 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
               }}
             />
             
-            {/* Main image */}
             <img
               src={images[currentIndex].src}
               alt={images[currentIndex].alt}
               className="w-full h-full object-cover"
             />
             
-            {/* Caption with enhanced animation */}
             {images[currentIndex].caption && (
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end z-20">
                 <motion.p 
@@ -192,7 +175,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
         </AnimatePresence>
       </div>
 
-      {/* Navigation buttons - only show if more than one image */}
       {images.length > 1 && (
         <div className="absolute top-1/2 left-0 right-0 flex justify-between px-4 transform -translate-y-1/2 pointer-events-none">
           <motion.button 
@@ -216,7 +198,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
         </div>
       )}
 
-      {/* Dots indicator - only show if more than one image */}
       {images.length > 1 && (
         <div className="flex justify-center space-x-2 mt-4">
           {images.map((_, index) => (
@@ -226,7 +207,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
                 setDirection(index > currentIndex ? 1 : -1);
                 setCurrentIndex(index);
                 
-                // Pause autoplay temporarily when user interacts
                 if (isAutoPlaying) {
                   setIsAutoPlaying(false);
                   setTimeout(() => setIsAutoPlaying(true), interval! * 2);
@@ -251,7 +231,6 @@ const ArtisticGallery: React.FC<ArtisticGalleryProps> = ({
         </div>
       )}
       
-      {/* Auto-play toggle button */}
       {images.length > 1 && (
         <motion.button
           onClick={() => setIsAutoPlaying(!isAutoPlaying)}

@@ -423,7 +423,6 @@ const About = () => {
 
           <div className="mt-16 text-center">
             <Button 
-              size="lg" 
               variant="outline"
               onClick={() => {
                 document.getElementById('our-history')?.scrollIntoView({ behavior: 'smooth' });
@@ -575,9 +574,9 @@ const About = () => {
             </p>
             
             <div className="mt-10">
-              <Link to="/about#team">
-                <Button>Meet Our Team</Button>
-              </Link>
+              <Button asChild>
+                <Link to="#team">Meet Our Team</Link>
+              </Button>
             </div>
           </motion.div>
         </div>
@@ -630,10 +629,7 @@ const About = () => {
           </div>
           
           <div className="text-center mt-16">
-            <Button 
-              variant="outline" 
-              asChild
-            >
+            <Button asChild variant="outline">
               <Link to="/contact">Connect With Us</Link>
             </Button>
           </div>
