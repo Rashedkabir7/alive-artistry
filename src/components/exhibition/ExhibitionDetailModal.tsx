@@ -3,6 +3,7 @@ import React from 'react';
 import { X, Calendar, Clock, User, MapPin, Tag, Ticket, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ExhibitionItem } from '@/types/exhibition';
 
 interface ExhibitionDetailModalProps {
@@ -112,51 +113,65 @@ const ExhibitionDetailModal = ({ exhibition, isOpen, onClose }: ExhibitionDetail
                     </div>
                   )}
                   
-                  {/* Live events */}
-                  {exhibition.liveEvents && exhibition.liveEvents.length > 0 && (
-                    <div className="mb-6">
-                      <h4 className="text-lg font-medium mb-3">
-                        <span className="mr-2">Live Events</span>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                          <span className="w-2 h-2 mr-1 bg-red-500 rounded-full animate-pulse"></span>
-                          Live
-                        </span>
-                      </h4>
-                      <div className="space-y-3">
-                        {exhibition.liveEvents.map((event, i) => (
-                          <div key={i} className="p-3 border border-santaran-amber/20 rounded-lg bg-amber-50">
-                            <div className="font-medium">{event.name}</div>
-                            <div className="text-sm flex items-center mt-1">
-                              <Calendar size={14} className="mr-1 text-santaran-amber" />
-                              <span className="mr-3">{event.date}</span>
-                              <Clock size={14} className="mr-1 text-santaran-amber" />
-                              <span>{event.time}</span>
-                            </div>
+                  {/* Additional content with proper tabs */}
+                  <Tabs defaultValue="events" className="w-full">
+                    <TabsList className="grid grid-cols-2 w-full mb-4">
+                      <TabsTrigger value="events">Live Events</TabsTrigger>
+                      <TabsTrigger value="tours">Guided Tours</TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="events">
+                      {exhibition.liveEvents && exhibition.liveEvents.length > 0 ? (
+                        <div className="mb-6">
+                          <h4 className="text-lg font-medium mb-3">
+                            <span className="mr-2">Live Events</span>
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                              <span className="w-2 h-2 mr-1 bg-red-500 rounded-full animate-pulse"></span>
+                              Live
+                            </span>
+                          </h4>
+                          <div className="space-y-3">
+                            {exhibition.liveEvents.map((event, i) => (
+                              <div key={i} className="p-3 border border-santaran-amber/20 rounded-lg bg-amber-50">
+                                <div className="font-medium">{event.name}</div>
+                                <div className="text-sm flex items-center mt-1">
+                                  <Calendar size={14} className="mr-1 text-santaran-amber" />
+                                  <span className="mr-3">{event.date}</span>
+                                  <Clock size={14} className="mr-1 text-santaran-amber" />
+                                  <span>{event.time}</span>
+                                </div>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Upcoming tours */}
-                  {exhibition.upcomingTours && exhibition.upcomingTours.length > 0 && (
-                    <div className="mb-6">
-                      <h4 className="text-lg font-medium mb-3">Upcoming Guided Tours</h4>
-                      <div className="space-y-3">
-                        {exhibition.upcomingTours.map((tour, i) => (
-                          <div key={i} className="p-3 border border-santaran-jade/20 rounded-lg bg-teal-50">
-                            <div className="font-medium">{tour.guide}</div>
-                            <div className="text-sm flex items-center mt-1">
-                              <Calendar size={14} className="mr-1 text-santaran-jade" />
-                              <span className="mr-3">{tour.date}</span>
-                              <Clock size={14} className="mr-1 text-santaran-jade" />
-                              <span>{tour.time}</span>
-                            </div>
+                        </div>
+                      ) : (
+                        <p className="text-gray-500 italic">No live events scheduled for this exhibition.</p>
+                      )}
+                    </TabsContent>
+                    
+                    <TabsContent value="tours">
+                      {exhibition.upcomingTours && exhibition.upcomingTours.length > 0 ? (
+                        <div className="mb-6">
+                          <h4 className="text-lg font-medium mb-3">Upcoming Guided Tours</h4>
+                          <div className="space-y-3">
+                            {exhibition.upcomingTours.map((tour, i) => (
+                              <div key={i} className="p-3 border border-santaran-jade/20 rounded-lg bg-teal-50">
+                                <div className="font-medium">{tour.guide}</div>
+                                <div className="text-sm flex items-center mt-1">
+                                  <Calendar size={14} className="mr-1 text-santaran-jade" />
+                                  <span className="mr-3">{tour.date}</span>
+                                  <Clock size={14} className="mr-1 text-santaran-jade" />
+                                  <span>{tour.time}</span>
+                                </div>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                        </div>
+                      ) : (
+                        <p className="text-gray-500 italic">No guided tours available for this exhibition.</p>
+                      )}
+                    </TabsContent>
+                  </Tabs>
                 </div>
                 
                 {/* Sidebar info */}
