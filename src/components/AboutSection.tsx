@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Palette } from 'lucide-react';
 import AnimatedHeading from '@/components/AnimatedHeading';
 import AboutIntroduction from '@/components/about/AboutIntroduction';
+// Make sure AboutGallery is imported correctly from the right path
 import AboutGallery from '@/components/about/AboutGallery';
 import AboutPhilosophy from '@/components/about/AboutPhilosophy';
 import AboutCoreValues from '@/components/about/AboutCoreValues';
