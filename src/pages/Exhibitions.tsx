@@ -7,7 +7,42 @@ import { ArrowRight, Calendar, MapPin, Image, Book, GalleryHorizontal, Clock, Ti
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import ArtisticGalleryImages from '@/components/ArtisticGalleryImages';
 
-const exhibitions = [
+interface ExhibitionTour {
+  date: string;
+  time: string;
+  guide: string;
+}
+
+interface ExhibitionEvent {
+  name: string;
+  date: string;
+  time: string;
+}
+
+interface ExhibitionItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  location: string;
+  image: string;
+  description: string;
+  curator: string;
+  artists: string[];
+  additionalImages: string[];
+  tags: string[];
+  openingHours?: string;
+  ticketPrice?: string;
+  upcomingTours?: ExhibitionTour[];
+  liveEvents?: ExhibitionEvent[];
+}
+
+interface ExhibitionCategory {
+  category: string;
+  items: ExhibitionItem[];
+}
+
+const exhibitions: ExhibitionCategory[] = [
   {
     category: "current",
     items: [
@@ -161,7 +196,7 @@ const Exhibitions = () => {
   const [selectedExhibition, setSelectedExhibition] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<string>("current");
   
-  const getExhibitionById = (id: string) => {
+  const getExhibitionById = (id: string): ExhibitionItem | null => {
     for (const category of exhibitions) {
       const found = category.items.find(item => item.id === id);
       if (found) return found;
@@ -427,14 +462,14 @@ const Exhibitions = () => {
                       </p>
                     </div>
                     
-                    {selectedExhibitionData.category === "current" && selectedExhibitionData.liveEvents && (
+                    {selectedExhibitionData.liveEvents && selectedExhibitionData.liveEvents.length > 0 && (
                       <div className="mb-8">
                         <h3 className="text-xl font-semibold mb-4 flex items-center">
                           <Users className="mr-2 text-santaran-teal" size={20} />
                           Upcoming Live Events
                         </h3>
                         <div className="space-y-4">
-                          {selectedExhibitionData.liveEvents?.map((event, index) => (
+                          {selectedExhibitionData.liveEvents.map((event, index) => (
                             <div key={index} className="bg-santaran-cream p-4 rounded-lg">
                               <h4 className="font-semibold text-santaran-teal">{event.name}</h4>
                               <div className="flex items-center mt-2 text-sm">
@@ -525,7 +560,7 @@ const Exhibitions = () => {
                         </ul>
                       </div>
                       
-                      {selectedExhibitionData.upcomingTours && (
+                      {selectedExhibitionData.upcomingTours && selectedExhibitionData.upcomingTours.length > 0 && (
                         <div>
                           <h4 className="font-medium text-santaran-teal">Upcoming Tours</h4>
                           <div className="space-y-2 mt-2">
