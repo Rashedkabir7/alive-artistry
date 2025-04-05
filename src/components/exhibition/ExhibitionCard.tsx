@@ -12,6 +12,13 @@ interface ExhibitionCardProps {
 }
 
 const ExhibitionCard = ({ exhibition, onClick }: ExhibitionCardProps) => {
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Prevent click propagation when clicking the button
+    if (!(e.target as HTMLElement).closest('button')) {
+      onClick();
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -19,7 +26,10 @@ const ExhibitionCard = ({ exhibition, onClick }: ExhibitionCardProps) => {
       transition={{ duration: 0.5 }}
       className="h-full"
     >
-      <Card className="overflow-hidden group h-full border-0 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={onClick}>
+      <Card 
+        className="overflow-hidden group h-full border-0 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" 
+        onClick={handleCardClick}
+      >
         <div className="relative h-60 md:h-72">
           <img 
             src={exhibition.image} 
