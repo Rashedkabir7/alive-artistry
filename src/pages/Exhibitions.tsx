@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -253,7 +252,6 @@ const Exhibitions = () => {
   const featuredExhibition = filteredExhibitions.find(ex => ex.featured);
 
   useEffect(() => {
-    // Create and set up ambient audio
     audioRef.current = new Audio('/ambient-gallery-sounds.mp3');
     audioRef.current.loop = true;
     audioRef.current.volume = 0.2;
@@ -441,7 +439,6 @@ const Exhibitions = () => {
             </TabsContent>
           )}
           
-          {/* Virtual Gallery */}
           <TabsContent value={activeTab} className="mt-0">
             {exhibitionsToShow.length === 0 ? (
               <div className="text-center py-16">
@@ -457,13 +454,8 @@ const Exhibitions = () => {
             ) : (
               <div className="virtual-gallery-container">
                 <div className="relative overflow-hidden">
-                  {/* Virtual gallery room lighting */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#f8f6f2]/0 to-[#f8f6f2] pointer-events-none z-20"></div>
-                  
-                  {/* Wall texture */}
                   <div className="absolute inset-0 bg-[url('/wall-texture.png')] opacity-10 mix-blend-overlay pointer-events-none z-0"></div>
-                  
-                  {/* Room navigation */}
                   <div className="absolute left-4 top-1/2 -translate-y-1/2 z-30">
                     <Button 
                       variant="outline" 
@@ -475,7 +467,6 @@ const Exhibitions = () => {
                       <ArrowLeftIcon />
                     </Button>
                   </div>
-                  
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 z-30">
                     <Button 
                       variant="outline" 
@@ -487,8 +478,6 @@ const Exhibitions = () => {
                       <ArrowRightIcon />
                     </Button>
                   </div>
-                  
-                  {/* Room indicator */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">
                     {Array.from({ length: ROOMS_COUNT }).map((_, idx) => (
                       <button 
@@ -509,8 +498,6 @@ const Exhibitions = () => {
                       />
                     ))}
                   </div>
-                  
-                  {/* Gallery wrapper */}
                   <div 
                     ref={galleryRef}
                     className="gallery-scroll-area overflow-x-auto snap-x snap-mandatory scrollbar-hide"
@@ -524,12 +511,9 @@ const Exhibitions = () => {
                           style={{ width: '100vw', maxWidth: '100%' }}
                         >
                           <div className="room-content h-full relative p-8 md:p-12 flex items-center">
-                            {/* Room label */}
                             <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-sm px-4 py-1 rounded-full text-sm shadow-sm">
                               Room {roomIdx + 1}
                             </div>
-                            
-                            {/* Gallery wall with artworks */}
                             <div className="gallery-wall w-full h-full flex justify-center items-center">
                               <div className="gallery-display grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 w-full max-w-7xl mx-auto">
                                 {exhibitionsToShow.slice(roomIdx * 3, (roomIdx + 1) * 3).map((exhibition, idx) => (
