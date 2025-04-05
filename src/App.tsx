@@ -10,6 +10,7 @@ import ProgramDetail from '@/pages/ProgramDetail';
 import NotFound from '@/pages/NotFound';
 import { Toaster } from '@/components/ui/toaster';
 import './App.css';
+import './components/exhibition/exhibition.css';
 
 function App() {
   return (

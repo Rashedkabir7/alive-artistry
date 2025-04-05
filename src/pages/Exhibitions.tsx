@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -6,11 +7,12 @@ import Footer from '../components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { InfoIcon, FilterIcon, CheckIcon } from 'lucide-react';
+import { InfoIcon, FilterIcon, CheckIcon, ArrowLeftIcon, ArrowRightIcon, VolumeIcon, Volume2Icon } from 'lucide-react';
 import ExhibitionDetailModal from '@/components/exhibition/ExhibitionDetailModal';
 import ExhibitionCard from '@/components/exhibition/ExhibitionCard';
 import FeaturedExhibition from '@/components/exhibition/FeaturedExhibition';
 import { ExhibitionItem, ExhibitionCategory } from '@/types/exhibition';
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const exhibitions: ExhibitionCategory[] = [
   {
@@ -230,6 +232,11 @@ const Exhibitions = () => {
   const [selectedExhibition, setSelectedExhibition] = useState<ExhibitionItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [isMuted, setIsMuted] = useState(true);
+  const [currentRoom, setCurrentRoom] = useState(0);
+  
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const filteredExhibitions = exhibitions.find(category => category.category === activeTab)?.items || [];
   
@@ -245,6 +252,33 @@ const Exhibitions = () => {
   
   const featuredExhibition = filteredExhibitions.find(ex => ex.featured);
 
+  useEffect(() => {
+    // Create and set up ambient audio
+    audioRef.current = new Audio('/ambient-gallery-sounds.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.2;
+    
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isMuted) {
+        audioRef.current.play().catch(() => {
+          console.log("Audio play prevented by browser policy");
+        });
+      } else {
+        audioRef.current.pause();
+      }
+      setIsMuted(!isMuted);
+    }
+  };
+
   const handleExhibitionClick = (exhibition: ExhibitionItem) => {
     setSelectedExhibition(exhibition);
     setIsModalOpen(true);
@@ -257,9 +291,27 @@ const Exhibitions = () => {
         : [...prev, tag]
     );
   };
+  
+  const ROOMS_COUNT = Math.ceil(exhibitionsToShow.length / 3);
+  
+  const navigateRoom = (direction: 'next' | 'prev') => {
+    if (direction === 'next' && currentRoom < ROOMS_COUNT - 1) {
+      setCurrentRoom(currentRoom + 1);
+    } else if (direction === 'prev' && currentRoom > 0) {
+      setCurrentRoom(currentRoom - 1);
+    }
+    
+    if (galleryRef.current) {
+      const roomWidth = galleryRef.current.clientWidth;
+      galleryRef.current.scrollTo({
+        left: (direction === 'next' ? currentRoom + 1 : currentRoom - 1) * roomWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-[#f8f6f2]">
       <Navbar />
       
       <section className="relative">
@@ -269,7 +321,7 @@ const Exhibitions = () => {
             alt="Exhibition hall with spiral ceiling"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
         </div>
         
         <div className="relative container mx-auto px-4 py-24 md:py-32 lg:py-40">
@@ -280,7 +332,7 @@ const Exhibitions = () => {
               transition={{ duration: 0.8 }}
               className="text-4xl md:text-5xl lg:text-6xl font-display text-white mb-5"
             >
-              Exhibitions
+              Virtual Exhibition
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -288,39 +340,38 @@ const Exhibitions = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto"
             >
-              Explore our curated exhibitions showcasing the intersection of 
-              indigenous knowledge, ecology, and contemporary art practices.
+              Step into our digital gallery and explore the artwork as if you were walking 
+              through an exhibition hall. Move between rooms and discover beautiful pieces.
             </motion.p>
           </div>
         </div>
       </section>
       
-      <div className="bg-santaran-cream py-4">
+      <div className="sticky top-0 z-30 bg-santaran-cream py-4 shadow-md backdrop-blur-md bg-white/80">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center">
               <InfoIcon size={20} className="text-santaran-vermilion mr-2" />
               <span className="text-sm">Visiting hours: Tuesday to Sunday, 10 AM - 6 PM. Free admission for students and members.</span>
             </div>
-            <Button size="sm" variant="outline">
-              Plan Your Visit
-            </Button>
+            
+            <div className="flex items-center gap-3">
+              <Button size="sm" variant="outline" onClick={toggleAudio}>
+                {isMuted ? <VolumeIcon size={16} /> : <Volume2Icon size={16} />}
+                {isMuted ? "Enable Sound" : "Mute Sound"}
+              </Button>
+              
+              <Button size="sm" variant="outline">
+                Plan Your Visit
+              </Button>
+            </div>
           </div>
         </div>
       </div>
       
-      {featuredExhibition && (
-        <section className="pt-8 pb-4 px-4 container mx-auto">
-          <FeaturedExhibition 
-            exhibition={featuredExhibition}
-            onClick={() => handleExhibitionClick(featuredExhibition)}
-          />
-        </section>
-      )}
-      
-      <section className="py-8 px-4 container mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-          <Tabs defaultValue="current" value={activeTab} onValueChange={setActiveTab}>
+      <div className="container mx-auto px-4 py-8">
+        <Tabs defaultValue="current" value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
             <TabsList className="border border-gray-200 bg-transparent rounded-full overflow-hidden">
               <TabsTrigger 
                 value="current" 
@@ -342,116 +393,171 @@ const Exhibitions = () => {
               </TabsTrigger>
             </TabsList>
             
-            <div className="mt-8 w-full">
-              <TabsContent value="current" className="mt-0">
-                {exhibitionsToShow.length === 0 ? (
-                  <div className="text-center py-16">
-                    <p className="text-gray-500">No exhibitions match your filter criteria.</p>
-                    <Button 
-                      variant="link" 
-                      onClick={() => setSelectedTags([])}
-                      className="mt-2"
-                    >
-                      Clear filters
-                    </Button>
+            <Accordion type="single" collapsible className="w-full md:w-auto">
+              <AccordionItem value="filter" className="border-none">
+                <AccordionTrigger className="py-2 px-4 bg-gray-100 rounded-lg hover:bg-gray-200 text-sm">
+                  <div className="flex items-center">
+                    <FilterIcon size={16} className="mr-2" /> 
+                    Filter Exhibitions
                   </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {exhibitionsToShow.map((exhibition) => (
-                      <ExhibitionCard 
-                        key={exhibition.id} 
-                        exhibition={exhibition}
-                        onClick={() => handleExhibitionClick(exhibition)}
-                      />
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="pt-3 flex flex-wrap gap-2">
+                    {allTags.map((tag) => (
+                      <button
+                        key={tag}
+                        onClick={() => toggleTag(tag)}
+                        className={`px-3 py-1 text-xs rounded-full flex items-center transition-colors ${
+                          selectedTags.includes(tag)
+                            ? 'bg-santaran-jade text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        {selectedTags.includes(tag) && (
+                          <CheckIcon size={12} className="mr-1" />
+                        )}
+                        {tag}
+                      </button>
                     ))}
                   </div>
-                )}
-              </TabsContent>
-              
-              <TabsContent value="upcoming" className="mt-0">
-                {exhibitionsToShow.length === 0 ? (
-                  <div className="text-center py-16">
-                    <p className="text-gray-500">No exhibitions match your filter criteria.</p>
-                    <Button 
-                      variant="link" 
-                      onClick={() => setSelectedTags([])}
-                      className="mt-2"
-                    >
-                      Clear filters
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {exhibitionsToShow.map((exhibition) => (
-                      <ExhibitionCard 
-                        key={exhibition.id} 
-                        exhibition={exhibition}
-                        onClick={() => handleExhibitionClick(exhibition)}
-                      />
-                    ))}
-                  </div>
-                )}
-              </TabsContent>
-              
-              <TabsContent value="past" className="mt-0">
-                {exhibitionsToShow.length === 0 ? (
-                  <div className="text-center py-16">
-                    <p className="text-gray-500">No exhibitions match your filter criteria.</p>
-                    <Button 
-                      variant="link" 
-                      onClick={() => setSelectedTags([])}
-                      className="mt-2"
-                    >
-                      Clear filters
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {exhibitionsToShow.map((exhibition) => (
-                      <ExhibitionCard 
-                        key={exhibition.id} 
-                        exhibition={exhibition}
-                        onClick={() => handleExhibitionClick(exhibition)}
-                      />
-                    ))}
-                  </div>
-                )}
-              </TabsContent>
-            </div>
-          </Tabs>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
           
-          <Accordion type="single" collapsible className="w-full md:w-auto">
-            <AccordionItem value="filter" className="border-none">
-              <AccordionTrigger className="py-2 px-4 bg-gray-100 rounded-lg hover:bg-gray-200 text-sm">
-                <div className="flex items-center">
-                  <FilterIcon size={16} className="mr-2" /> 
-                  Filter Exhibitions
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                <div className="pt-3 flex flex-wrap gap-2">
-                  {allTags.map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => toggleTag(tag)}
-                      className={`px-3 py-1 text-xs rounded-full flex items-center transition-colors ${
-                        selectedTags.includes(tag)
-                          ? 'bg-santaran-jade text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
+          {featuredExhibition && (
+            <TabsContent value="current" className="mt-0">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                className="mb-12"
+              >
+                <FeaturedExhibition 
+                  exhibition={featuredExhibition}
+                  onClick={() => handleExhibitionClick(featuredExhibition)}
+                />
+              </motion.div>
+            </TabsContent>
+          )}
+          
+          {/* Virtual Gallery */}
+          <TabsContent value={activeTab} className="mt-0">
+            {exhibitionsToShow.length === 0 ? (
+              <div className="text-center py-16">
+                <p className="text-gray-500">No exhibitions match your filter criteria.</p>
+                <Button 
+                  variant="link" 
+                  onClick={() => setSelectedTags([])}
+                  className="mt-2"
+                >
+                  Clear filters
+                </Button>
+              </div>
+            ) : (
+              <div className="virtual-gallery-container">
+                <div className="relative overflow-hidden">
+                  {/* Virtual gallery room lighting */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#f8f6f2]/0 to-[#f8f6f2] pointer-events-none z-20"></div>
+                  
+                  {/* Wall texture */}
+                  <div className="absolute inset-0 bg-[url('/wall-texture.png')] opacity-10 mix-blend-overlay pointer-events-none z-0"></div>
+                  
+                  {/* Room navigation */}
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 z-30">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      className="rounded-full bg-white/70 backdrop-blur-sm hover:bg-white"
+                      onClick={() => navigateRoom('prev')}
+                      disabled={currentRoom === 0}
                     >
-                      {selectedTags.includes(tag) && (
-                        <CheckIcon size={12} className="mr-1" />
-                      )}
-                      {tag}
-                    </button>
-                  ))}
+                      <ArrowLeftIcon />
+                    </Button>
+                  </div>
+                  
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 z-30">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      className="rounded-full bg-white/70 backdrop-blur-sm hover:bg-white"
+                      onClick={() => navigateRoom('next')}
+                      disabled={currentRoom === ROOMS_COUNT - 1}
+                    >
+                      <ArrowRightIcon />
+                    </Button>
+                  </div>
+                  
+                  {/* Room indicator */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                    {Array.from({ length: ROOMS_COUNT }).map((_, idx) => (
+                      <button 
+                        key={idx}
+                        className={`w-3 h-3 rounded-full transition-all ${
+                          currentRoom === idx ? 'bg-santaran-jade scale-125' : 'bg-gray-300 hover:bg-gray-400'
+                        }`}
+                        onClick={() => {
+                          setCurrentRoom(idx);
+                          if (galleryRef.current) {
+                            const roomWidth = galleryRef.current.clientWidth;
+                            galleryRef.current.scrollTo({
+                              left: idx * roomWidth,
+                              behavior: 'smooth'
+                            });
+                          }
+                        }}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Gallery wrapper */}
+                  <div 
+                    ref={galleryRef}
+                    className="gallery-scroll-area overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+                    style={{ scrollbarWidth: 'none' }}
+                  >
+                    <div className="flex w-max">
+                      {Array.from({ length: ROOMS_COUNT }).map((_, roomIdx) => (
+                        <div 
+                          key={roomIdx}
+                          className="virtual-room h-[80vh] min-h-[600px] snap-center"
+                          style={{ width: '100vw', maxWidth: '100%' }}
+                        >
+                          <div className="room-content h-full relative p-8 md:p-12 flex items-center">
+                            {/* Room label */}
+                            <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-sm px-4 py-1 rounded-full text-sm shadow-sm">
+                              Room {roomIdx + 1}
+                            </div>
+                            
+                            {/* Gallery wall with artworks */}
+                            <div className="gallery-wall w-full h-full flex justify-center items-center">
+                              <div className="gallery-display grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 w-full max-w-7xl mx-auto">
+                                {exhibitionsToShow.slice(roomIdx * 3, (roomIdx + 1) * 3).map((exhibition, idx) => (
+                                  <ExhibitionCard 
+                                    key={exhibition.id} 
+                                    exhibition={exhibition}
+                                    onClick={() => handleExhibitionClick(exhibition)}
+                                    index={idx}
+                                    style={{
+                                      height: '100%',
+                                      minHeight: '400px',
+                                      maxHeight: '70vh'
+                                    }}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </section>
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
+      </div>
       
       <section className="bg-gradient-to-r from-santaran-cream/50 to-white py-12 mt-8">
         <div className="container mx-auto px-4">
@@ -484,6 +590,30 @@ const Exhibitions = () => {
           onClose={() => setIsModalOpen(false)}
         />
       )}
+      
+      <style jsx global>{`
+        .gallery-scroll-area::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .virtual-room {
+          perspective: 1500px;
+          transform-style: preserve-3d;
+        }
+        
+        .exhibition-frame {
+          transform-style: preserve-3d;
+          transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .exhibition-frame:hover {
+          transform: translateZ(10px);
+        }
+        
+        .exhibition-artwork {
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 1px 8px rgba(0,0,0,0.1);
+        }
+      `}</style>
       
       <div className="flex-grow"></div>
       
