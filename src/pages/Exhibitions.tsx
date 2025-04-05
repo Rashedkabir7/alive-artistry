@@ -575,7 +575,7 @@ const Exhibitions = () => {
         />
       )}
       
-      <style jsx global>{`
+      <style>{`
         .gallery-scroll-area::-webkit-scrollbar {
           display: none;
         }
