@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -576,10 +577,12 @@ const Exhibitions = () => {
       )}
       
       <style>{`
+        /* Scrollbar styling */
         .gallery-scroll-area::-webkit-scrollbar {
           display: none;
         }
         
+        /* Virtual room perspective and transition effects */
         .virtual-room {
           perspective: 1500px;
           transform-style: preserve-3d;
@@ -598,8 +601,6 @@ const Exhibitions = () => {
           box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 1px 8px rgba(0,0,0,0.1);
         }
       `}</style>
-      
-      <div className="flex-grow"></div>
       
       <Footer />
     </div>
