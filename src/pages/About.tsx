@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ChevronDown, Users, Award, Calendar, MapPin, Image, Palette, BookOpen, Heart, Leaf, Feather } from 'lucide-react';
@@ -110,7 +109,7 @@ const About = () => {
       name: "Abdul Hakim",
       role: "Master Artisan & Elder",
       bio: "Keeper of forgotten techniques and guardian of artistic heritage, Abdul's hands carry the memory of generations of craftspeople.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300"
+      image: "https://images.unsplash.com/photo-1507003211169-0d0ff7134303?q=80&w=300"
     }
   ];
   
@@ -395,7 +394,6 @@ const About = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
                 <div className="relative overflow-hidden rounded-lg shadow-lg h-80">
-                  {/* Background image */}
                   <div className="absolute inset-0">
                     <img 
                       src={value.image} 
@@ -405,7 +403,6 @@ const About = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   </div>
                   
-                  {/* Content */}
                   <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                     <div className="mb-3">
                       <span className={`inline-block p-3 rounded-full bg-white/20 backdrop-blur-sm ${value.color}`}>
@@ -476,9 +473,9 @@ const About = () => {
           </div>
           
           <div className="mt-10 text-center">
-            <Button asChild>
-              <Link to="/gallery">Experience Our Gallery</Link>
-            </Button>
+            <Link to="/gallery">
+              <Button>Experience Our Gallery</Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -501,7 +498,6 @@ const About = () => {
           </motion.div>
           
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-santaran-vermilion via-santaran-amber to-santaran-jade"></div>
             
             <div className="space-y-24">
@@ -514,7 +510,6 @@ const About = () => {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  {/* Year bubble */}
                   <motion.div 
                     className="absolute left-1/2 transform -translate-x-1/2 z-10 bg-white border-4 border-santaran-amber rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
                     whileHover={{ scale: 1.1 }}
@@ -523,7 +518,6 @@ const About = () => {
                     <span className="text-santaran-teal font-bold">{milestone.year}</span>
                   </motion.div>
                   
-                  {/* Content card with image */}
                   <Card className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8'} overflow-hidden hover:shadow-lg transition-shadow duration-300 group`}>
                     <div className="aspect-video relative overflow-hidden">
                       <img 
@@ -549,7 +543,6 @@ const About = () => {
             </div>
           </div>
           
-          {/* Final statement */}
           <motion.div 
             className="max-w-2xl mx-auto mt-20 text-center"
             initial={{ opacity: 0 }}
@@ -574,9 +567,9 @@ const About = () => {
             </p>
             
             <div className="mt-10">
-              <Button>
-                <Link to="#team">Meet Our Artistic Circle</Link>
-              </Button>
+              <Link to="#team">
+                <Button>Meet Our Artistic Circle</Button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -629,9 +622,9 @@ const About = () => {
           </div>
           
           <div className="text-center mt-16">
-            <Button variant="outline">
-              <Link to="/contact">Join Our Circle</Link>
-            </Button>
+            <Link to="/contact">
+              <Button variant="outline">Join Our Circle</Button>
+            </Link>
           </div>
         </div>
       </section>
