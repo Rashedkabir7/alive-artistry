@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ChevronDown, Users, Award, Calendar, MapPin, Image, Palette, BookOpen, Heart, Leaf, Feather } from 'lucide-react';
@@ -274,10 +275,10 @@ const About = () => {
                 >
                   <svg width="100%" height="100%" viewBox="0 0 400 400">
                     <defs>
-                      <path id="circle" d="M 200, 200 m -175, 0 a 175,175 0 1,1 350,0 a 175,175 0 1,1 -350,0" />
+                      <path id="philosophy-circle" d="M 200, 200 m -175, 0 a 175,175 0 1,1 350,0 a 175,175 0 1,1 -350,0" />
                     </defs>
                     <text fill="#DE4D31" fontSize="22">
-                      <textPath xlinkHref="#circle" startOffset="0%">
+                      <textPath href="#philosophy-circle" startOffset="0%">
                         Wisdom • Tradition • Heritage • Ecology • Spirit • Community • Balance • Harmony • Dignity •
                       </textPath>
                     </text>
@@ -573,7 +574,7 @@ const About = () => {
             </p>
             
             <div className="mt-10">
-              <Button asChild>
+              <Button>
                 <Link to="#team">Meet Our Artistic Circle</Link>
               </Button>
             </div>
@@ -628,7 +629,7 @@ const About = () => {
           </div>
           
           <div className="text-center mt-16">
-            <Button asChild variant="outline">
+            <Button variant="outline">
               <Link to="/contact">Join Our Circle</Link>
             </Button>
           </div>
