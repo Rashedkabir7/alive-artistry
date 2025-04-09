@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MapPin, Mail, Phone, Send, Check, AlertCircle, Loader2 } from 'lucide-react';
+import { MapPin, Mail, Phone, Send, Check, AlertCircle, Loader2, Feather } from 'lucide-react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -55,7 +55,7 @@ const ContactSection = () => {
       
       // Show success state
       setSubmitSuccess(true);
-      toast.success("Message sent successfully! We'll get back to you soon.");
+      toast.success("Your message has been sent. We look forward to connecting with you soon.");
       
       // Reset the form
       form.reset();
@@ -78,18 +78,18 @@ const ContactSection = () => {
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 relative">
-          <h2 className="heading-lg text-santaran-teal mb-4 font-serif">Get in Touch</h2>
+          <h2 className="heading-lg text-santaran-teal mb-4 font-serif">Connect With Our Circle</h2>
           <div className="w-24 h-1 bg-santaran-terracotta mx-auto"></div>
           <p className="mt-6 text-lg max-w-2xl mx-auto text-gray-700">
-            Have questions about our programs or interested in collaborating? 
-            We'd love to hear from you.
+            Share your thoughts, questions, or visions. Every message begins a new thread 
+            in our collective tapestry.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="bg-white/50 p-8 rounded-lg backdrop-blur-sm shadow-lg border border-santaran-jade/10 transform transition-transform duration-500 hover:shadow-xl relative z-10">
-            <h3 className="heading-md text-santaran-terracotta mb-6 font-serif">Contact Information</h3>
+            <h3 className="heading-md text-santaran-terracotta mb-6 font-serif">Pathways to Connect</h3>
             
             <div className="space-y-8">
               <div className="flex items-start group">
@@ -97,7 +97,7 @@ const ContactSection = () => {
                   <MapPin className="text-white" size={24} />
                 </div>
                 <div className="transform transition-transform group-hover:translate-x-1 duration-300">
-                  <h4 className="font-semibold text-lg text-santaran-indigo">Our Location</h4>
+                  <h4 className="font-semibold text-lg text-santaran-indigo">Studio Sanctuary</h4>
                   <p className="text-gray-600">Chittagong, Bangladesh</p>
                 </div>
               </div>
@@ -107,7 +107,7 @@ const ContactSection = () => {
                   <Mail className="text-white" size={24} />
                 </div>
                 <div className="transform transition-transform group-hover:translate-x-1 duration-300">
-                  <h4 className="font-semibold text-lg text-santaran-indigo">Email Us</h4>
+                  <h4 className="font-semibold text-lg text-santaran-indigo">Digital Messages</h4>
                   <p className="text-gray-600">contact@santaranart.org</p>
                 </div>
               </div>
@@ -117,14 +117,14 @@ const ContactSection = () => {
                   <Phone className="text-white" size={24} />
                 </div>
                 <div className="transform transition-transform group-hover:translate-x-1 duration-300">
-                  <h4 className="font-semibold text-lg text-santaran-indigo">Call Us</h4>
+                  <h4 className="font-semibold text-lg text-santaran-indigo">Voice Connection</h4>
                   <p className="text-gray-600">+880 123 456 7890</p>
                 </div>
               </div>
             </div>
             
             <div className="mt-12">
-              <h3 className="heading-sm text-santaran-terracotta mb-6 font-serif">Follow Us</h3>
+              <h3 className="heading-sm text-santaran-terracotta mb-6 font-serif">Join Our Circles</h3>
               <div className="flex space-x-4">
                 <a href="#" className="w-12 h-12 bg-gradient-to-br from-santaran-teal to-santaran-jade text-white rounded-full flex items-center justify-center hover:from-santaran-terracotta hover:to-santaran-amber transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -146,14 +146,14 @@ const ContactSection = () => {
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-santaran-amber/10 rounded-full blur-2xl"></div>
               <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-santaran-teal/5 rounded-full blur-3xl"></div>
               
-              <h3 className="heading-md text-santaran-terracotta mb-6 font-serif">Send Us a Message</h3>
+              <h3 className="heading-md text-santaran-terracotta mb-6 font-serif">Share Your Thoughts</h3>
               
               {submitSuccess && (
                 <Alert className="mb-6 bg-santaran-jade/10 border-santaran-jade text-santaran-indigo animate-fade-in">
                   <Check className="h-4 w-4 text-santaran-jade" />
-                  <AlertTitle>Success!</AlertTitle>
+                  <AlertTitle>Message Received</AlertTitle>
                   <AlertDescription>
-                    Thank you for your message. We'll get back to you soon.
+                    Thank you for reaching out. Your words have begun a new thread in our artistic dialogue.
                   </AlertDescription>
                 </Alert>
               )}
@@ -171,7 +171,7 @@ const ContactSection = () => {
                             {...field} 
                             className="border-santaran-jade/20 focus-visible:ring-santaran-teal/50"
                             disabled={isSubmitting}
-                            placeholder="Enter your name"
+                            placeholder="How shall we address you?"
                           />
                         </FormControl>
                         <FormMessage />
@@ -191,7 +191,7 @@ const ContactSection = () => {
                             type="email"
                             className="border-santaran-jade/20 focus-visible:ring-santaran-teal/50"
                             disabled={isSubmitting}
-                            placeholder="Enter your email"
+                            placeholder="Where can we reach you?"
                           />
                         </FormControl>
                         <FormMessage />
@@ -211,7 +211,7 @@ const ContactSection = () => {
                             rows={5}
                             className="border-santaran-jade/20 focus-visible:ring-santaran-teal/50 resize-none"
                             disabled={isSubmitting}
-                            placeholder="What would you like to tell us?"
+                            placeholder="What would you like to share with us?"
                           />
                         </FormControl>
                         <FormMessage />
@@ -228,12 +228,12 @@ const ContactSection = () => {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Sending...
+                        Sending your message...
                       </>
                     ) : (
                       <>
-                        Send Message
-                        <Send size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                        Send Your Message
+                        <Feather size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
                   </Button>

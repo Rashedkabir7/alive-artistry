@@ -1,14 +1,13 @@
 
 import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronDown, Users, Award, Calendar, MapPin, Image, Palette, BookOpen, Heart } from 'lucide-react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { ChevronDown, Users, Award, Calendar, MapPin, Image, Palette, BookOpen, Heart, Leaf, Feather } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Timeline from '../components/Timeline';
 import AnimatedHeading from '@/components/AnimatedHeading';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -20,22 +19,22 @@ const About = () => {
   const coreValues = [
     {
       title: "Cultural Preservation",
-      description: "Preserving indigenous artistic traditions and knowledge systems as living heritage for future generations.",
+      description: "Weaving the threads of indigenous artistic traditions into the fabric of contemporary society, safeguarding wisdom passed through generations.",
       icon: <BookOpen className="w-6 h-6" />,
       color: "text-santaran-teal",
       image: "https://images.unsplash.com/photo-1582691740708-9d5f1a1c4120?q=80&w=600"
     },
     {
       title: "Community Engagement",
-      description: "Involving communities in artistic processes to foster deeper connections and cultural ownership.",
+      description: "Creating circles of connection where art becomes a language that transcends barriers, building bridges between diverse voices.",
       icon: <Users className="w-6 h-6" />,
       color: "text-santaran-amber",
       image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600"
     },
     {
       title: "Environmental Harmony",
-      description: "Creating art that respects and reflects the delicate balance between humans and the natural world.",
-      icon: <Heart className="w-6 h-6" />,
+      description: "Honoring the sacred dialogue between humanity and nature, our art echoes the whispers of forests and rivers that sustain all life.",
+      icon: <Leaf className="w-6 h-6" />,
       color: "text-santaran-jade",
       image: "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=600"
     }
@@ -43,23 +42,23 @@ const About = () => {
 
   const galleryItems = [
     {
-      title: "Traditional Folk Arts Exhibition",
-      description: "Showcasing indigenous art forms from rural Bangladesh",
+      title: "Whispers of Ancestry",
+      description: "Indigenous art forms that carry stories from our ancestors through the language of symbols and patterns",
       image: "https://images.unsplash.com/photo-1577083287809-1c774a469596?q=80&w=1200"
     },
     {
-      title: "Children's Art Workshop",
-      description: "Nurturing young artistic talents through guided creative sessions",
+      title: "Seeds of Imagination",
+      description: "Nurturing the creative spirit in children through artistic expression that honors their unique vision",
       image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200"
     },
     {
-      title: "Environmental Art Installation",
-      description: "Art pieces created using sustainable materials and practices",
+      title: "Canvas of Earth",
+      description: "Art that breathes with the rhythm of nature, using sustainable materials that honor our planet",
       image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200"
     },
     {
-      title: "Community Art Project",
-      description: "Collaborative creation involving local artisans and residents",
+      title: "Woven Community",
+      description: "Collaborative creations that celebrate the diversity of hands and hearts working in harmony",
       image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=1200"
     }
   ];
@@ -67,29 +66,29 @@ const About = () => {
   const milestones = [
     { 
       year: "1998", 
-      title: "Formation", 
-      description: "Santaran begins as a small collective of artists in Chittagong",
+      title: "The First Brushstroke", 
+      description: "From a gathering of dreamers in Chittagong arose Santaran, planting seeds of artistic revolution",
       icon: <Palette className="text-santaran-vermilion" size={20} />,
       image: "https://images.unsplash.com/photo-1572635148818-ef6fd45eb394?q=80&w=800"
     },
     { 
       year: "2008", 
-      title: "Official Registration", 
-      description: "Registered under Ministry of Social Welfare, Bangladesh",
+      title: "Roots Taking Hold", 
+      description: "Our vision gained official recognition, allowing us to deepen our impact across communities",
       icon: <BookOpen className="text-santaran-amber" size={20} />,
       image: "https://images.unsplash.com/photo-1578926288207-ad2a2e19fa05?q=80&w=800"
     },
     { 
       year: "2014", 
-      title: "Folk Arts Revival", 
-      description: "Launched Shikar to document and preserve traditional crafts",
+      title: "Revival of Traditional Wisdom", 
+      description: "Shikar program launched to preserve disappearing crafts, connecting elders with young artisans",
       icon: <Image className="text-santaran-terracotta" size={20} />,
       image: "https://images.unsplash.com/photo-1582691740708-9d5f1a1c4120?q=80&w=800"
     },
     { 
       year: "2021", 
-      title: "Children's Initiative", 
-      description: "Began Kalpapuri program focused on young artists",
+      title: "Nurturing New Growth", 
+      description: "Kalpapuri program blossomed, creating sacred spaces for children to express their artistic voices",
       icon: <Users className="text-santaran-amber" size={20} />,
       image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=800"
     }
@@ -99,19 +98,19 @@ const About = () => {
     {
       name: "Mahbubur Rahman",
       role: "Founder & Artistic Director",
-      bio: "Artist and cultural activist leading Santaran's vision since its inception.",
+      bio: "A visionary who walks between worlds, Mahbubur weaves traditional knowledge with contemporary expression to create spaces of transformation.",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300"
     },
     {
       name: "Tayeba Begum Lipi",
       role: "Co-founder & Program Director",
-      bio: "Contemporary artist focusing on cultural preservation through artistic expression.",
+      bio: "With hands that honor the ancestral and eyes that see the future, Tayeba guides our programs with wisdom and compassion.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=300"
     },
     {
       name: "Abdul Hakim",
-      role: "Senior Artist & Mentor",
-      bio: "Specializing in indigenous art forms and traditional techniques.",
+      role: "Master Artisan & Elder",
+      bio: "Keeper of forgotten techniques and guardian of artistic heritage, Abdul's hands carry the memory of generations of craftspeople.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300"
     }
   ];
@@ -142,10 +141,10 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="max-w-4xl mx-auto"
           >
-            <h1 className="text-white heading-xl mb-6 font-display">About Santaran</h1>
+            <h1 className="text-white heading-xl mb-6 font-display">Our Artistic Journey</h1>
             <p className="text-white/90 text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Since 1998, Santaran has been creating bridges between indigenous knowledge,
-              human ecology, art, culture, mythology, and spirituality.
+              Since 1998, Santaran has been swimming through currents of tradition and innovation,
+              weaving indigenous wisdom into the tapestry of contemporary expression.
             </p>
             <Button 
               size="lg" 
@@ -189,14 +188,14 @@ const About = () => {
                 <div className="w-full aspect-square overflow-hidden rounded-lg shadow-2xl">
                   <img 
                     src="https://images.unsplash.com/photo-1578926288207-ad2a2e19fa05?q=80&w=1200" 
-                    alt="Santaran artists collaborating on a project" 
+                    alt="Artists collaborating on a community project" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 rounded-lg overflow-hidden border-4 border-white shadow-xl">
                   <img 
                     src="https://images.unsplash.com/photo-1577083330179-0d0ff7134303?q=80&w=800"
-                    alt="Traditional art form" 
+                    alt="Traditional pottery being created" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -210,7 +209,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <AnimatedHeading
-                text="Our Mission"
+                text="Our Sacred Purpose"
                 tag="h2"
                 className="heading-lg mb-6"
                 color="text-santaran-teal"
@@ -220,19 +219,20 @@ const About = () => {
               <div className="w-20 h-1 bg-santaran-vermilion mb-6"></div>
               
               <p className="text-lg mb-6">
-                Santaran Art Organization continues its journey from Chittagong, Bangladesh with the mission to
-                shape artistic values through indigenous knowledge, human ecology, traditional art forms, and 
-                the spirituality of local communities in a more defined artistic way.
+                From the fertile soils of Chittagong, Bangladesh, Santaran flows like a river,
+                carrying the essence of indigenous wisdom, ecological harmony, and artistic expression
+                to nourish communities thirsting for cultural connection.
               </p>
               
               <p className="text-lg mb-8">
-                Through our diverse programs and initiatives, we strive to make art accessible to all and
-                guide people to embrace art as a powerful medium for enhancing their quality of life.
+                We believe art is not merely decoration but a living force—a language that speaks
+                across generations, a medicine that heals divided communities, and a light that
+                illuminates forgotten pathways to our shared humanity.
               </p>
               
               <div className="p-6 bg-santaran-jade/10 rounded-lg border-l-4 border-santaran-jade">
                 <h3 className="font-display text-xl mb-2 text-santaran-jade">Our Vision</h3>
-                <p className="italic">"Art for Dignifying Life" - This is the vision of Santaran Art Organization, promoting meaningful artistic expressions that honor tradition while embracing innovation.</p>
+                <p className="italic">"Art for Dignifying Life" — Like a banyan tree with deep roots and far-reaching branches, we envision a world where art dignifies life by honoring tradition while embracing transformation.</p>
               </div>
             </motion.div>
           </div>
@@ -246,7 +246,7 @@ const About = () => {
         
         <div className="container mx-auto max-w-6xl">
           <AnimatedHeading
-            text="Our Philosophy"
+            text="The Banyan Tree Philosophy"
             tag="h2"
             className="heading-lg text-center mb-16"
             color="text-santaran-vermilion"
@@ -280,7 +280,7 @@ const About = () => {
                     </defs>
                     <text fill="#DE4D31" fontSize="22">
                       <textPath xlinkHref="#circle" startOffset="0%">
-                        Art • Culture • Heritage • Knowledge • Wisdom • Community • Nature • Balance • Harmony •
+                        Wisdom • Tradition • Heritage • Ecology • Spirit • Community • Balance • Harmony • Dignity •
                       </textPath>
                     </text>
                   </svg>
@@ -299,7 +299,7 @@ const About = () => {
                 >
                   <img 
                     src="https://images.unsplash.com/photo-1588512285341-c481fb6de19d?q=80&w=600" 
-                    alt="Traditional art symbolizing Yanbriksha" 
+                    alt="Ancient banyan tree symbolizing Yanbriksha" 
                     className="w-3/5 h-3/5 object-cover rounded-full border-4 border-santaran-amber shadow-lg"
                   />
                 </motion.div>
@@ -314,11 +314,11 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              <h3 className="text-2xl font-bold text-santaran-teal mb-4 font-display">The Banyan Tree of Knowledge</h3>
+              <h3 className="text-2xl font-bold text-santaran-teal mb-4 font-display">Yanbriksha: The Sacred Tree of Knowledge</h3>
               
               <div className="space-y-6">
                 <p className="text-lg">
-                  Santaran's artistic philosophy is represented by the concept of 
+                  At the heart of Santaran's philosophy stands 
                   <motion.span 
                     className="font-bold text-santaran-terracotta italic mx-2"
                     whileHover={{ 
@@ -329,13 +329,13 @@ const About = () => {
                   >
                     'Yanbriksha'
                   </motion.span> 
-                  (the Banyan tree of knowledge).
+                  — the Banyan tree of knowledge, whose roots reach deep into ancestral wisdom while its branches extend into the future.
                 </p>
                 
                 <p className="text-lg">
-                  Like the sacred Banyan tree which is deeply rooted yet spreads its branches far and wide, 
-                  our artistic vision is firmly grounded in traditional values while constantly evolving and 
-                  expanding to embrace new forms of expression.
+                  Like the sacred Banyan that provides shelter to countless beings, our artistic vision embraces diversity, 
+                  creating spaces where traditional knowledge systems can breathe and evolve alongside contemporary expression.
+                  Each aerial root that touches the ground represents a new connection between past and present.
                 </p>
                 
                 <div className="flex flex-col md:flex-row items-center mt-8">
@@ -355,7 +355,7 @@ const About = () => {
                         <div className="absolute inset-0 bg-santaran-jade/20 rounded-full transform -translate-x-1/4 translate-y-1/4"></div>
                         <div className="absolute inset-0 bg-santaran-amber/20 rounded-full transform translate-x-1/4 -translate-y-1/4"></div>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <Palette size={40} className="text-santaran-teal" />
+                          <Feather size={40} className="text-santaran-teal" />
                         </div>
                       </div>
                     </motion.div>
@@ -363,8 +363,8 @@ const About = () => {
                   
                   <div className="w-full md:w-2/3 md:pl-6">
                     <p className="italic text-santaran-jade text-lg">
-                      "Through our activities, this artistic philosophy becomes a living force that 
-                      nourishes communities, preserves traditions, and cultivates new growth."
+                      "In the shade of Yanbriksha, we gather to share stories, preserve crafts, and nurture the seeds 
+                      of artistic expression that will grow into forests of cultural resilience."
                     </p>
                   </div>
                 </div>
@@ -378,7 +378,7 @@ const About = () => {
       <section className="py-24 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <AnimatedHeading
-            text="Our Core Values"
+            text="Sacred Principles"
             tag="h2"
             className="heading-lg text-center mb-16"
             color="text-santaran-jade"
@@ -438,15 +438,15 @@ const About = () => {
       <section className="py-24 px-4 bg-santaran-cream/30">
         <div className="container mx-auto max-w-6xl">
           <AnimatedHeading
-            text="Our Work"
+            text="Artistic Tapestry"
             tag="h2"
             className="heading-lg text-center mb-4"
             color="text-santaran-vermilion"
             animation="wave"
           />
           <p className="text-lg text-center mb-16 max-w-2xl mx-auto">
-            Explore the visual narrative of Santaran's artistic journey, showcasing our cultural 
-            preservation efforts and community engagement through various art forms.
+            Each creation is a thread in the tapestry of Santaran's journey, weaving together 
+            stories of cultural preservation, community connection, and environmental reverence.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -478,7 +478,7 @@ const About = () => {
           
           <div className="mt-10 text-center">
             <Button asChild>
-              <Link to="/gallery">View Full Gallery</Link>
+              <Link to="/gallery">Experience Our Gallery</Link>
             </Button>
           </div>
         </div>
@@ -493,10 +493,11 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="heading-lg text-santaran-teal mb-4">Our Journey</h2>
+            <h2 className="heading-lg text-santaran-teal mb-4">Rivers of Time</h2>
             <div className="w-24 h-1 bg-santaran-terracotta mx-auto"></div>
             <p className="mt-6 text-lg max-w-2xl mx-auto">
-              Explore key moments in our artistic journey that have shaped Santaran's identity and impact.
+              Like a river carving its path through the landscape, these moments have shaped
+              our journey and the communities we serve.
             </p>
           </motion.div>
           
@@ -569,13 +570,13 @@ const About = () => {
               </div>
             </div>
             <p className="italic text-xl text-gray-600">
-              "Today, Santaran continues to evolve, bringing the transformative power of art to communities 
-              across Bangladesh and beyond, while honoring our rich cultural heritage."
+              "Today, our river continues to flow, nourishing new landscapes of artistic expression
+              while carrying the precious sediment of tradition to future generations."
             </p>
             
             <div className="mt-10">
               <Button asChild>
-                <Link to="#team">Meet Our Team</Link>
+                <Link to="#team">Meet Our Artistic Circle</Link>
               </Button>
             </div>
           </motion.div>
@@ -586,15 +587,15 @@ const About = () => {
       <section id="team" className="py-24 px-4 bg-santaran-cream/50">
         <div className="container mx-auto max-w-6xl">
           <AnimatedHeading
-            text="The Collective"
+            text="Keepers of the Vision"
             tag="h2"
             className="heading-lg text-center mb-4"
             color="text-santaran-teal"
             animation="wave"
           />
           <p className="text-lg text-center mb-16 max-w-2xl mx-auto">
-            Our artistic community brings diverse perspectives and skills to create 
-            meaningful interventions through collaborative practices.
+            Like diverse instruments in an orchestra, our artistic collective brings unique voices
+            that harmonize in service of our shared vision.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-8">
@@ -630,7 +631,7 @@ const About = () => {
           
           <div className="text-center mt-16">
             <Button asChild variant="outline">
-              <Link to="/contact">Connect With Us</Link>
+              <Link to="/contact">Join Our Circle</Link>
             </Button>
           </div>
         </div>

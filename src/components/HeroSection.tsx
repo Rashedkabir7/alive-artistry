@@ -1,7 +1,6 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownCircle, Circle, Star, Sun, Sparkles, Leaf, Palette } from 'lucide-react';
+import { ArrowDownCircle, Circle, Star, Sun, Sparkles, Leaf, Palette, Feather } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AnimatedHeading from '@/components/AnimatedHeading';
 
@@ -29,8 +28,16 @@ const HeroSection: React.FC = () => {
       shape: string;
     }[] = [];
     
-    const colors = ['#C95D2C', '#1D6A6A', '#E6B30E', '#8B4513', '#9b87f5', '#6E59A5'];
-    const shapes = ['circle', 'square', 'triangle', 'star'];
+    const colors = [
+      '#C95D2C', // Terracotta - Earth & Tradition
+      '#1D6A6A', // Teal - Water & Fluidity
+      '#E6B30E', // Amber - Sun & Energy
+      '#8B4513', // Brown - Roots & Ancestry
+      '#9b87f5', // Lavender - Spirituality
+      '#6E59A5'  // Purple - Wisdom & Vision
+    ];
+    
+    const shapes = ['circle', 'square', 'triangle', 'star', 'leaf', 'drop'];
     
     for (let i = 0; i < 80; i++) {
       particles.push({
@@ -81,6 +88,17 @@ const HeroSection: React.FC = () => {
               }
             }
             break;
+          case 'leaf':
+            ctx.ellipse(particle.x, particle.y, particle.size/2, particle.size, Math.PI/4, 0, 2 * Math.PI);
+            break;
+          case 'drop':
+            ctx.moveTo(particle.x, particle.y);
+            ctx.bezierCurveTo(
+              particle.x - particle.size, particle.y - particle.size*2,
+              particle.x + particle.size*2, particle.y - particle.size*2,
+              particle.x, particle.y
+            );
+            break;
           default:
             ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         }
@@ -92,8 +110,17 @@ const HeroSection: React.FC = () => {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
         
-        if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+        if (particle.x < 0 || particle.x > canvas.width) {
+          particle.speedX *= -1;
+          particle.speedY += (Math.random() - 0.5) * 0.2;
+        }
+        if (particle.y < 0 || particle.y > canvas.height) {
+          particle.speedY *= -1;
+          particle.speedX += (Math.random() - 0.5) * 0.2;
+        }
+        
+        particle.speedX = Math.max(-0.8, Math.min(0.8, particle.speedX));
+        particle.speedY = Math.max(-0.8, Math.min(0.8, particle.speedY));
       });
       
       requestAnimationFrame(animate);
@@ -224,6 +251,24 @@ const HeroSection: React.FC = () => {
         <Sparkles size={18} />
       </motion.div>
       
+      <motion.div 
+        className="absolute top-[40%] right-[15%] text-santaran-teal/70"
+        animate={{ 
+          scale: [1, 1.3],
+          opacity: [0.5, 0.9],
+          y: [0, -10]
+        }}
+        transition={{ 
+          duration: 4,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+          delay: 2.5
+        }}
+      >
+        <Feather size={22} />
+      </motion.div>
+      
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <motion.div 
@@ -263,7 +308,7 @@ const HeroSection: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
               >
-                Connecting Indigenous Knowledge, Art & Culture
+                Swimming Through Currents of Tradition & Innovation
               </motion.p>
             </div>
             
@@ -273,10 +318,9 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.7 }}
             >
-              <span className="font-medium text-santaran-teal">Santaran</span> means swimming in Bengali. 
-              As a group of artists, Santaran has been continuing its journey since 1998, 
-              creating a bridge between <span className="italic">Indigenous knowledge, human ecology, 
-              art, culture, mythology, and spirituality.</span>
+              <span className="font-medium text-santaran-teal">Santaran</span> means <i>swimming</i> in Bengali. 
+              Since 1998, our artistic collective has been navigating the waters of indigenous wisdom, ecological harmony,
+              cultural preservation, and spiritual connection, creating ripples that transform communities.
             </motion.p>
             
             <motion.div 
@@ -291,7 +335,7 @@ const HeroSection: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Explore Programs
+                  Explore Our Programs
                 </motion.button>
               </Link>
               
@@ -301,7 +345,7 @@ const HeroSection: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Learn More
+                  Discover Our Story
                 </motion.button>
               </Link>
             </motion.div>
@@ -354,6 +398,34 @@ const HeroSection: React.FC = () => {
                 }}
               >
                 <div className="w-[50%] h-[50%] bg-santaran-terracotta/10 blur-3xl rounded-full"></div>
+              </motion.div>
+              
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center"
+                animate={{
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="w-[40%] h-[40%] bg-white/80 rounded-full shadow-lg flex items-center justify-center backdrop-blur-sm">
+                  <motion.div
+                    animate={{
+                      rotate: [0, 360],
+                    }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  >
+                    <Feather size={40} className="text-santaran-teal" />
+                  </motion.div>
+                </div>
               </motion.div>
             </div>
           </motion.div>
