@@ -11,39 +11,45 @@ const Timeline = () => {
       color: "terracotta"
     },
     {
-      year: "2004",
-      title: "First Environmental Art Camp",
-      description: "Launched our flagship environmental art program connecting nature and artistic expression.",
+      year: "2008",
+      title: "Official Recognition",
+      description: "Gained official recognition under the Ministry of Social Welfare, People's Republic of Bangladesh.",
       color: "teal"
     },
     {
-      year: "2007",
-      title: "Kalpapuri Children's Art Program",
-      description: "Began working with children to nurture creativity and artistic expression from an early age.",
-      color: "gold"
+      year: "2009",
+      title: "Horith Program Launch",
+      description: "Established the first permanent environmental art program with camps in Alikadam of Bandarban district.",
+      color: "jade"
     },
     {
-      year: "2012",
-      title: "Karnaphuli Folk Triennial",
-      description: "Initiated our triennial celebration of folk arts and crafts from the Chittagong region.",
-      color: "brown"
+      year: "2009",
+      title: "Kalpapuri Program",
+      description: "Began working with children to develop healthy relationship through art workshops in Alikadam.",
+      color: "amber"
     },
     {
       year: "2015",
-      title: "Art Factory Launch",
-      description: "Created a collaborative space for emerging artists to experiment with new media and approaches.",
+      title: "Karnaphuli Folk Triennial",
+      description: "Launched first international folk art festival featuring artists from Bangladesh, Nepal, India, and more.",
+      color: "brown"
+    },
+    {
+      year: "2018",
+      title: "Shikar Program",
+      description: "Expanded efforts to preserve disappearing folk arts and crafts through dedicated workshops and exhibitions.",
       color: "olive"
     },
     {
-      year: "2020",
-      title: "Digital Transitions",
-      description: "Expanded our reach through digital platforms while preserving our connection to traditional art forms.",
+      year: "2018",
+      title: "Srijan Prangon Residency",
+      description: "Established multidisciplinary art space in Alikadam supporting the Dhoritri eco-tourism project.",
       color: "terracotta"
     },
     {
-      year: "2023",
-      title: "Global Collaborations",
-      description: "Formed partnerships with international art organizations to share Indigenous knowledge globally.",
+      year: "2020",
+      title: "Kalpapuri School of Arts & Crafts",
+      description: "Launched institutional creative education project at Srijan Prangon space in Alikadam.",
       color: "teal"
     }
   ];
@@ -56,7 +62,7 @@ const Timeline = () => {
       <div className="relative space-y-12 md:space-y-24">
         {events.map((event, index) => (
           <motion.div 
-            key={event.year}
+            key={event.year + event.title}
             className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

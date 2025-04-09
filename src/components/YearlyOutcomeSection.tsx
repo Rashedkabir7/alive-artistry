@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import ArtisticGalleryImages from './ArtisticGalleryImages';
 
+interface Exhibition {
+  title: string;
+  year: number;
+  venue: string;
+}
+
 interface Outcome {
   year: string;
   items: {
@@ -11,6 +17,7 @@ interface Outcome {
     count: number;
     icon: string;
   }[];
+  exhibitions: Exhibition[];
 }
 
 const outcomes: Outcome[] = [
@@ -21,15 +28,36 @@ const outcomes: Outcome[] = [
       { title: "Community Events", count: 18, icon: "🌎" },
       { title: "Children Engaged", count: 450, icon: "👧" },
       { title: "Artists Supported", count: 56, icon: "👨‍🎨" }
+    ],
+    exhibitions: [
+      { title: "Perspective of Art & Space", year: 2021, venue: "Gallery Charja, Dhaka" },
+      { title: "From the Karnaphuli", year: 2019, venue: "Residence of Italian Ambassador, Dhaka" }
     ]
   },
   {
-    year: "2022",
+    year: "2020",
     items: [
       { title: "Art Exhibitions", count: 12, icon: "🖼️" },
       { title: "Folk Art Programs", count: 8, icon: "🧶" },
       { title: "Ecological Projects", count: 6, icon: "🌿" },
       { title: "Publications", count: 4, icon: "📚" }
+    ],
+    exhibitions: [
+      { title: "Politicomania", year: 2016, venue: "Nandan Museum, Shantiniketan, India" },
+      { title: "Perspective of Art & Space", year: 2014, venue: "Chittagong Shilpokala Academy" }
+    ]
+  },
+  {
+    year: "2015",
+    items: [
+      { title: "Folk Art Festivals", count: 1, icon: "🎭" },
+      { title: "Artists Involved", count: 40, icon: "👨‍🎨" },
+      { title: "Countries Represented", count: 5, icon: "🌏" },
+      { title: "Art Traditions", count: 17, icon: "🧵" }
+    ],
+    exhibitions: [
+      { title: "First Karnaphuli Folk Triennial", year: 2015, venue: "Multiple locations in Chittagong and Dhaka" },
+      { title: "Traditional Thanka Painting Workshop", year: 2015, venue: "Chittagong" }
     ]
   }
 ];
@@ -42,20 +70,18 @@ const YearlyOutcomeSection = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="heading-lg text-santaran-teal mb-4">Our Impact Through Art</h2>
+          <h2 className="heading-lg text-santaran-teal mb-4">Our Exhibitions & Impact</h2>
           <div className="w-24 h-1 bg-santaran-amber mx-auto"></div>
           <p className="mt-6 text-lg max-w-2xl mx-auto text-gray-600">
-            Achievements and outcomes of our programs and initiatives
-            that continue to make a difference in our communities.
+            Since 1999, Santaran has organized twenty-two years of yearly outcome exhibitions 
+            in Bangladesh and abroad, showcasing artistic achievements and cultural heritage.
           </p>
         </div>
         
         <div className="flex flex-col md:flex-row gap-12">
           <div className="md:w-1/2 relative">
-            {/* Gallery component */}
             <div className="rounded-lg overflow-hidden shadow-xl">
               <div>
-                {/* Changed "mixed" to "contemporary" which is a valid category */}
                 <ArtisticGalleryImages category="contemporary" autoPlay={true} interval={5000} />
               </div>
             </div>
@@ -91,7 +117,7 @@ const YearlyOutcomeSection = () => {
                     <div className="h-0.5 flex-grow bg-gradient-to-r from-santaran-terracotta to-transparent"></div>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-4 mb-6">
                     {yearData.items.map((item, index) => (
                       <motion.div 
                         key={item.title}
@@ -111,6 +137,18 @@ const YearlyOutcomeSection = () => {
                       </motion.div>
                     ))}
                   </div>
+                  
+                  <div className="bg-santaran-cream/20 p-4 rounded-lg">
+                    <h4 className="font-medium text-santaran-teal mb-2">Notable Exhibitions</h4>
+                    <ul className="space-y-2">
+                      {yearData.exhibitions.map((exhibition, index) => (
+                        <li key={index} className="flex justify-between items-center">
+                          <span className="font-medium">{exhibition.title}</span>
+                          <span className="text-sm text-gray-600">{exhibition.venue}, {exhibition.year}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -123,10 +161,10 @@ const YearlyOutcomeSection = () => {
               transition={{ delay: 0.5 }}
             >
               <a 
-                href="/about" 
+                href="/exhibitions" 
                 className="inline-flex items-center text-santaran-terracotta hover:text-santaran-jade transition-colors"
               >
-                <span>View full impact report</span>
+                <span>View full exhibition history</span>
                 <motion.div
                   animate={{ 
                     x: [0, 5],

@@ -80,7 +80,7 @@ const Index = () => {
         title="The River's Tale"
         subtitle="Our Origin Story"
         content="Like a river finding its path through diverse landscapes, Santaran began as a gathering of artists seeking to preserve indigenous wisdom through artistic expression. From humble beginnings in 1998, we've grown into a flowing current that nourishes communities and carries the precious sediment of tradition to future generations."
-        imageUrl="https://images.unsplash.com/photo-1490971588422-52f6262a237a?q=80&w=2000"
+        imageUrl="/lovable-uploads/0b64ccf0-94bb-4b47-9825-23c635d3200a.png"
         imagePosition="right"
         backgroundColor="bg-santaran-cream/70"
         id="our-story"

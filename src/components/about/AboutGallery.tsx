@@ -19,8 +19,8 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1578926288207-ad2a2e19fa05?q=80&w=800" 
-              alt="Traditional folk art exhibition" 
+              src="/lovable-uploads/d4c3be64-52f3-4bb2-b9a9-753a1adb0f1d.png" 
+              alt="Folk art exhibition by Santaran" 
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -31,8 +31,8 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1551966775-a4ddc8df052b?q=80&w=800" 
-              alt="Children's art workshop" 
+              src="/lovable-uploads/887da09b-bba4-4dc6-bd86-4b7ee23ccaba.png" 
+              alt="Children's art workshop at Kalpapuri" 
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -45,8 +45,8 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1490971588422-52f6262a237a?q=80&w=800" 
-              alt="Cultural art event" 
+              src="/lovable-uploads/ae063821-89d9-4a5e-93b4-557f6be0e877.png" 
+              alt="Karnaphuli Folk Triennial cultural performance" 
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -57,8 +57,8 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800" 
-              alt="Environmental art installation" 
+              src="/lovable-uploads/caa29365-e9b3-4edf-8838-882a1f05f9d9.png" 
+              alt="Environmental art installation from Horith program" 
               className="w-full h-full object-cover"
             />
           </motion.div>

@@ -8,31 +8,45 @@ const AboutTimeline: React.FC = () => {
   const milestones = [
     { 
       year: "1998", 
-      title: "The First Brushstroke", 
-      description: "From a gathering of dreamers in Chittagong arose Santaran, planting seeds of artistic revolution",
+      title: "Santaran Founded", 
+      description: "Established in Chittagong as an artist-led initiative to promote art as a medium for social change.",
       icon: <Palette className="text-santaran-vermilion" size={20} />,
-      image: "https://images.unsplash.com/photo-1572635148818-ef6fd45eb394?q=80&w=800"
+      image: "/lovable-uploads/0b64ccf0-94bb-4b47-9825-23c635d3200a.png"
     },
     { 
       year: "2008", 
       title: "Official Recognition", 
-      description: "Our vision gained official recognition from the Ministry of Social Welfare, Bangladesh",
+      description: "Gained official recognition under the Ministry of Social Welfare, Bangladesh as a nonprofit organization.",
       icon: <BookOpen className="text-santaran-amber" size={20} />,
-      image: "https://images.unsplash.com/photo-1578926288207-ad2a2e19fa05?q=80&w=800"
+      image: "/lovable-uploads/d4c3be64-52f3-4bb2-b9a9-753a1adb0f1d.png"
     },
     { 
-      year: "2014", 
-      title: "Shikar Program", 
-      description: "Launched to preserve disappearing crafts, connecting elders with young artisans",
+      year: "2009", 
+      title: "Environmental Art Camp", 
+      description: "Launched the permanent Horith program with the first Environmental Art Camp in Alikadam.",
       icon: <Image className="text-santaran-terracotta" size={20} />,
-      image: "https://images.unsplash.com/photo-1582691740708-9d5f1a1c4120?q=80&w=800"
+      image: "/lovable-uploads/caa29365-e9b3-4edf-8838-882a1f05f9d9.png"
     },
     { 
-      year: "2021", 
-      title: "Kalpapuri Program", 
-      description: "Creating sacred spaces for children to express their artistic voices",
-      icon: <Users className="text-santaran-amber" size={20} />,
-      image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=800"
+      year: "2015", 
+      title: "Karnaphuli Folk Triennial", 
+      description: "Initiated the first triennial celebration of folk arts and crafts from the Chittagong region.",
+      icon: <Calendar className="text-santaran-teal" size={20} />,
+      image: "/lovable-uploads/ae063821-89d9-4a5e-93b4-557f6be0e877.png"
+    },
+    { 
+      year: "2018", 
+      title: "Srijan Prangon Residency", 
+      description: "Established the artist residency space in Alikadam of Bandarbans district for the Dhoritri eco-tourism project.",
+      icon: <Users className="text-santaran-jade" size={20} />,
+      image: "/lovable-uploads/767b3c4f-35f2-4062-a7db-ac1d7d7a7717.png"
+    },
+    { 
+      year: "2020", 
+      title: "Kalpapuri School of Arts & Crafts", 
+      description: "Created a dreamland for coming generations who are interested in building their world through art.",
+      icon: <BookOpen className="text-santaran-amber" size={20} />,
+      image: "/lovable-uploads/f60108e0-457b-4dd5-8bda-c8e94190aea0.png"
     }
   ];
 
@@ -47,7 +61,6 @@ const AboutTimeline: React.FC = () => {
       />
       
       <div className="relative">
-        {/* Timeline line */}
         <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-santaran-vermilion via-santaran-amber to-santaran-jade transform md:translate-x-[-50%]"></div>
         
         <div className="space-y-24">
@@ -56,7 +69,6 @@ const AboutTimeline: React.FC = () => {
               key={milestone.year}
               className={`relative flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
-              {/* Year bubble */}
               <motion.div 
                 className="absolute left-[-12px] md:left-1/2 top-0 transform md:translate-x-[-50%] z-10 bg-white border-4 border-santaran-amber rounded-full w-6 h-6 md:w-12 md:h-12 flex items-center justify-center shadow-lg"
                 initial={{ scale: 0 }}
@@ -67,7 +79,6 @@ const AboutTimeline: React.FC = () => {
                 <span className="text-santaran-teal text-xs md:text-base font-bold">{milestone.year}</span>
               </motion.div>
               
-              {/* Content */}
               <div className={`pl-8 md:pl-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                 <motion.div 
                   className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group"

@@ -38,10 +38,10 @@ const AboutPhilosophy: React.FC = () => {
             >
               <svg width="100%" height="100%" viewBox="0 0 400 400">
                 <defs>
-                  <path id="circlePhilosophy" d="M 200, 200 m -175, 0 a 175,175 0 1,1 350,0 a 175,175 0 1,1 -350,0" />
+                  <path id="circlePhilosophyPath" d="M 200, 200 m -175, 0 a 175,175 0 1,1 350,0 a 175,175 0 1,1 -350,0" />
                 </defs>
                 <text fill="#DE4D31" fontSize="22">
-                  <textPath href="#circlePhilosophy" startOffset="0%">
+                  <textPath href="#circlePhilosophyPath" startOffset="0%">
                     Art • Culture • Heritage • Knowledge • Wisdom • Community • Nature • Balance • Harmony •
                   </textPath>
                 </text>
@@ -60,8 +60,8 @@ const AboutPhilosophy: React.FC = () => {
               }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1588512285341-c481fb6de19d?q=80&w=600" 
-                alt="Traditional art symbolizing Yanbriksha" 
+                src="/lovable-uploads/fa3a5784-b296-4b2b-972a-cd87e0eaa634.png" 
+                alt="Banyan tree symbolizing Yanbriksha" 
                 className="w-3/5 h-3/5 object-cover rounded-full border-4 border-santaran-amber shadow-lg"
               />
             </motion.div>
