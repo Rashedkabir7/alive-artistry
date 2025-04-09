@@ -14,7 +14,7 @@ import './components/exhibition/exhibition.css';
 
 function App() {
   return (
-    <>
+    <div className="app-container">
       <Suspense 
         fallback={
           <div className="min-h-screen flex items-center justify-center bg-santaran-cream">
@@ -36,7 +36,7 @@ function App() {
         </Routes>
       </Suspense>
       <Toaster />
-    </>
+    </div>
   );
 }
 
