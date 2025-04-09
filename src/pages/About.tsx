@@ -1,10 +1,8 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ChevronDown, Users, Award, Calendar, MapPin, Image, Palette, BookOpen, Heart, Leaf, Feather } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Timeline from '../components/Timeline';
 import AnimatedHeading from '@/components/AnimatedHeading';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

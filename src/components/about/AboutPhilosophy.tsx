@@ -38,10 +38,10 @@ const AboutPhilosophy: React.FC = () => {
             >
               <svg width="100%" height="100%" viewBox="0 0 400 400">
                 <defs>
-                  <path id="circle" d="M 200, 200 m -175, 0 a 175,175 0 1,1 350,0 a 175,175 0 1,1 -350,0" />
+                  <path id="circlePhilosophy" d="M 200, 200 m -175, 0 a 175,175 0 1,1 350,0 a 175,175 0 1,1 -350,0" />
                 </defs>
                 <text fill="#DE4D31" fontSize="22">
-                  <textPath xlinkHref="#circle" startOffset="0%">
+                  <textPath href="#circlePhilosophy" startOffset="0%">
                     Art • Culture • Heritage • Knowledge • Wisdom • Community • Nature • Balance • Harmony •
                   </textPath>
                 </text>
@@ -124,9 +124,9 @@ const AboutPhilosophy: React.FC = () => {
               </div>
               
               <div className="w-full md:w-2/3 md:pl-6">
-                <p className="italic text-santaran-jade">
-                  "Through our activities, this artistic philosophy becomes a living force that 
-                  nourishes communities, preserves traditions, and cultivates new growth."
+                <p className="italic text-santaran-jade text-lg">
+                  "Through the roots of tradition and the branches of innovation, 
+                  we create art that connects humans with their essence and the natural world."
                 </p>
               </div>
             </div>
