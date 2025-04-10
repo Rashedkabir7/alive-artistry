@@ -62,7 +62,7 @@ const Timeline = () => {
       <div className="relative space-y-12 md:space-y-24">
         {events.map((event, index) => (
           <motion.div 
-            key={event.year + event.title}
+            key={`timeline-${event.year}-${event.title}`}
             className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

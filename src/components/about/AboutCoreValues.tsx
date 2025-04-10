@@ -37,47 +37,49 @@ const AboutCoreValues: React.FC = () => {
   ];
 
   return (
-    <div className="my-24">
-      <AnimatedHeading
-        text="Our Core Programs"
-        tag="h3"
-        className="heading-md mb-12 text-center"
-        color="text-santaran-vermilion"
-        animation="wave"
-      />
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {corePrograms.map((program, index) => (
-          <motion.div 
-            key={program.title}
-            className="group"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <div className="relative overflow-hidden rounded-lg shadow-lg h-80">
-              <div className="absolute inset-0">
-                <img 
-                  src={program.image} 
-                  alt={program.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              </div>
-              
-              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                <div className="mb-3">
-                  <span className={`inline-block p-3 rounded-full bg-white/20 backdrop-blur-sm ${program.color}`}>
-                    {program.icon}
-                  </span>
+    <div className="py-24 px-4 bg-santaran-cream/30">
+      <div className="container mx-auto max-w-6xl">
+        <AnimatedHeading
+          text="Our Core Programs"
+          tag="h2"
+          className="heading-lg text-center mb-12"
+          color="text-santaran-vermilion"
+          animation="wave"
+        />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {corePrograms.map((program, index) => (
+            <motion.div 
+              key={program.title}
+              className="group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <div className="relative overflow-hidden rounded-lg shadow-lg h-80">
+                <div className="absolute inset-0">
+                  <img 
+                    src={program.image} 
+                    alt={program.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 </div>
-                <h4 className="text-xl font-bold mb-2 font-display">{program.title}</h4>
-                <p className="text-white/90 group-hover:translate-y-0 transition-transform duration-500">{program.description}</p>
+                
+                <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                  <div className="mb-3">
+                    <span className={`inline-block p-3 rounded-full bg-white/20 backdrop-blur-sm ${program.color}`}>
+                      {program.icon}
+                    </span>
+                  </div>
+                  <h4 className="text-xl font-bold mb-2 font-display">{program.title}</h4>
+                  <p className="text-white/90 group-hover:translate-y-0 transition-transform duration-500">{program.description}</p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

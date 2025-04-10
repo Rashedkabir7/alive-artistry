@@ -1,129 +1,30 @@
-import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { ChevronDown, Users, Award, Calendar, MapPin, Image, Palette, BookOpen, Heart, Leaf, Feather } from 'lucide-react';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ChevronDown, Heart, Leaf } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Timeline from '../components/Timeline';
 import AnimatedHeading from '@/components/AnimatedHeading';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import AboutCoreValues from '@/components/about/AboutCoreValues';
 
 const About = () => {
-  const { scrollYProgress } = useScroll();
-  const opacityProgress = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-  const mainRef = useRef(null);
-  const isInView = useInView(mainRef, { once: true });
-  
-  const coreValues = [
-    {
-      title: "Cultural Preservation",
-      description: "Weaving the threads of indigenous artistic traditions into the fabric of contemporary society, safeguarding wisdom passed through generations.",
-      icon: <BookOpen className="w-6 h-6" />,
-      color: "text-santaran-teal",
-      image: "https://images.unsplash.com/photo-1582691740708-9d5f1a1c4120?q=80&w=600"
-    },
-    {
-      title: "Community Engagement",
-      description: "Creating circles of connection where art becomes a language that transcends barriers, building bridges between diverse voices.",
-      icon: <Users className="w-6 h-6" />,
-      color: "text-santaran-amber",
-      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600"
-    },
-    {
-      title: "Environmental Harmony",
-      description: "Honoring the sacred dialogue between humanity and nature, our art echoes the whispers of forests and rivers that sustain all life.",
-      icon: <Leaf className="w-6 h-6" />,
-      color: "text-santaran-jade",
-      image: "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=600"
-    }
-  ];
-
-  const galleryItems = [
-    {
-      title: "Whispers of Ancestry",
-      description: "Indigenous art forms that carry stories from our ancestors through the language of symbols and patterns",
-      image: "https://images.unsplash.com/photo-1577083287809-1c774a469596?q=80&w=1200"
-    },
-    {
-      title: "Seeds of Imagination",
-      description: "Nurturing the creative spirit in children through artistic expression that honors their unique vision",
-      image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200"
-    },
-    {
-      title: "Canvas of Earth",
-      description: "Art that breathes with the rhythm of nature, using sustainable materials that honor our planet",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200"
-    },
-    {
-      title: "Woven Community",
-      description: "Collaborative creations that celebrate the diversity of hands and hearts working in harmony",
-      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=1200"
-    }
-  ];
-
-  const milestones = [
-    { 
-      year: "1998", 
-      title: "The First Brushstroke", 
-      description: "From a gathering of dreamers in Chittagong arose Santaran, planting seeds of artistic revolution",
-      icon: <Palette className="text-santaran-vermilion" size={20} />,
-      image: "https://images.unsplash.com/photo-1572635148818-ef6fd45eb394?q=80&w=800"
-    },
-    { 
-      year: "2008", 
-      title: "Roots Taking Hold", 
-      description: "Our vision gained official recognition, allowing us to deepen our impact across communities",
-      icon: <BookOpen className="text-santaran-amber" size={20} />,
-      image: "https://images.unsplash.com/photo-1578926288207-ad2a2e19fa05?q=80&w=800"
-    },
-    { 
-      year: "2014", 
-      title: "Revival of Traditional Wisdom", 
-      description: "Shikar program launched to preserve disappearing crafts, connecting elders with young artisans",
-      icon: <Image className="text-santaran-terracotta" size={20} />,
-      image: "https://images.unsplash.com/photo-1582691740708-9d5f1a1c4120?q=80&w=800"
-    },
-    { 
-      year: "2021", 
-      title: "Nurturing New Growth", 
-      description: "Kalpapuri program blossomed, creating sacred spaces for children to express their artistic voices",
-      icon: <Users className="text-santaran-amber" size={20} />,
-      image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=800"
-    }
-  ];
-
-  const teamMembers = [
-    {
-      name: "Mahbubur Rahman",
-      role: "Founder & Artistic Director",
-      bio: "A visionary who walks between worlds, Mahbubur weaves traditional knowledge with contemporary expression to create spaces of transformation.",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300"
-    },
-    {
-      name: "Tayeba Begum Lipi",
-      role: "Co-founder & Program Director",
-      bio: "With hands that honor the ancestral and eyes that see the future, Tayeba guides our programs with wisdom and compassion.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=300"
-    },
-    {
-      name: "Abdul Hakim",
-      role: "Master Artisan & Elder",
-      bio: "Keeper of forgotten techniques and guardian of artistic heritage, Abdul's hands carry the memory of generations of craftspeople.",
-      image: "https://images.unsplash.com/photo-1507003211169-0d0ff7134303?q=80&w=300"
-    }
-  ];
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
   
   return (
-    <div className="bg-santaran-cream">
+    <div className="bg-santaran-cream/20">
       <Navbar />
       
-      {/* Hero Section with Immersive Background */}
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
             className="w-full h-full"
             style={{ 
-              backgroundImage: 'url(https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=2000)', 
+              backgroundImage: 'url(/lovable-uploads/0e3087bd-7bed-4576-aa7e-5d71c02efdca.png)', 
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'fixed'
@@ -139,20 +40,19 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="max-w-4xl mx-auto"
           >
-            <h1 className="text-white heading-xl mb-6 font-display">Our Artistic Journey</h1>
+            <h1 className="text-white heading-xl mb-6 font-display">Santaran Art Organization</h1>
             <p className="text-white/90 text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Since 1998, Santaran has been swimming through currents of tradition and innovation,
+              Since 1998, we have been swimming through currents of tradition and innovation,
               weaving indigenous wisdom into the tapestry of contemporary expression.
             </p>
-            <Button 
-              size="lg" 
-              className="mt-4"
+            <button 
+              className="mt-4 bg-santaran-terracotta hover:bg-santaran-terracotta/90 text-white font-medium py-3 px-6 rounded-lg shadow-lg transition duration-300"
               onClick={() => {
                 document.getElementById('our-mission')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               Discover Our Story
-            </Button>
+            </button>
           </motion.div>
           
           <motion.div 
@@ -185,15 +85,15 @@ const About = () => {
               <div className="relative">
                 <div className="w-full aspect-square overflow-hidden rounded-lg shadow-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1578926288207-ad2a2e19fa05?q=80&w=1200" 
-                    alt="Artists collaborating on a community project" 
+                    src="/lovable-uploads/d4c3be64-52f3-4bb2-b9a9-753a1adb0f1d.png" 
+                    alt="Santaran art workshop" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 rounded-lg overflow-hidden border-4 border-white shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1577083330179-0d0ff7134303?q=80&w=800"
-                    alt="Traditional pottery being created" 
+                    src="/lovable-uploads/e04b0dc7-2eda-4b22-b81d-9d2151bc534f.png"
+                    alt="Traditional art being created" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -237,7 +137,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Philosophy Section with Visual Representation */}
+      {/* Philosophy Section */}
       <section className="py-24 px-4 bg-santaran-cream/50 relative overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-santaran-amber/10 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-santaran-vermilion/10 rounded-full blur-3xl"></div>
@@ -296,8 +196,8 @@ const About = () => {
                   }}
                 >
                   <img 
-                    src="https://images.unsplash.com/photo-1588512285341-c481fb6de19d?q=80&w=600" 
-                    alt="Ancient banyan tree symbolizing Yanbriksha" 
+                    src="/lovable-uploads/fa3a5784-b296-4b2b-972a-cd87e0eaa634.png" 
+                    alt="Banyan tree symbolizing Yanbriksha" 
                     className="w-3/5 h-3/5 object-cover rounded-full border-4 border-santaran-amber shadow-lg"
                   />
                 </motion.div>
@@ -353,7 +253,7 @@ const About = () => {
                         <div className="absolute inset-0 bg-santaran-jade/20 rounded-full transform -translate-x-1/4 translate-y-1/4"></div>
                         <div className="absolute inset-0 bg-santaran-amber/20 rounded-full transform translate-x-1/4 -translate-y-1/4"></div>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <Feather size={40} className="text-santaran-teal" />
+                          <Leaf size={40} className="text-santaran-teal" />
                         </div>
                       </div>
                     </motion.div>
@@ -373,259 +273,65 @@ const About = () => {
       </section>
 
       {/* Core Values Section */}
+      <AboutCoreValues />
+      
+      {/* Timeline Section */}
       <section className="py-24 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <AnimatedHeading
-            text="Sacred Principles"
+            text="Our Journey Through Time"
             tag="h2"
             className="heading-lg text-center mb-16"
-            color="text-santaran-jade"
-            animation="wave"
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {coreValues.map((value, index) => (
-              <motion.div 
-                key={value.title}
-                className="group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <div className="relative overflow-hidden rounded-lg shadow-lg h-80">
-                  <div className="absolute inset-0">
-                    <img 
-                      src={value.image} 
-                      alt={value.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  </div>
-                  
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                    <div className="mb-3">
-                      <span className={`inline-block p-3 rounded-full bg-white/20 backdrop-blur-sm ${value.color}`}>
-                        {value.icon}
-                      </span>
-                    </div>
-                    <h4 className="text-xl font-bold mb-2 font-display">{value.title}</h4>
-                    <p className="text-white/90 group-hover:translate-y-0 transition-transform duration-500">{value.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-16 text-center">
-            <Button 
-              variant="outline"
-              onClick={() => {
-                document.getElementById('our-history')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Explore Our History
-            </Button>
-          </div>
-        </div>
-      </section>
-      
-      {/* Gallery Showcase */}
-      <section className="py-24 px-4 bg-santaran-cream/30">
-        <div className="container mx-auto max-w-6xl">
-          <AnimatedHeading
-            text="Artistic Tapestry"
-            tag="h2"
-            className="heading-lg text-center mb-4"
-            color="text-santaran-vermilion"
-            animation="wave"
-          />
-          <p className="text-lg text-center mb-16 max-w-2xl mx-auto">
-            Each creation is a thread in the tapestry of Santaran's journey, weaving together 
-            stories of cultural preservation, community connection, and environmental reverence.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {galleryItems.map((item, index) => (
-              <motion.div 
-                key={index}
-                className="relative group overflow-hidden rounded-lg aspect-[4/3] shadow-xl"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 0.98 }}
-              >
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-white text-xl font-display mb-2">{item.title}</h3>
-                  <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          <div className="mt-10 text-center">
-            <Link to="/gallery">
-              <Button>Experience Our Gallery</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Artistic Journey Timeline */}
-      <section className="py-24 px-4 bg-white" id="our-history" ref={mainRef}>
-        <div className="container mx-auto max-w-6xl">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="heading-lg text-santaran-teal mb-4">Rivers of Time</h2>
-            <div className="w-24 h-1 bg-santaran-terracotta mx-auto"></div>
-            <p className="mt-6 text-lg max-w-2xl mx-auto">
-              Like a river carving its path through the landscape, these moments have shaped
-              our journey and the communities we serve.
-            </p>
-          </motion.div>
-          
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-santaran-vermilion via-santaran-amber to-santaran-jade"></div>
-            
-            <div className="space-y-24">
-              {milestones.map((milestone, index) => (
-                <motion.div 
-                  key={milestone.year}
-                  className={`relative flex ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-center`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <motion.div 
-                    className="absolute left-1/2 transform -translate-x-1/2 z-10 bg-white border-4 border-santaran-amber rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <span className="text-santaran-teal font-bold">{milestone.year}</span>
-                  </motion.div>
-                  
-                  <Card className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8'} overflow-hidden hover:shadow-lg transition-shadow duration-300 group`}>
-                    <div className="aspect-video relative overflow-hidden">
-                      <img 
-                        src={milestone.image} 
-                        alt={milestone.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-                        <div className="text-white">
-                          <div className="flex items-center gap-2 mb-1">
-                            {milestone.icon}
-                            <h4 className="font-bold text-lg">{milestone.title}</h4>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <CardContent className="p-4">
-                      <p className="text-gray-600">{milestone.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          
-          <motion.div 
-            className="max-w-2xl mx-auto mt-20 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 rounded-full bg-santaran-teal/5 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-santaran-teal/10 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-santaran-teal/15 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-santaran-teal/20 flex items-center justify-center">
-                      <MapPin className="text-santaran-teal" size={16} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p className="italic text-xl text-gray-600">
-              "Today, our river continues to flow, nourishing new landscapes of artistic expression
-              while carrying the precious sediment of tradition to future generations."
-            </p>
-            
-            <div className="mt-10">
-              <Link to="#team">
-                <Button>Meet Our Artistic Circle</Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* Team Section */}
-      <section id="team" className="py-24 px-4 bg-santaran-cream/50">
-        <div className="container mx-auto max-w-6xl">
-          <AnimatedHeading
-            text="Keepers of the Vision"
-            tag="h2"
-            className="heading-lg text-center mb-4"
             color="text-santaran-teal"
             animation="wave"
           />
-          <p className="text-lg text-center mb-16 max-w-2xl mx-auto">
-            Like diverse instruments in an orchestra, our artistic collective brings unique voices
-            that harmonize in service of our shared vision.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="relative overflow-hidden">
-                  <div className="aspect-square overflow-hidden rounded-lg">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  
-                  <div className="relative mt-6">
-                    <h3 className="text-2xl font-display font-semibold">{member.name}</h3>
-                    <p className="text-santaran-terracotta">{member.role}</p>
-                    <p className="mt-2 text-gray-600">{member.bio}</p>
-                    <div className="h-0.5 w-0 bg-santaran-teal mt-3 transition-all duration-300 group-hover:w-16"></div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-16">
-            <Link to="/contact">
-              <Button variant="outline">Join Our Circle</Button>
-            </Link>
-          </div>
+          <Timeline />
+        </div>
+      </section>
+      
+      {/* Testimonial */}
+      <section className="py-16 bg-santaran-cream/20 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="max-w-4xl mx-auto text-center relative"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="absolute -top-10 -left-10 text-santaran-terracotta/10">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.9 1.05C6.45 1.05 1.95 5.55 1.95 11C1.95 13.1 2.75 15.1 4.05 16.65C3.95 17.65 3.45 18.55 2.95 19.45C2.75 19.85 2.95 20.35 3.45 20.45C5.55 20.85 7.65 20.05 9.05 18.75C9.95 18.95 10.95 19.05 11.95 19.05C17.45 19.05 21.95 14.55 21.95 9.1C21.95 3.55 17.45 1.05 11.9 1.05Z"/>
+              </svg>
+            </div>
+            
+            <div className="absolute -bottom-10 -right-10 text-santaran-jade/10 transform rotate-180">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.9 1.05C6.45 1.05 1.95 5.55 1.95 11C1.95 13.1 2.75 15.1 4.05 16.65C3.95 17.65 3.45 18.55 2.95 19.45C2.75 19.85 2.95 20.35 3.45 20.45C5.55 20.85 7.65 20.05 9.05 18.75C9.95 18.95 10.95 19.05 11.95 19.05C17.45 19.05 21.95 14.55 21.95 9.1C21.95 3.55 17.45 1.05 11.9 1.05Z"/>
+              </svg>
+            </div>
+            
+            <div className="mb-8 flex justify-center">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-santaran-terracotta p-1">
+                <img 
+                  src="/lovable-uploads/0b64ccf0-94bb-4b47-9825-23c635d3200a.png" 
+                  alt="Community Member" 
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+            </div>
+            
+            <p className="text-xl md:text-2xl italic text-gray-700 mb-6">
+              "Working with Santaran has been a transformative journey. Their approach to art isn't just about creating 
+              beautiful objects—it's about weaving community connections, honoring ancestral wisdom, and reimagining 
+              our relationship with the natural world."
+            </p>
+            
+            <div>
+              <p className="font-medium text-santaran-teal">Amina Rahman</p>
+              <p className="text-gray-600">Community Arts Leader, Chittagong</p>
+            </div>
+          </motion.div>
         </div>
       </section>
       
