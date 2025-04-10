@@ -20,7 +20,7 @@ const projects: Project[] = [
     title: "Environmental Art Camp",
     description: "Immersive outdoor experiences combining art and nature conservation from the Harith program.",
     category: "Harith",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: true
   },
   {
@@ -28,7 +28,7 @@ const projects: Project[] = [
     title: "Dharitri",
     description: "Eco-tourism project promoting sustainable environmental practices through artistic expression.",
     category: "Harith",
-    image: "https://images.unsplash.com/photo-1506259091721-347e791bab0f?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1506259091721-347e791bab0f?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: true
   },
   {
@@ -36,7 +36,7 @@ const projects: Project[] = [
     title: "Kalpaloker Citra",
     description: "Project of workshops for children to develop creativity and artistic expression.",
     category: "Kalpapuri",
-    image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: true
   },
   {
@@ -44,7 +44,7 @@ const projects: Project[] = [
     title: "Kalpapuri School",
     description: "Creative education project training the next generation of artists and craftspeople.",
     category: "Kalpapuri",
-    image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: true
   },
   {
@@ -52,7 +52,7 @@ const projects: Project[] = [
     title: "Karnaphuli Folk Triennial",
     description: "Celebration of traditional folk arts and crafts held every three years.",
     category: "Shikar",
-    image: "https://images.unsplash.com/photo-1569091791842-7cfb64e04797?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1569091791842-7cfb64e04797?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: true
   },
   {
@@ -60,7 +60,7 @@ const projects: Project[] = [
     title: "Kandrabindu",
     description: "Project of product design, development & marketing of traditional crafts.",
     category: "Shikar",
-    image: "https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: true
   },
   {
@@ -68,7 +68,7 @@ const projects: Project[] = [
     title: "Artist Residency Program",
     description: "Hosting artists from around the world for cultural exchange and collaboration.",
     category: "Art Factory",
-    image: "https://images.unsplash.com/photo-1567098228577-b7e7a3d98e28?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1567098228577-b7e7a3d98e28?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: false
   },
   {
@@ -76,7 +76,7 @@ const projects: Project[] = [
     title: "Young Art Exhibition",
     description: "Platform for emerging artists to showcase innovative and experimental work.",
     category: "Art Factory",
-    image: "https://images.unsplash.com/photo-1541512416146-3e9ccaa35a9b?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1541512416146-3e9ccaa35a9b?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: false
   },
   {
@@ -84,7 +84,7 @@ const projects: Project[] = [
     title: "Yearly Outcome",
     description: "Annual art show featuring work from organization members and collaborative projects.",
     category: "Other Projects",
-    image: "https://images.unsplash.com/photo-1532453288509-177d8062a8ee?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1532453288509-177d8062a8ee?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: false
   },
   {
@@ -92,7 +92,7 @@ const projects: Project[] = [
     title: "Multidisciplinary Art Show",
     description: "Exhibitions showcasing diverse artistic disciplines and experimental approaches.",
     category: "Other Projects",
-    image: "https://images.unsplash.com/photo-1547119957-637f8679db1e?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1547119957-637f8679db1e?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: false
   },
   {
@@ -100,7 +100,7 @@ const projects: Project[] = [
     title: "Art Exchange",
     description: "National & International program for artistic dialogue and cultural exchange.",
     category: "Other Projects",
-    image: "https://images.unsplash.com/photo-1567098228577-b7e7a3d98e28?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1567098228577-b7e7a3d98e28?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: false
   },
   {
@@ -108,7 +108,7 @@ const projects: Project[] = [
     title: "Art Workshop",
     description: "National & International workshops for skill development and artistic training.",
     category: "Other Projects",
-    image: "https://images.unsplash.com/photo-1576773689115-5cd2b0223523?q=80&w=500",
+    image: "https://images.unsplash.com/photo-1576773689115-5cd2b0223523?q=80&w=800&auto=format&fit=crop",
     hasSubprograms: false
   }
 ];

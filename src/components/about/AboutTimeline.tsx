@@ -11,42 +11,42 @@ const AboutTimeline: React.FC = () => {
       title: "Santaran Founded", 
       description: "Established in Chittagong as an artist-led initiative to promote art as a medium for social change. 'Art for Dignifying Life' became our vision.",
       icon: <Palette className="text-santaran-vermilion" size={20} />,
-      image: "/lovable-uploads/0b64ccf0-94bb-4b47-9825-23c635d3200a.png"
+      image: "https://images.unsplash.com/photo-1551913902-c92207136625?q=80&w=800&auto=format&fit=crop"
     },
     { 
       year: "2008", 
       title: "Official Recognition", 
       description: "Gained official recognition under the Ministry of Social Welfare, Bangladesh as a nonprofit multidisciplinary artist-run organization.",
       icon: <BookOpen className="text-santaran-amber" size={20} />,
-      image: "/lovable-uploads/d4c3be64-52f3-4bb2-b9a9-753a1adb0f1d.png"
+      image: "https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?q=80&w=800&auto=format&fit=crop"
     },
     { 
       year: "2009", 
       title: "Environmental Art Camp", 
       description: "Launched the permanent Horith program with the first Environmental Art Camp in Alikadam, focusing on ecological awareness through art.",
       icon: <Image className="text-santaran-terracotta" size={20} />,
-      image: "/lovable-uploads/caa29365-e9b3-4edf-8838-882a1f05f9d9.png"
+      image: "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?q=80&w=800&auto=format&fit=crop"
     },
     { 
       year: "2015", 
       title: "Karnaphuli Folk Triennial", 
       description: "Initiated the first triennial celebration of folk arts and crafts from the Chittagong region, part of the Shikar program.",
       icon: <Calendar className="text-santaran-teal" size={20} />,
-      image: "/lovable-uploads/ae063821-89d9-4a5e-93b4-557f6be0e877.png"
+      image: "https://images.unsplash.com/photo-1540360659536-a3f3ca9f7a78?q=80&w=800&auto=format&fit=crop"
     },
     { 
       year: "2018", 
       title: "Srijan Prangon Residency", 
       description: "Established the artist residency space in Alikadam of Bandarbans district for the Dhoritri eco-tourism project under the Art Factory program.",
       icon: <Users className="text-santaran-jade" size={20} />,
-      image: "/lovable-uploads/767b3c4f-35f2-4062-a7db-ac1d7d7a7717.png"
+      image: "https://images.unsplash.com/photo-1567098228577-b7e7a3d98e28?q=80&w=800&auto=format&fit=crop"
     },
     { 
       year: "2020", 
       title: "Kalpapuri School of Arts & Crafts", 
       description: "Created a creative education project for coming generations interested in building their world through art as part of the Kalpapuri program.",
       icon: <BookOpen className="text-santaran-amber" size={20} />,
-      image: "/lovable-uploads/f60108e0-457b-4dd5-8bda-c8e94190aea0.png"
+      image: "https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?q=80&w=800&auto=format&fit=crop"
     }
   ];
 

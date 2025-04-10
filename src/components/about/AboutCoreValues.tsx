@@ -11,28 +11,28 @@ const AboutCoreValues: React.FC = () => {
       description: "Art of environmental development through environmental art camps and community engagement.",
       icon: <Palette className="w-4 h-4" />,
       color: "text-santaran-teal",
-      image: "/lovable-uploads/ba08dcae-6f27-4ebb-8369-f4401e96da77.png"
+      image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200&auto=format&fit=crop"
     },
     {
       title: "Kalpapuri",
       description: "Children's art and psychology program fostering creativity and cultural awareness in young minds.",
       icon: <Users className="w-4 h-4" />,
       color: "text-santaran-amber",
-      image: "/lovable-uploads/af34992d-81d8-452e-96a6-c7be948fdead.png"
+      image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=1200&auto=format&fit=crop"
     },
     {
       title: "Shikar",
       description: "Development and persistence of folk arts and crafts, preserving indigenous artistic traditions.",
       icon: <BookOpen className="w-4 h-4" />,
       color: "text-santaran-jade",
-      image: "/lovable-uploads/e0f7c15b-d242-4daa-82aa-f2ffa25629f9.png"
+      image: "https://images.unsplash.com/photo-1569091791842-7cfb64e04797?q=80&w=1200&auto=format&fit=crop"
     },
     {
       title: "Art Factory",
       description: "Supporting young artists in developing their skills and experimenting with contemporary art forms.",
       icon: <Heart className="w-4 h-4" />,
       color: "text-santaran-vermilion",
-      image: "/lovable-uploads/af85aab8-53e2-4fc8-adbf-2248330efcf6.png"
+      image: "https://images.unsplash.com/photo-1541512416146-3e9ccaa35a9b?q=80&w=1200&auto=format&fit=crop"
     }
   ];
 

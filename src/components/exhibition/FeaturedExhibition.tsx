@@ -20,7 +20,9 @@ const FeaturedExhibition = ({ exhibition, onClick }: FeaturedExhibitionProps) =>
         className="absolute inset-0"
       >
         <img 
-          src={exhibition.image} 
+          src={exhibition.image.includes("lovable-uploads") ? 
+            "https://images.unsplash.com/photo-1545033131-485ea67fd7c3?q=80&w=2000&auto=format&fit=crop" : 
+            exhibition.image} 
           alt={exhibition.title} 
           className="w-full h-full object-cover"
         />

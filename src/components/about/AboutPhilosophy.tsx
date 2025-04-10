@@ -60,7 +60,7 @@ const AboutPhilosophy: React.FC = () => {
               }}
             >
               <img 
-                src="/lovable-uploads/fa3a5784-b296-4b2b-972a-cd87e0eaa634.png" 
+                src="https://images.unsplash.com/photo-1635447284553-099a4365e615?q=80&w=800&auto=format&fit=crop" 
                 alt="Banyan tree symbolizing Yanbriksha" 
                 className="w-3/5 h-3/5 object-cover rounded-full border-4 border-santaran-amber shadow-lg"
               />

@@ -19,7 +19,7 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="/lovable-uploads/d4c3be64-52f3-4bb2-b9a9-753a1adb0f1d.png" 
+              src="https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?q=80&w=800&auto=format&fit=crop" 
               alt="Folk art exhibition by Santaran" 
               className="w-full h-full object-cover"
             />
@@ -31,7 +31,7 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="/lovable-uploads/887da09b-bba4-4dc6-bd86-4b7ee23ccaba.png" 
+              src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800&auto=format&fit=crop" 
               alt="Children's art workshop at Kalpapuri" 
               className="w-full h-full object-cover"
             />
@@ -45,7 +45,7 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="/lovable-uploads/ae063821-89d9-4a5e-93b4-557f6be0e877.png" 
+              src="https://images.unsplash.com/photo-1560421741-50d22e539de5?q=80&w=800&auto=format&fit=crop" 
               alt="Karnaphuli Folk Triennial cultural performance" 
               className="w-full h-full object-cover"
             />
@@ -57,7 +57,7 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="/lovable-uploads/caa29365-e9b3-4edf-8838-882a1f05f9d9.png" 
+              src="https://images.unsplash.com/photo-1520962880247-cfaf541c8724?q=80&w=800&auto=format&fit=crop" 
               alt="Environmental art installation from Horith program" 
               className="w-full h-full object-cover"
             />

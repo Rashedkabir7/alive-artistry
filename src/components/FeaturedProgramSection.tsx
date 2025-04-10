@@ -25,7 +25,7 @@ const programs: Program[] = [
     description: "Art of environmental development focusing on ecological awareness and sustainability through creative expression. Our flagship program includes Environmental Art Camps and the Dharitri eco-tourism project.",
     category: "Environmental Art",
     year: "2009",
-    image: "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?q=80&w=1200&auto=format&fit=crop",
     link: "/programs/harith"
   },
   {
@@ -34,7 +34,7 @@ const programs: Program[] = [
     description: "Related with children's art and psychology. This program includes Kalpaloker Citra workshops for children and the Kalpapuri School of Arts & Crafts creative education project.",
     category: "Children's Art",
     year: "2020",
-    image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=1200&auto=format&fit=crop",
     link: "/programs/kalpapuri"
   },
   {
@@ -43,7 +43,7 @@ const programs: Program[] = [
     description: "Development and persistence of folk arts & crafts. This program includes the Karnaphuli Folk Triennial and Kandrabindu project for product design, development & marketing of traditional crafts.",
     category: "Folk Arts",
     year: "2015",
-    image: "https://images.unsplash.com/photo-1569091791842-7cfb64e04797?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1569091791842-7cfb64e04797?q=80&w=1200&auto=format&fit=crop",
     link: "/programs/shikar"
   },
   {
@@ -52,7 +52,7 @@ const programs: Program[] = [
     description: "Project for young artists to collaborate, experiment, and showcase innovative approaches. Includes Artist Residency Program and Young Art Exhibition to support emerging talent.",
     category: "Contemporary Art",
     year: "2018",
-    image: "https://images.unsplash.com/photo-1541512416146-3e9ccaa35a9b?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1541512416146-3e9ccaa35a9b?q=80&w=1200&auto=format&fit=crop",
     link: "/programs/artfactory"
   }
 ];
