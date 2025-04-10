@@ -23,7 +23,7 @@ const About = () => {
           <motion.div
             className="w-full h-full"
             style={{ 
-              backgroundImage: 'url(https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?q=80&w=2070&auto=format&fit=crop)', 
+              backgroundImage: 'url(https://images.pexels.com/photos/268261/pexels-photo-268261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)', 
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'fixed'
@@ -313,7 +313,7 @@ const About = () => {
             <div className="mb-8 flex justify-center">
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-santaran-terracotta p-1">
                 <img 
-                  src="/lovable-uploads/0b64ccf0-94bb-4b47-9825-23c635d3200a.png" 
+                  src="https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                   alt="Community Member" 
                   className="w-full h-full object-cover rounded-full"
                 />

@@ -23,15 +23,15 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "Environmental Art Exhibition",
         date: "May 15 - July 30, 2023",
         location: "Santaran Gallery, Chittagong",
-        image: "https://images.unsplash.com/photo-1460574283810-2aab119d8511?q=80&w=1200",
+        image: "https://images.pexels.com/photos/5207224/pexels-photo-5207224.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "An immersive exhibition exploring humanity's relationship with nature through diverse media. The exhibition features installations, paintings, and sculptures that reflect on ecological balance, sustainability, and indigenous knowledge of environmental preservation. Visitors will experience art that challenges our understanding of our place in the natural world and suggests pathways to a more harmonious coexistence with our planet.",
         curator: "Dr. Rina Ahmed",
         artists: ["Zahid Hassan", "Mariam Khan", "Tanvir Rahman", "Fariha Zabin", "Arif Chowdhury"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=1200",
-          "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=1200",
-          "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=1200",
-          "https://images.unsplash.com/photo-1578018390158-3c28368a712e?q=80&w=1200"
+          "https://images.pexels.com/photos/1568607/pexels-photo-1568607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/262034/pexels-photo-262034.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["environmental", "multimedia", "contemporary", "sustainability"],
         openingHours: "10:00 AM - 6:00 PM, Tuesday - Sunday",
@@ -54,15 +54,15 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "Contemporary Folk Art",
         date: "June 5 - August 15, 2023",
         location: "Bengal Arts Foundation, Dhaka",
-        image: "https://images.unsplash.com/photo-1561839561-b13bcfe95249?q=80&w=1200",
+        image: "https://images.pexels.com/photos/2570059/pexels-photo-2570059.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "Contemporary artists reinterpret traditional folk art motifs in a celebration of cultural heritage. This exhibition bridges the gap between traditional craft practices and contemporary artistic expressions, showcasing how Bengali folk traditions continue to inspire and evolve in the modern art world. The works on display demonstrate the living nature of cultural heritage and the dynamic ways artists engage with their roots.",
         curator: "Farhana Begum",
         artists: ["Iqbal Ahmed", "Nusrat Jahan", "Rokeya Sultana", "Mohammad Rafiq", "Nasreen Begum"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1578926288207-32bacb6ee3c6?q=80&w=1200",
-          "https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?q=80&w=1200",
-          "https://images.unsplash.com/photo-1576779504370-bc5e1e59fb2d?q=80&w=1200",
-          "https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?q=80&w=1200"
+          "https://images.pexels.com/photos/2086361/pexels-photo-2086361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/3094544/pexels-photo-3094544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/2570057/pexels-photo-2570057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/2570056/pexels-photo-2570056.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["folk art", "heritage", "traditional", "contemporary"],
         openingHours: "11:00 AM - 7:00 PM, Daily",
@@ -82,13 +82,13 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "Mathematical Art",
         date: "May 20 - July 10, 2023",
         location: "Modern Art Museum, Dhaka",
-        image: "https://images.unsplash.com/photo-1575223970966-76ae61ee7838?q=80&w=1200",
+        image: "https://images.pexels.com/photos/1575223970966-76ae61ee7838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "Exploring the intersection of mathematics, spirituality, and visual arts through geometric patterns and forms. This exhibition examines how artists throughout history have used mathematical principles to create works of profound beauty and spiritual significance. From ancient Islamic geometric patterns to contemporary digital art, Sacred Geometries reveals the universal language of mathematical harmony.",
         curator: "Dr. Ahmed Rahman",
         artists: ["Salma Khan", "Ibrahim Khondokar", "Jasmine Akter", "Mohammad Salam"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?q=80&w=1200",
-          "https://images.unsplash.com/photo-1507646227500-4d389b0e2d1a?q=80&w=1200"
+          "https://images.pexels.com/photos/1565106430482-8f6e74349ca1.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1507646288207-3c28368a712e.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["geometric", "mathematics", "spiritual", "contemporary"],
         openingHours: "9:00 AM - 5:00 PM, Wednesday - Monday",
@@ -109,13 +109,13 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "Celebrating Folk Arts & Crafts",
         date: "September 10 - December 15, 2023",
         location: "Multiple venues, Chittagong",
-        image: "https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=1200",
+        image: "https://images.pexels.com/photos/1473177104440-ffee2f376098.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "The flagship triennial event showcasing traditional folk arts and crafts from across Bangladesh. This major cultural celebration brings together artisans, performers, and scholars from throughout the country to showcase the rich diversity of Bangladesh's living heritage. Spanning multiple venues throughout Chittagong, the Triennial includes exhibitions, performances, workshops, and community events that highlight the vibrancy of folk traditions.",
         curator: "Kabir Uddin",
         artists: ["Multiple artists from across Bangladesh"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1200", 
-          "https://images.unsplash.com/photo-1588512285341-c481fb6de19d?q=80&w=1200"
+          "https://images.pexels.com/photos/1466442929976-97f336a657be.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1588512285341-c481fb6de19d.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["triennial", "folk arts", "crafts", "festival"],
         openingHours: "Varies by venue",
@@ -131,13 +131,13 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "New Media Art Exhibition",
         date: "October 5 - November 30, 2023",
         location: "Digital Art Space, Dhaka",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+        image: "https://images.pexels.com/photos/1550745165-9bc0b252726f.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "Exploring the intersection of traditional storytelling and digital technologies. This forward-looking exhibition examines how digital artists are using new technologies to reimagine storytelling traditions. Through interactive installations, virtual reality experiences, and multimedia presentations, Digital Narratives invites visitors to experience the evolving relationship between narrative, technology, and cultural identity.",
         curator: "Zaid Rahman",
         artists: ["Tanzia Ahmed", "Rafiq Islam", "Digital Art Collective", "Sohel Khan", "Priya Amin"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200",
-          "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=1200"
+          "https://images.pexels.com/photos/1513364776144-60967b0f800f.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1605810230434-7631ac76ec81.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["digital", "new media", "interactive", "storytelling"],
         openingHours: "12:00 PM - 8:00 PM, Tuesday - Sunday",
@@ -153,13 +153,13 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "Photography Exhibition",
         date: "November 15, 2023 - January 20, 2024",
         location: "River Heritage Museum, Barisal",
-        image: "https://images.unsplash.com/photo-1506126661-9677cfb33af3?q=80&w=1200",
+        image: "https://images.pexels.com/photos/1506126661-9677cfb33af3.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "A comprehensive photographic journey through the major river systems of Bangladesh. This exhibition documents the cultural, economic, and ecological significance of Bangladesh's river networks. Through stunning photography and multimedia presentations, visitors will gain insight into the lives of river communities, the challenges of climate change, and the timeless relationship between the people of Bangladesh and their waterways.",
         curator: "Nasreen Jahan",
         artists: ["Kamal Ahmed", "Sabina Yasmin", "River Conservation Photographers Collective"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1536146021566-627ce3c4d813?q=80&w=1200",
-          "https://images.unsplash.com/photo-1444492133935-ee28b719e3ba?q=80&w=1200"
+          "https://images.pexels.com/photos/1536146021566-627ce3c4d813.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1444492133935-ee28b719e3ba.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["photography", "rivers", "ecology", "documentary"],
         openingHours: "10:00 AM - 6:00 PM, Wednesday - Monday",
@@ -180,13 +180,13 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "Kalpapuri Annual Exhibition",
         date: "January 15 - February 28, 2023",
         location: "Santaran Art Center, Chittagong",
-        image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=1200",
+        image: "https://images.pexels.com/photos/1551038247-3d9af20df552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "Celebrating the creativity and imagination of young artists from the Kalpapuri program. This joyful exhibition showcased artworks created by children aged 6-14 who participated in Santaran's year-long Kalpapuri arts education program. Their fresh perspectives and uninhibited creativity resulted in vibrant works that addressed themes of family, nature, dreams, and community.",
         curator: "Amina Khatun",
         artists: ["Young artists from Kalpapuri program"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1555009433-3039e19eb354?q=80&w=1200",
-          "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=1200"
+          "https://images.pexels.com/photos/1555009433-3039e19eb354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1607453998774-d533f65dac99.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["children", "education", "community", "kalpapuri"]
       },
@@ -196,13 +196,13 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "Research Exhibition",
         date: "November 10 - December 20, 2022",
         location: "National Museum, Dhaka",
-        image: "https://images.unsplash.com/photo-1524230572899-a752b3835840?q=80&w=1200",
+        image: "https://images.pexels.com/photos/1524230572899-a752b3835840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "Documenting and preserving indigenous knowledge through artistic research and collaboration. This ground-breaking exhibition was the culmination of a three-year research project that brought together artists, anthropologists, and indigenous knowledge keepers from the Chittagong Hill Tracts. Through art, artifacts, and documentation, the exhibition preserved and shared traditional knowledge about medicine, agriculture, craft, and spirituality.",
         curator: "Dr. Jamal Hossain",
         artists: ["Collaborative research team", "Hill Tracts Artisan Collective", "Santaran Research Unit"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1530512112057-7607c9865916?q=80&w=1200",
-          "https://images.unsplash.com/photo-1566230724840-2e2729cdb08a?q=80&w=1200"
+          "https://images.pexels.com/photos/1530512112057-7607c9865916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1566230724840-2e2729cdb08a.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["indigenous", "research", "documentation", "knowledge systems"]
       },
@@ -212,13 +212,13 @@ const exhibitions: ExhibitionCategory[] = [
         subtitle: "Historical Textile Arts",
         date: "August 5 - October 15, 2022",
         location: "Textile Museum, Dhaka",
-        image: "https://images.unsplash.com/photo-1528459061998-56fd57ad86e3?q=80&w=1200",
+        image: "https://images.pexels.com/photos/1528459061998-56fd57ad86e3.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         description: "A comprehensive exhibition on the rich textile heritage of Bangladesh from ancient to modern times. This exhibition traced the evolution of Bangladesh's celebrated textile traditions through historical artifacts, contemporary works, and interactive displays. From ancient Jamdani techniques to modern innovations, Textile Traditions honored the skilled artisans who have maintained and evolved these practices over centuries.",
         curator: "Farida Rahman",
         artists: ["Historical collections", "Contemporary textile artists", "Jamdani Weavers Collective"],
         additionalImages: [
-          "https://images.unsplash.com/photo-1608826021584-bfb6c5288631?q=80&w=1200",
-          "https://images.unsplash.com/photo-1541974669596-79e9a6a5d6dd?q=80&w=1200"
+          "https://images.pexels.com/photos/1608826021584-bfb6c5288631.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1541974669596-79e9a6a5d6dd.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         ],
         tags: ["textiles", "heritage", "jamdani", "craft"]
       }
@@ -315,7 +315,7 @@ const Exhibitions = () => {
       <section className="relative">
         <div className="absolute inset-0 overflow-hidden">
           <img 
-            src="https://images.unsplash.com/photo-1577083552464-8c45727ec380?q=80&w=2070&auto=format&fit=crop"
+            src="https://images.pexels.com/photos/1674049/pexels-photo-1674049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="Exhibition hall with artwork displays"
             className="w-full h-full object-cover"
           />
