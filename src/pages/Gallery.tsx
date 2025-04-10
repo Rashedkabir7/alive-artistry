@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -340,39 +341,62 @@ const Gallery = () => {
                 </TabsTrigger>
               </TabsList>
             </div>
-          </Tabs>
           
-          <div className="mb-10">
-            <div className="flex flex-col md:flex-row justify-between gap-4">
-              <div className="relative w-full md:w-1/3">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                <input
-                  type="text"
-                  placeholder="Search artworks or artists"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-santaran-teal"
-                />
-                {searchTerm && (
+            <div className="mb-10">
+              <div className="flex flex-col md:flex-row justify-between gap-4">
+                <div className="relative w-full md:w-1/3">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                  <input
+                    type="text"
+                    placeholder="Search artworks or artists"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-santaran-teal"
+                  />
+                  {searchTerm && (
+                    <button 
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      onClick={() => setSearchTerm("")}
+                    >
+                      <X size={16} />
+                    </button>
+                  )}
+                </div>
+                
+                <div className="flex gap-2">
                   <button 
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                    onClick={() => setSearchTerm("")}
+                    className="md:hidden px-4 py-3 border border-gray-300 rounded-md flex items-center gap-2 bg-white"
+                    onClick={() => setShowFilters(!showFilters)}
                   >
-                    <X size={16} />
+                    <Filter size={18} />
+                    Filters
                   </button>
-                )}
+                  
+                  <div className="hidden md:flex gap-2 overflow-x-auto pb-2">
+                    {categories.map(category => (
+                      <button
+                        key={category}
+                        onClick={() => {
+                          setFilter(category);
+                          if (category !== "All") {
+                            setSubfilter("All");
+                          }
+                        }}
+                        className={`px-4 py-2 rounded-full transition-colors whitespace-nowrap ${
+                          filter === category 
+                            ? 'bg-santaran-teal text-white' 
+                            : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
               
-              <div className="flex gap-2">
-                <button 
-                  className="md:hidden px-4 py-3 border border-gray-300 rounded-md flex items-center gap-2 bg-white"
-                  onClick={() => setShowFilters(!showFilters)}
-                >
-                  <Filter size={18} />
-                  Filters
-                </button>
-                
-                <div className="hidden md:flex gap-2 overflow-x-auto pb-2">
+              {showFilters && (
+                <div className="md:hidden flex gap-2 overflow-x-auto py-4">
                   {categories.map(category => (
                     <button
                       key={category}
@@ -392,217 +416,194 @@ const Gallery = () => {
                     </button>
                   ))}
                 </div>
-              </div>
+              )}
+              
+              {filter !== "All" && (
+                <div className="flex gap-2 overflow-x-auto py-4 mt-2">
+                  {subcategories
+                    .filter(sub => sub === "All" || galleryItems.some(item => 
+                      item.category === filter && item.subcategory === sub
+                    ))
+                    .map(subcategory => (
+                      <button
+                        key={subcategory}
+                        onClick={() => setSubfilter(subcategory)}
+                        className={`px-3 py-1 rounded-full transition-colors whitespace-nowrap text-sm ${
+                          subfilter === subcategory 
+                            ? 'bg-santaran-vermilion text-white' 
+                            : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                        }`}
+                      >
+                        {subcategory}
+                      </button>
+                    ))
+                  }
+                </div>
+              )}
             </div>
             
-            {showFilters && (
-              <div className="md:hidden flex gap-2 overflow-x-auto py-4">
-                {categories.map(category => (
-                  <button
-                    key={category}
-                    onClick={() => {
-                      setFilter(category);
-                      if (category !== "All") {
-                        setSubfilter("All");
-                      }
-                    }}
-                    className={`px-4 py-2 rounded-full transition-colors whitespace-nowrap ${
-                      filter === category 
-                        ? 'bg-santaran-teal text-white' 
-                        : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
-            )}
-            
-            {filter !== "All" && (
-              <div className="flex gap-2 overflow-x-auto py-4 mt-2">
-                {subcategories
-                  .filter(sub => sub === "All" || galleryItems.some(item => 
-                    item.category === filter && item.subcategory === sub
-                  ))
-                  .map(subcategory => (
-                    <button
-                      key={subcategory}
-                      onClick={() => setSubfilter(subcategory)}
-                      className={`px-3 py-1 rounded-full transition-colors whitespace-nowrap text-sm ${
-                        subfilter === subcategory 
-                          ? 'bg-santaran-vermilion text-white' 
-                          : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                      }`}
+            <TabsContent value="gallery" className="outline-none">
+              {filteredItems.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredItems.map(item => (
+                    <div 
+                      key={item.id} 
+                      className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                     >
-                      {subcategory}
-                    </button>
-                  ))
-                }
-              </div>
-            )}
-          </div>
-          
-          <TabsContent value="gallery" className="outline-none">
-            {filteredItems.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredItems.map(item => (
-                  <div 
-                    key={item.id} 
-                    className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-                  >
-                    <div className="relative overflow-hidden aspect-square">
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                        <div className="p-4 w-full">
-                          <span className="inline-block px-2 py-1 bg-santaran-terracotta/90 text-white text-xs rounded mb-2">
-                            {item.category}
-                          </span>
-                          <h3 className="text-white font-display text-xl">{item.title}</h3>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-4">
-                      <h3 className="font-display text-lg font-semibold text-santaran-teal">{item.title}</h3>
-                      <div className="flex justify-between mt-2 text-sm text-gray-600">
-                        <span>{item.artist}</span>
-                        <span>{item.year}</span>
-                      </div>
-                      {item.subcategory && (
-                        <div className="mt-2">
-                          <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
-                            {item.subcategory}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <div className="text-5xl mb-4">🔍</div>
-                <h3 className="heading-sm text-gray-600 mb-2">No artworks found</h3>
-                <p className="text-gray-500">Try adjusting your search or filter criteria</p>
-              </div>
-            )}
-          </TabsContent>
-          
-          <TabsContent value="carousel" className="outline-none">
-            {filteredItems.length > 0 ? (
-              <div className="relative h-[80vh] max-h-[800px] min-h-[500px] w-full flex items-center justify-center overflow-hidden" ref={carouselRef}>
-                <div className="relative w-full max-w-4xl aspect-[3/4] md:aspect-[4/3]">
-                  <AnimatePresence initial={false} custom={direction} mode="wait">
-                    <motion.div
-                      key={activeIndex}
-                      custom={direction}
-                      initial={{ 
-                        opacity: 0,
-                        x: direction > 0 ? 300 : -300,
-                        rotateY: direction > 0 ? 45 : -45
-                      }}
-                      animate={{ 
-                        opacity: 1, 
-                        x: 0,
-                        rotateY: 0,
-                        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-                      }}
-                      exit={{ 
-                        opacity: 0,
-                        x: direction < 0 ? 300 : -300,
-                        rotateY: direction < 0 ? 45 : -45,
-                        transition: { duration: 0.4 }
-                      }}
-                      className="absolute inset-0 shadow-2xl rounded-2xl overflow-hidden bg-white"
-                      style={{ perspective: 1000 }}
-                    >
-                      <div className="w-full h-full flex flex-col md:flex-row">
-                        <div className="w-full md:w-7/12 h-1/2 md:h-full overflow-hidden">
-                          <img 
-                            src={filteredItems[activeIndex].image} 
-                            alt={filteredItems[activeIndex].title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="w-full md:w-5/12 h-1/2 md:h-full p-6 md:p-8 flex flex-col justify-between bg-white">
-                          <div>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                              <span className="text-xs bg-santaran-terracotta/90 text-white px-2 py-1 rounded-full">
-                                {filteredItems[activeIndex].category}
-                              </span>
-                              {filteredItems[activeIndex].subcategory && (
-                                <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
-                                  {filteredItems[activeIndex].subcategory}
-                                </span>
-                              )}
-                            </div>
-                            <h2 className="text-2xl md:text-3xl font-display text-santaran-teal mb-3">
-                              {filteredItems[activeIndex].title}
-                            </h2>
-                            <p className="text-gray-600 mb-6">
-                              {filteredItems[activeIndex].description || "A beautiful artwork from our collection."}
-                            </p>
-                          </div>
-                          
-                          <div>
-                            <div className="flex justify-between text-sm text-gray-600 mb-4">
-                              <span><strong>Artist:</strong> {filteredItems[activeIndex].artist}</span>
-                              <span><strong>Year:</strong> {filteredItems[activeIndex].year}</span>
-                            </div>
-                            
-                            <div className="flex justify-between items-center">
-                              <div className="text-xs text-gray-500">
-                                {activeIndex + 1} of {filteredItems.length}
-                              </div>
-                              <div className="flex gap-2">
-                                <Button variant="outline" size="sm" onClick={prevItem} className="rounded-full p-0 w-10 h-10">
-                                  <ChevronLeft size={18} />
-                                </Button>
-                                <Button variant="outline" size="sm" onClick={nextItem} className="rounded-full p-0 w-10 h-10">
-                                  <ChevronRight size={18} />
-                                </Button>
-                              </div>
-                            </div>
+                      <div className="relative overflow-hidden aspect-square">
+                        <img 
+                          src={item.image} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="p-4 w-full">
+                            <span className="inline-block px-2 py-1 bg-santaran-terracotta/90 text-white text-xs rounded mb-2">
+                              {item.category}
+                            </span>
+                            <h3 className="text-white font-display text-xl">{item.title}</h3>
                           </div>
                         </div>
                       </div>
-                    </motion.div>
-                  </AnimatePresence>
-                  
-                  <div className="absolute -z-10 inset-0 -bottom-3 -right-3 bg-santaran-cream/50 rounded-2xl"></div>
-                  <div className="absolute -z-20 inset-0 -bottom-6 -right-6 bg-santaran-cream/30 rounded-2xl"></div>
-                </div>
-                
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1">
-                  {filteredItems.length > 1 && filteredItems.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        setDirection(index > activeIndex ? 1 : -1);
-                        setActiveIndex(index);
-                      }}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        index === activeIndex 
-                          ? 'bg-santaran-teal w-6' 
-                          : 'bg-gray-300'
-                      }`}
-                      aria-label={`Go to artwork ${index + 1}`}
-                    />
+                      
+                      <div className="p-4">
+                        <h3 className="font-display text-lg font-semibold text-santaran-teal">{item.title}</h3>
+                        <div className="flex justify-between mt-2 text-sm text-gray-600">
+                          <span>{item.artist}</span>
+                          <span>{item.year}</span>
+                        </div>
+                        {item.subcategory && (
+                          <div className="mt-2">
+                            <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+                              {item.subcategory}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   ))}
                 </div>
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <div className="text-5xl mb-4">🔍</div>
-                <h3 className="heading-sm text-gray-600 mb-2">No artworks found</h3>
-                <p className="text-gray-500">Try adjusting your search or filter criteria</p>
-              </div>
-            )}
-          </TabsContent>
+              ) : (
+                <div className="text-center py-12">
+                  <div className="text-5xl mb-4">🔍</div>
+                  <h3 className="heading-sm text-gray-600 mb-2">No artworks found</h3>
+                  <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+                </div>
+              )}
+            </TabsContent>
+            
+            <TabsContent value="carousel" className="outline-none">
+              {filteredItems.length > 0 ? (
+                <div className="relative h-[80vh] max-h-[800px] min-h-[500px] w-full flex items-center justify-center overflow-hidden" ref={carouselRef}>
+                  <div className="relative w-full max-w-4xl aspect-[3/4] md:aspect-[4/3]">
+                    <AnimatePresence initial={false} custom={direction} mode="wait">
+                      <motion.div
+                        key={activeIndex}
+                        custom={direction}
+                        initial={{ 
+                          opacity: 0,
+                          x: direction > 0 ? 300 : -300,
+                          rotateY: direction > 0 ? 45 : -45
+                        }}
+                        animate={{ 
+                          opacity: 1, 
+                          x: 0,
+                          rotateY: 0,
+                          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+                        }}
+                        exit={{ 
+                          opacity: 0,
+                          x: direction < 0 ? 300 : -300,
+                          rotateY: direction < 0 ? 45 : -45,
+                          transition: { duration: 0.4 }
+                        }}
+                        className="absolute inset-0 shadow-2xl rounded-2xl overflow-hidden bg-white"
+                        style={{ perspective: 1000 }}
+                      >
+                        <div className="w-full h-full flex flex-col md:flex-row">
+                          <div className="w-full md:w-7/12 h-1/2 md:h-full overflow-hidden">
+                            <img 
+                              src={filteredItems[activeIndex].image} 
+                              alt={filteredItems[activeIndex].title}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="w-full md:w-5/12 h-1/2 md:h-full p-6 md:p-8 flex flex-col justify-between bg-white">
+                            <div>
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                <span className="text-xs bg-santaran-terracotta/90 text-white px-2 py-1 rounded-full">
+                                  {filteredItems[activeIndex].category}
+                                </span>
+                                {filteredItems[activeIndex].subcategory && (
+                                  <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+                                    {filteredItems[activeIndex].subcategory}
+                                  </span>
+                                )}
+                              </div>
+                              <h2 className="text-2xl md:text-3xl font-display text-santaran-teal mb-3">
+                                {filteredItems[activeIndex].title}
+                              </h2>
+                              <p className="text-gray-600 mb-6">
+                                {filteredItems[activeIndex].description || "A beautiful artwork from our collection."}
+                              </p>
+                            </div>
+                            
+                            <div>
+                              <div className="flex justify-between text-sm text-gray-600 mb-4">
+                                <span><strong>Artist:</strong> {filteredItems[activeIndex].artist}</span>
+                                <span><strong>Year:</strong> {filteredItems[activeIndex].year}</span>
+                              </div>
+                              
+                              <div className="flex justify-between items-center">
+                                <div className="text-xs text-gray-500">
+                                  {activeIndex + 1} of {filteredItems.length}
+                                </div>
+                                <div className="flex gap-2">
+                                  <Button variant="outline" size="sm" onClick={prevItem} className="rounded-full p-0 w-10 h-10">
+                                    <ChevronLeft size={18} />
+                                  </Button>
+                                  <Button variant="outline" size="sm" onClick={nextItem} className="rounded-full p-0 w-10 h-10">
+                                    <ChevronRight size={18} />
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                    
+                    <div className="absolute -z-10 inset-0 -bottom-3 -right-3 bg-santaran-cream/50 rounded-2xl"></div>
+                    <div className="absolute -z-20 inset-0 -bottom-6 -right-6 bg-santaran-cream/30 rounded-2xl"></div>
+                  </div>
+                  
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1">
+                    {filteredItems.length > 1 && filteredItems.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => {
+                          setDirection(index > activeIndex ? 1 : -1);
+                          setActiveIndex(index);
+                        }}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          index === activeIndex 
+                            ? 'bg-santaran-teal w-6' 
+                            : 'bg-gray-300'
+                        }`}
+                        aria-label={`Go to artwork ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <div className="text-5xl mb-4">🔍</div>
+                  <h3 className="heading-sm text-gray-600 mb-2">No artworks found</h3>
+                  <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+                </div>
+              )}
+            </TabsContent>
+          </Tabs>
         </div>
       </main>
       
