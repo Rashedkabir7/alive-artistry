@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Heart, Leaf } from 'lucide-react';
@@ -24,7 +23,7 @@ const About = () => {
           <motion.div
             className="w-full h-full"
             style={{ 
-              backgroundImage: 'url(/lovable-uploads/0e3087bd-7bed-4576-aa7e-5d71c02efdca.png)', 
+              backgroundImage: 'url(https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?q=80&w=2070&auto=format&fit=crop)', 
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'fixed'

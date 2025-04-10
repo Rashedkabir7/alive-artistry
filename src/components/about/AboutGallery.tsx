@@ -19,7 +19,7 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?q=80&w=800&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?q=80&w=1200&auto=format&fit=crop" 
               alt="Folk art exhibition by Santaran" 
               className="w-full h-full object-cover"
             />
@@ -31,7 +31,7 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200&auto=format&fit=crop" 
               alt="Children's art workshop at Kalpapuri" 
               className="w-full h-full object-cover"
             />
@@ -45,7 +45,7 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1560421741-50d22e539de5?q=80&w=800&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1560421741-50d22e539de5?q=80&w=1200&auto=format&fit=crop" 
               alt="Karnaphuli Folk Triennial cultural performance" 
               className="w-full h-full object-cover"
             />
@@ -57,7 +57,7 @@ const AboutGallery: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1520962880247-cfaf541c8724?q=80&w=800&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1520962880247-cfaf541c8724?q=80&w=1200&auto=format&fit=crop" 
               alt="Environmental art installation from Horith program" 
               className="w-full h-full object-cover"
             />
@@ -88,7 +88,7 @@ const AboutGallery: React.FC = () => {
         transition={{ 
           duration: 3,
           repeat: Infinity,
-          repeatType: "reverse",
+          repeatType: "reverse" as const,
           ease: "easeInOut"
         }}
       />
@@ -101,7 +101,7 @@ const AboutGallery: React.FC = () => {
         transition={{ 
           duration: 4,
           repeat: Infinity,
-          repeatType: "reverse",
+          repeatType: "reverse" as const,
           ease: "easeInOut",
           delay: 1
         }}

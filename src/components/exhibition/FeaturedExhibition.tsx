@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, ArrowRight } from 'lucide-react';
@@ -20,9 +19,7 @@ const FeaturedExhibition = ({ exhibition, onClick }: FeaturedExhibitionProps) =>
         className="absolute inset-0"
       >
         <img 
-          src={exhibition.image.includes("lovable-uploads") ? 
-            "https://images.unsplash.com/photo-1545033131-485ea67fd7c3?q=80&w=2000&auto=format&fit=crop" : 
-            exhibition.image} 
+          src={exhibition.image} 
           alt={exhibition.title} 
           className="w-full h-full object-cover"
         />

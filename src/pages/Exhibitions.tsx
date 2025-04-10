@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -316,8 +315,8 @@ const Exhibitions = () => {
       <section className="relative">
         <div className="absolute inset-0 overflow-hidden">
           <img 
-            src="/lovable-uploads/0e3087bd-7bed-4576-aa7e-5d71c02efdca.png"
-            alt="Exhibition hall with spiral ceiling"
+            src="https://images.unsplash.com/photo-1577083552464-8c45727ec380?q=80&w=2070&auto=format&fit=crop"
+            alt="Exhibition hall with artwork displays"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
