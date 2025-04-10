@@ -15,116 +15,116 @@ const ArtisticGalleryImages: React.FC<ArtisticGalleryImagesProps> = ({
   autoPlay = true,
   interval = 5000
 }) => {
-  // Define image collections by category with updated images
+  // Define image collections by category with updated high-quality images
   const natureImages = [
     {
-      src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200",
       alt: "Natural art installation in forest",
-      caption: "Environmental art merging with natural surroundings"
+      caption: "Environmental art merging with natural surroundings - Harith program"
     },
     {
-      src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200",
-      alt: "Artistic nature conservation project",
+      src: "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?q=80&w=1200",
+      alt: "Environmental art installation",
       caption: "Harith program: Art for ecological awareness"
     },
     {
-      src: "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=1200",
       alt: "Eco-art installation",
-      caption: "Sustainable materials transformed into artistic expression"
+      caption: "Environmental Art Camp: Sustainable materials transformed into artistic expression"
     },
     {
-      src: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1506259091721-347e791bab0f?q=80&w=1200",
       alt: "Nature-inspired art",
-      caption: "Ecological patterns in artistic design"
+      caption: "Dharitri eco-tourism project: Ecological patterns in artistic design"
     },
     {
-      src: "https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1517928260182-5687aefbd068?q=80&w=1200",
       alt: "Forest art space",
-      caption: "Natural canvases for artistic expression"
+      caption: "Srijan Prangon Residency: Natural canvases for artistic expression"
     }
   ];
   
   const folkImages = [
     {
-      src: "https://images.unsplash.com/photo-1578926318661-3af11b5b05d7?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1635048424329-a9bfb146d7aa?q=80&w=1200",
       alt: "Traditional folk art",
-      caption: "Preserving indigenous craft techniques"
+      caption: "Karnaphuli Folk Triennial: Preserving indigenous craft techniques"
     },
     {
-      src: "https://images.unsplash.com/photo-1577083287809-1c774a469596?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1560421741-50d22e539de5?q=80&w=1200",
       alt: "Folk art textile",
       caption: "Shikar program: Heritage preservation through craft"
     },
     {
-      src: "https://images.unsplash.com/photo-1530512112057-7607c9865916?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1569091791842-7cfb64e04797?q=80&w=1200",
       alt: "Cultural folk artifact",
-      caption: "Traditional symbolism in contemporary context"
+      caption: "Kandrabindu: Traditional symbolism in contemporary context"
     },
     {
-      src: "https://images.unsplash.com/photo-1566230724840-2e2729cdb08a?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?q=80&w=1200",
       alt: "Indigenous craftsmanship",
-      caption: "Preserving artistic heritage through generations"
+      caption: "Shikar program: Preserving artistic heritage through generations"
     },
     {
-      src: "https://images.unsplash.com/photo-1588512285341-c481fb6de19d?q=80&w=1200", 
+      src: "https://images.unsplash.com/photo-1540360659536-a3f3ca9f7a78?q=80&w=1200", 
       alt: "Traditional art motifs",
-      caption: "Elements of cultural identity in design"
+      caption: "Karnaphuli Folk Triennial: Elements of cultural identity in design"
     }
   ];
   
   const childrenImages = [
     {
-      src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=1200",
       alt: "Children's art workshop",
       caption: "Kalpapuri program: Nurturing young artistic talent"
     },
     {
-      src: "https://images.unsplash.com/photo-1551966775-a4ddc8df052b?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200",
       alt: "Creative education for children",
-      caption: "Exploring creativity through guided art activities"
+      caption: "Kalpapuri School of Arts & Crafts: Exploring creativity through guided art activities"
     },
     {
-      src: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?q=80&w=1200",
       alt: "Children's collaborative art project",
-      caption: "Building community through creative expression"
+      caption: "Kalpaloker Citra: Building community through creative expression"
     },
     {
-      src: "https://images.unsplash.com/photo-1555009443-3039e19eb354?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1560421683-6856ea585c78?q=80&w=1200",
       alt: "Childhood creativity",
-      caption: "Fostering artistic development in early years"
+      caption: "Kalpapuri School of Arts & Crafts: Fostering artistic development in early years"
     },
     {
-      src: "https://images.unsplash.com/photo-1571210059434-eaf5b7a25191?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1529066516367-36973222c957?q=80&w=1200",
       alt: "Children learning art",
-      caption: "Developing creative skills through guided exploration"
+      caption: "Kalpaloker Citra: Developing creative skills through guided exploration"
     }
   ];
   
   const contemporaryImages = [
     {
-      src: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1541512416146-3e9ccaa35a9b?q=80&w=1200",
       alt: "Contemporary art installation",
       caption: "Art Factory: Experimental contemporary expressions"
     },
     {
-      src: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1576773689115-5cd2b0223523?q=80&w=1200",
       alt: "Digital art projection",
-      caption: "Digital Aesthetics program: Technology meets traditional art"
+      caption: "Young Art exhibition: Technology meets traditional art"
     },
     {
-      src: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1567098228577-b7e7a3d98e28?q=80&w=1200",
       alt: "International art collaboration",
-      caption: "Art Bridge: Cross-cultural creative dialogue"
+      caption: "Art Exchange: Cross-cultural creative dialogue"
     },
     {
-      src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1547119957-637f8679db1e?q=80&w=1200",
       alt: "Modern artistic expression",
-      caption: "Breaking boundaries in contemporary aesthetics"
+      caption: "Art Factory: Breaking boundaries in contemporary aesthetics"
     },
     {
-      src: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200",
+      src: "https://images.unsplash.com/photo-1532453288509-177d8062a8ee?q=80&w=1200",
       alt: "Conceptual art installation",
-      caption: "Exploring abstract concepts through visual media"
+      caption: "Multidisciplinary Art Show: Exploring abstract concepts through visual media"
     }
   ];
   

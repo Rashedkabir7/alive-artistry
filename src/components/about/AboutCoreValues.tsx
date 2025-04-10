@@ -7,18 +7,18 @@ import AnimatedHeading from '../AnimatedHeading';
 const AboutCoreValues: React.FC = () => {
   const corePrograms = [
     {
-      title: "Horith",
+      title: "Harith",
       description: "Art of environmental development through environmental art camps and community engagement.",
       icon: <Palette className="w-4 h-4" />,
       color: "text-santaran-teal",
-      image: "/lovable-uploads/1a761eda-1c94-4f4a-948b-6570ddbff14a.png"
+      image: "/lovable-uploads/ba08dcae-6f27-4ebb-8369-f4401e96da77.png"
     },
     {
       title: "Kalpapuri",
       description: "Children's art and psychology program fostering creativity and cultural awareness in young minds.",
       icon: <Users className="w-4 h-4" />,
       color: "text-santaran-amber",
-      image: "/lovable-uploads/887da09b-bba4-4dc6-bd86-4b7ee23ccaba.png"
+      image: "/lovable-uploads/af34992d-81d8-452e-96a6-c7be948fdead.png"
     },
     {
       title: "Shikar",

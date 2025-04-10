@@ -10,6 +10,7 @@ interface Program {
   title: string;
   description: string;
   icon: string;
+  subprograms?: string[];
 }
 
 const programs: Program[] = [
@@ -17,25 +18,29 @@ const programs: Program[] = [
     id: "harith",
     title: "Harith",
     description: "Art of environmental development focusing on ecological awareness and sustainability through creative expression.",
-    icon: "🌿"
+    icon: "🌿",
+    subprograms: ["Environmental Art Camp", "Dharitri (eco-tourism project)"]
   },
   {
     id: "kalpapuri",
     title: "Kalpapuri",
     description: "Related with children art and psychology, nurturing young minds through artistic exploration.",
-    icon: "👧"
+    icon: "👧",
+    subprograms: ["Kalpaloker Citra (workshops for children)", "Kalpapuri School of Arts & Crafts"]
   },
   {
     id: "shikar",
     title: "Shikar",
-    description: "Development and persistence of folk arts & Crafts to preserve cultural heritage and traditional art forms.",
-    icon: "🧶"
+    description: "Development and persistence of folk arts & crafts to preserve cultural heritage and traditional art forms.",
+    icon: "🧶",
+    subprograms: ["Karnaphuli Folk Triennial", "Kandrabindu (product design & marketing)"]
   },
   {
     id: "artfactory",
     title: "Art Factory",
     description: "Project for young artists to collaborate, experiment, and showcase innovative artistic approaches.",
-    icon: "🎨"
+    icon: "🎨",
+    subprograms: ["Artist Residency Program", "Young Art Exhibition"]
   }
 ];
 
@@ -120,7 +125,7 @@ const ProgramsSection = () => {
         transition={{ 
           duration: 8, 
           repeat: Infinity,
-          repeatType: "reverse" 
+          repeatType: "reverse" as const
         }}
       />
       
@@ -133,7 +138,7 @@ const ProgramsSection = () => {
         transition={{ 
           duration: 12, 
           repeat: Infinity,
-          repeatType: "reverse",
+          repeatType: "reverse" as const,
           delay: 2
         }}
       />
@@ -217,7 +222,7 @@ const ProgramsSection = () => {
                       duration: 0.8, 
                       ease: "easeInOut",
                       repeat: 1,
-                      repeatType: "reverse"
+                      repeatType: "reverse" as const
                     }
                   }}
                 >
@@ -267,6 +272,29 @@ const ProgramsSection = () => {
                   {program.description}
                 </motion.p>
                 
+                {program.subprograms && activeProgram === program.id && (
+                  <motion.div 
+                    className="mt-3 text-sm text-santaran-teal/90 relative z-10"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="font-medium mb-1">Includes:</p>
+                    <ul className="list-disc list-inside pl-2">
+                      {program.subprograms.map((subprogram, i) => (
+                        <motion.li 
+                          key={i}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 + (i * 0.1) }}
+                        >
+                          {subprogram}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+                
                 <motion.div 
                   className="mt-4 h-1 bg-gradient-to-r from-santaran-teal via-santaran-jade to-santaran-gold"
                   initial={{ width: 0 }}
@@ -311,7 +339,7 @@ const ProgramsSection = () => {
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                repeatType: "reverse",
+                repeatType: "reverse" as const,
                 ease: "easeInOut"
               }}
             >

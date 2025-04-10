@@ -9,42 +9,42 @@ const AboutTimeline: React.FC = () => {
     { 
       year: "1998", 
       title: "Santaran Founded", 
-      description: "Established in Chittagong as an artist-led initiative to promote art as a medium for social change.",
+      description: "Established in Chittagong as an artist-led initiative to promote art as a medium for social change. 'Art for Dignifying Life' became our vision.",
       icon: <Palette className="text-santaran-vermilion" size={20} />,
       image: "/lovable-uploads/0b64ccf0-94bb-4b47-9825-23c635d3200a.png"
     },
     { 
       year: "2008", 
       title: "Official Recognition", 
-      description: "Gained official recognition under the Ministry of Social Welfare, Bangladesh as a nonprofit organization.",
+      description: "Gained official recognition under the Ministry of Social Welfare, Bangladesh as a nonprofit multidisciplinary artist-run organization.",
       icon: <BookOpen className="text-santaran-amber" size={20} />,
       image: "/lovable-uploads/d4c3be64-52f3-4bb2-b9a9-753a1adb0f1d.png"
     },
     { 
       year: "2009", 
       title: "Environmental Art Camp", 
-      description: "Launched the permanent Horith program with the first Environmental Art Camp in Alikadam.",
+      description: "Launched the permanent Horith program with the first Environmental Art Camp in Alikadam, focusing on ecological awareness through art.",
       icon: <Image className="text-santaran-terracotta" size={20} />,
       image: "/lovable-uploads/caa29365-e9b3-4edf-8838-882a1f05f9d9.png"
     },
     { 
       year: "2015", 
       title: "Karnaphuli Folk Triennial", 
-      description: "Initiated the first triennial celebration of folk arts and crafts from the Chittagong region.",
+      description: "Initiated the first triennial celebration of folk arts and crafts from the Chittagong region, part of the Shikar program.",
       icon: <Calendar className="text-santaran-teal" size={20} />,
       image: "/lovable-uploads/ae063821-89d9-4a5e-93b4-557f6be0e877.png"
     },
     { 
       year: "2018", 
       title: "Srijan Prangon Residency", 
-      description: "Established the artist residency space in Alikadam of Bandarbans district for the Dhoritri eco-tourism project.",
+      description: "Established the artist residency space in Alikadam of Bandarbans district for the Dhoritri eco-tourism project under the Art Factory program.",
       icon: <Users className="text-santaran-jade" size={20} />,
       image: "/lovable-uploads/767b3c4f-35f2-4062-a7db-ac1d7d7a7717.png"
     },
     { 
       year: "2020", 
       title: "Kalpapuri School of Arts & Crafts", 
-      description: "Created a dreamland for coming generations who are interested in building their world through art.",
+      description: "Created a creative education project for coming generations interested in building their world through art as part of the Kalpapuri program.",
       icon: <BookOpen className="text-santaran-amber" size={20} />,
       image: "/lovable-uploads/f60108e0-457b-4dd5-8bda-c8e94190aea0.png"
     }
@@ -108,6 +108,21 @@ const AboutTimeline: React.FC = () => {
             </div>
           ))}
         </div>
+      </div>
+      
+      <div className="mt-20 max-w-2xl mx-auto text-center bg-gradient-to-r from-santaran-cream to-white p-6 rounded-lg shadow-md">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-gray-700 italic"
+        >
+          "All are running successfully by the organization as part of its journey. Apart from that, Santaran
+          believes that through these activities our artistic philosophy will become the 'Yanbriksha' (alike a
+          Banyan tree of knowledge) which is rooted to the ground but spreading its branches all over the
+          sky."
+        </motion.p>
       </div>
     </div>
   );

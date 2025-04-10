@@ -16,64 +16,100 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "harith",
-    title: "Harith",
-    description: "Immersive outdoor experiences combining art and nature conservation.",
-    category: "Environmental Art",
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=500", // Updated nature conservation image
+    id: "environmental-art-camp",
+    title: "Environmental Art Camp",
+    description: "Immersive outdoor experiences combining art and nature conservation from the Harith program.",
+    category: "Harith",
+    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=500",
     hasSubprograms: true
   },
   {
-    id: "kalpapuri",
-    title: "Kalpapuri",
-    description: "Creative education project training the next generation of artists.",
-    category: "Children's Art",
-    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=500", // Updated children's art image
+    id: "dharitri",
+    title: "Dharitri",
+    description: "Eco-tourism project promoting sustainable environmental practices through artistic expression.",
+    category: "Harith",
+    image: "https://images.unsplash.com/photo-1506259091721-347e791bab0f?q=80&w=500",
     hasSubprograms: true
   },
   {
-    id: "shikar",
-    title: "Shikar",
+    id: "kalpaloker-citra",
+    title: "Kalpaloker Citra",
+    description: "Project of workshops for children to develop creativity and artistic expression.",
+    category: "Kalpapuri",
+    image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=500",
+    hasSubprograms: true
+  },
+  {
+    id: "kalpapuri-school",
+    title: "Kalpapuri School",
+    description: "Creative education project training the next generation of artists and craftspeople.",
+    category: "Kalpapuri",
+    image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=500",
+    hasSubprograms: true
+  },
+  {
+    id: "karnaphuli-folk-triennial",
+    title: "Karnaphuli Folk Triennial",
     description: "Celebration of traditional folk arts and crafts held every three years.",
-    category: "Folk Arts",
-    image: "https://images.unsplash.com/photo-1577083287809-1c774a469596?q=80&w=500", // Updated folk arts image
+    category: "Shikar",
+    image: "https://images.unsplash.com/photo-1569091791842-7cfb64e04797?q=80&w=500",
     hasSubprograms: true
   },
   {
-    id: "artfactory",
-    title: "Art Factory",
+    id: "kandrabindu",
+    title: "Kandrabindu",
+    description: "Project of product design, development & marketing of traditional crafts.",
+    category: "Shikar",
+    image: "https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?q=80&w=500",
+    hasSubprograms: true
+  },
+  {
+    id: "artist-residency",
+    title: "Artist Residency Program",
     description: "Hosting artists from around the world for cultural exchange and collaboration.",
-    category: "Contemporary Art",
-    image: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=500", // Updated contemporary art image
-    hasSubprograms: true
+    category: "Art Factory",
+    image: "https://images.unsplash.com/photo-1567098228577-b7e7a3d98e28?q=80&w=500",
+    hasSubprograms: false
   },
   {
-    id: "art-bridge",
-    title: "Art Bridge",
-    description: "International artist exchange program fostering cross-cultural dialogue.",
-    category: "International Exchange",
-    image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=500" // Updated international exchange image
+    id: "young-art-exhibition",
+    title: "Young Art Exhibition",
+    description: "Platform for emerging artists to showcase innovative and experimental work.",
+    category: "Art Factory",
+    image: "https://images.unsplash.com/photo-1541512416146-3e9ccaa35a9b?q=80&w=500",
+    hasSubprograms: false
   },
   {
-    id: "digital-aesthetics",
-    title: "Digital Aesthetics",
-    description: "Exploration of digital and new media art forms including virtual reality.",
-    category: "Digital Art",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500" // Updated digital art image
+    id: "yearly-outcome",
+    title: "Yearly Outcome",
+    description: "Annual art show featuring work from organization members and collaborative projects.",
+    category: "Other Projects",
+    image: "https://images.unsplash.com/photo-1532453288509-177d8062a8ee?q=80&w=500",
+    hasSubprograms: false
   },
   {
-    id: "river-traces",
-    title: "River Traces",
-    description: "Community-based art project exploring Bangladesh's riverine heritage.",
-    category: "Community Art",
-    image: "https://images.unsplash.com/photo-1597215737412-4bbe759ae8c8?q=80&w=500" // Updated riverine heritage image
+    id: "multidisciplinary-art-show",
+    title: "Multidisciplinary Art Show",
+    description: "Exhibitions showcasing diverse artistic disciplines and experimental approaches.",
+    category: "Other Projects",
+    image: "https://images.unsplash.com/photo-1547119957-637f8679db1e?q=80&w=500",
+    hasSubprograms: false
   },
   {
-    id: "artist-village",
-    title: "Artist Village",
-    description: "Rural artist residency program facilitating urban-rural artistic collaboration.",
-    category: "Residency",
-    image: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=500" // Updated rural landscape image
+    id: "art-exchange",
+    title: "Art Exchange",
+    description: "National & International program for artistic dialogue and cultural exchange.",
+    category: "Other Projects",
+    image: "https://images.unsplash.com/photo-1567098228577-b7e7a3d98e28?q=80&w=500",
+    hasSubprograms: false
+  },
+  {
+    id: "art-workshop",
+    title: "Art Workshop",
+    description: "National & International workshops for skill development and artistic training.",
+    category: "Other Projects",
+    image: "https://images.unsplash.com/photo-1576773689115-5cd2b0223523?q=80&w=500",
+    hasSubprograms: false
   }
 ];
 
@@ -146,17 +182,20 @@ const ProjectsSection = () => {
     }
   };
 
+  // Limit visible projects to 8 for better performance
+  const visibleProjects = projects.slice(0, 8);
+
   useEffect(() => {
     if (!autoRotate) return;
     
     const interval = setInterval(() => {
-      const currentIndex = projects.findIndex(project => project.id === hoveredProject);
-      const nextIndex = hoveredProject === null ? 0 : (currentIndex + 1) % projects.length;
-      setHoveredProject(projects[nextIndex].id);
+      const currentIndex = visibleProjects.findIndex(project => project.id === hoveredProject);
+      const nextIndex = hoveredProject === null ? 0 : (currentIndex + 1) % visibleProjects.length;
+      setHoveredProject(visibleProjects[nextIndex].id);
     }, 5000);
     
     return () => clearInterval(interval);
-  }, [hoveredProject, autoRotate]);
+  }, [hoveredProject, autoRotate, visibleProjects]);
 
   return (
     <section id="projects" className="py-20 bg-white relative overflow-hidden">
@@ -165,10 +204,10 @@ const ProjectsSection = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="heading-lg text-transparent bg-gradient-to-r from-santaran-teal via-santaran-jade to-santaran-vermilion bg-clip-text mb-4">Our Programs</h2>
+          <h2 className="heading-lg text-transparent bg-gradient-to-r from-santaran-teal via-santaran-jade to-santaran-vermilion bg-clip-text mb-4">Our Projects</h2>
           <div className="w-32 h-1.5 bg-gradient-to-r from-santaran-terracotta via-santaran-gold to-santaran-amber mx-auto rounded-full"></div>
           <p className="mt-6 text-lg max-w-2xl mx-auto text-gray-600">
-            Explore our diverse range of programs, each contributing to our mission
+            Explore our diverse range of projects, each contributing to our mission
             of dignifying life through art and cultural preservation.
           </p>
           
@@ -188,7 +227,7 @@ const ProjectsSection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <motion.div 
               key={project.id} 
               className={`
@@ -300,7 +339,7 @@ const ProjectsSection = () => {
                         transition: { 
                           duration: 1, 
                           repeat: hoveredProject === project.id ? Infinity : 0,
-                          repeatType: "reverse" 
+                          repeatType: "reverse" as const
                         }
                       }}
                     >
@@ -319,7 +358,7 @@ const ProjectsSection = () => {
                         duration: 0.4, 
                         type: "spring",
                         repeat: hoveredProject === project.id ? Infinity : 0,
-                        repeatType: "reverse"
+                        repeatType: "reverse" as const
                       }
                     }}
                   >
@@ -336,7 +375,7 @@ const ProjectsSection = () => {
             to="/programs"
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-santaran-teal to-santaran-jade hover:opacity-90 text-white rounded-full transition-all shadow-lg hover:shadow-xl"
           >
-            <span>View All Programs</span>
+            <span>View All Projects</span>
             <motion.div
               className="ml-2"
               animate={{ 
@@ -344,7 +383,7 @@ const ProjectsSection = () => {
                 transition: { 
                   duration: 1.5,
                   repeat: Infinity,
-                  repeatType: "reverse"
+                  repeatType: "reverse" as const
                 }
               }}
             >

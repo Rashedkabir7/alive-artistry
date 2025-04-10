@@ -22,37 +22,37 @@ const programs: Program[] = [
   {
     id: "harith",
     title: "Harith",
-    description: "Our flagship environmental art program focusing on ecological awareness and sustainability through creative expression. Artists engage with environmental issues through installations, workshops, and community projects.",
+    description: "Art of environmental development focusing on ecological awareness and sustainability through creative expression. Our flagship program includes Environmental Art Camps and the Dharitri eco-tourism project.",
     category: "Environmental Art",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200",
+    year: "2009",
+    image: "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?q=80&w=1200",
     link: "/programs/harith"
   },
   {
     id: "kalpapuri",
     title: "Kalpapuri",
-    description: "A program dedicated to children's art education and psychological development through artistic expression. We create safe spaces for young minds to explore creativity and build confidence.",
+    description: "Related with children's art and psychology. This program includes Kalpaloker Citra workshops for children and the Kalpapuri School of Arts & Crafts creative education project.",
     category: "Children's Art",
-    year: "2021",
-    image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=1200",
+    year: "2020",
+    image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=1200",
     link: "/programs/kalpapuri"
   },
   {
     id: "shikar",
     title: "Shikar",
-    description: "Preserving traditional folk arts and crafts of Bangladesh through documentation, training workshops, and exhibitions. We work with master artisans to pass down endangered cultural practices to new generations.",
+    description: "Development and persistence of folk arts & crafts. This program includes the Karnaphuli Folk Triennial and Kandrabindu project for product design, development & marketing of traditional crafts.",
     category: "Folk Arts",
-    year: "2019",
-    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1200",
+    year: "2015",
+    image: "https://images.unsplash.com/photo-1569091791842-7cfb64e04797?q=80&w=1200",
     link: "/programs/shikar"
   },
   {
     id: "artfactory",
     title: "Art Factory",
-    description: "An incubator for experimental contemporary art practices that pushes boundaries and explores new artistic territories. Young artists collaborate on innovative projects across various media.",
+    description: "Project for young artists to collaborate, experiment, and showcase innovative approaches. Includes Artist Residency Program and Young Art Exhibition to support emerging talent.",
     category: "Contemporary Art",
-    year: "2022",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200",
+    year: "2018",
+    image: "https://images.unsplash.com/photo-1541512416146-3e9ccaa35a9b?q=80&w=1200",
     link: "/programs/artfactory"
   }
 ];

@@ -70,9 +70,9 @@ const AboutIntroduction: React.FC<AboutIntroductionProps> = ({ y }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          Santaran Art Organization continues its journey from Chittagong, Bangladesh with the mission to
-          shape artistic values through indigenous knowledge, human ecology, traditional art forms, and 
-          the spirituality of local communities in a more defined artistic way.
+          Santaran Art Organization is continuing its journey from Chittagong, Bangladesh with the hope and mission to
+          shape the artistic values regarding local reality, Indigenous knowledge, human ecology, art & culture, mythology 
+          & spirituality of local people and environment in a more defined artistic way.
         </motion.p>
         
         <motion.p 
@@ -82,8 +82,8 @@ const AboutIntroduction: React.FC<AboutIntroductionProps> = ({ y }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          Through our diverse programs and initiatives, we strive to make art accessible to all and
-          guide people to embrace art as a powerful medium for enhancing their quality of life.
+          Santaran is trying to guide people to acquire art as the strongest medium for their better living
+          through our diverse programs and initiatives, making art accessible to all and enriching lives through creative expression.
         </motion.p>
       </motion.div>
       
