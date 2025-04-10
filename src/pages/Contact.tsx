@@ -24,7 +24,7 @@ const Contact = () => {
       transition: {
         duration: 6,
         repeat: Infinity,
-        repeatType: "reverse"
+        repeatType: "reverse" as const
       }
     }
   };
@@ -85,7 +85,7 @@ const Contact = () => {
                     transition: { 
                       duration: 1.5,
                       repeat: Infinity,
-                      repeatType: "loop" 
+                      repeatType: "loop" as const
                     }
                   }}
                 >
@@ -101,14 +101,14 @@ const Contact = () => {
           className="absolute -top-32 -right-32 w-96 h-96 bg-santaran-jade/5 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.05, 1],
-            transition: { duration: 8, repeat: Infinity, repeatType: "reverse" }
+            transition: { duration: 8, repeat: Infinity, repeatType: "reverse" as const }
           }}
         ></motion.div>
         <motion.div 
           className="absolute -bottom-40 -left-40 w-80 h-80 bg-santaran-terracotta/5 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.1, 1],
-            transition: { duration: 10, repeat: Infinity, repeatType: "reverse" }
+            transition: { duration: 10, repeat: Infinity, repeatType: "reverse" as const }
           }}
         ></motion.div>
         
