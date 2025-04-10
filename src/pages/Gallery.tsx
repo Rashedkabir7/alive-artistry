@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -18,7 +17,6 @@ interface GalleryItem {
   description?: string;
 }
 
-// Updated gallery items with more images and subcategories
 const galleryItems: GalleryItem[] = [
   // Painting Category
   {
@@ -273,7 +271,6 @@ const galleryItems: GalleryItem[] = [
   }
 ];
 
-// Extract all categories and subcategories
 const categories = ["All", ...Array.from(new Set(galleryItems.map(item => item.category)))];
 const subcategories = ["All", ...Array.from(new Set(galleryItems.map(item => item.subcategory).filter(Boolean) as string[]))];
 
@@ -284,12 +281,10 @@ const Gallery = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [currentTab, setCurrentTab] = useState("gallery");
   
-  // Card stack carousel state
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   
-  // Filter items based on category, subcategory and search term
   const filteredItems = galleryItems.filter(item => {
     const matchesCategory = filter === "All" || item.category === filter;
     const matchesSubcategory = subfilter === "All" || item.subcategory === subfilter;
@@ -298,7 +293,6 @@ const Gallery = () => {
     return matchesCategory && matchesSubcategory && matchesSearch;
   });
   
-  // Next and previous functions for carousel
   const nextItem = () => {
     if (filteredItems.length <= 1) return;
     setDirection(1);
@@ -311,7 +305,6 @@ const Gallery = () => {
     setActiveIndex((prev) => (prev - 1 + filteredItems.length) % filteredItems.length);
   };
   
-  // Auto advance carousel
   useEffect(() => {
     if (currentTab === "carousel" && filteredItems.length > 1) {
       const interval = setInterval(() => {
@@ -336,7 +329,6 @@ const Gallery = () => {
             </p>
           </div>
           
-          {/* View Toggle Tabs */}
           <Tabs defaultValue="gallery" value={currentTab} onValueChange={setCurrentTab} className="mb-8">
             <div className="flex justify-center">
               <TabsList className="bg-gray-100">
@@ -350,7 +342,6 @@ const Gallery = () => {
             </div>
           </Tabs>
           
-          {/* Search and Filter Bar */}
           <div className="mb-10">
             <div className="flex flex-col md:flex-row justify-between gap-4">
               <div className="relative w-full md:w-1/3">
@@ -381,7 +372,6 @@ const Gallery = () => {
                   Filters
                 </button>
                 
-                {/* Desktop Category Filters */}
                 <div className="hidden md:flex gap-2 overflow-x-auto pb-2">
                   {categories.map(category => (
                     <button
@@ -405,7 +395,6 @@ const Gallery = () => {
               </div>
             </div>
             
-            {/* Mobile Category Filters */}
             {showFilters && (
               <div className="md:hidden flex gap-2 overflow-x-auto py-4">
                 {categories.map(category => (
@@ -429,7 +418,6 @@ const Gallery = () => {
               </div>
             )}
             
-            {/* Subcategory Filters (visible only when a category is selected) */}
             {filter !== "All" && (
               <div className="flex gap-2 overflow-x-auto py-4 mt-2">
                 {subcategories
@@ -454,7 +442,6 @@ const Gallery = () => {
             )}
           </div>
           
-          {/* TabsContent for Grid View */}
           <TabsContent value="gallery" className="outline-none">
             {filteredItems.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -505,11 +492,9 @@ const Gallery = () => {
             )}
           </TabsContent>
           
-          {/* TabsContent for Card Stack View */}
           <TabsContent value="carousel" className="outline-none">
             {filteredItems.length > 0 ? (
               <div className="relative h-[80vh] max-h-[800px] min-h-[500px] w-full flex items-center justify-center overflow-hidden" ref={carouselRef}>
-                {/* Card Stack */}
                 <div className="relative w-full max-w-4xl aspect-[3/4] md:aspect-[4/3]">
                   <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.div
@@ -588,12 +573,10 @@ const Gallery = () => {
                     </motion.div>
                   </AnimatePresence>
                   
-                  {/* Background decorative cards */}
                   <div className="absolute -z-10 inset-0 -bottom-3 -right-3 bg-santaran-cream/50 rounded-2xl"></div>
                   <div className="absolute -z-20 inset-0 -bottom-6 -right-6 bg-santaran-cream/30 rounded-2xl"></div>
                 </div>
                 
-                {/* Navigation dots */}
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1">
                   {filteredItems.length > 1 && filteredItems.map((_, index) => (
                     <button
@@ -625,7 +608,6 @@ const Gallery = () => {
       
       <Footer />
       
-      {/* Additional CSS for card stack effect */}
       <style>{`
         .card-stack-container {
           perspective: 1000px;
