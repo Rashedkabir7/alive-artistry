@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Heart, Leaf } from 'lucide-react';
@@ -23,7 +24,7 @@ const About = () => {
           <motion.div
             className="w-full h-full"
             style={{ 
-              backgroundImage: 'url(https://images.pexels.com/photos/268261/pexels-photo-268261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)', 
+              backgroundImage: 'url(https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=1500)', 
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'fixed'
@@ -84,14 +85,14 @@ const About = () => {
               <div className="relative">
                 <div className="w-full aspect-square overflow-hidden rounded-lg shadow-2xl">
                   <img 
-                    src="/lovable-uploads/d4c3be64-52f3-4bb2-b9a9-753a1adb0f1d.png" 
+                    src="https://images.pexels.com/photos/3183132/pexels-photo-3183132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                     alt="Santaran art workshop" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 rounded-lg overflow-hidden border-4 border-white shadow-xl">
                   <img 
-                    src="/lovable-uploads/e04b0dc7-2eda-4b22-b81d-9d2151bc534f.png"
+                    src="https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     alt="Traditional art being created" 
                     className="w-full h-full object-cover"
                   />
@@ -195,7 +196,7 @@ const About = () => {
                   }}
                 >
                   <img 
-                    src="/lovable-uploads/fa3a5784-b296-4b2b-972a-cd87e0eaa634.png" 
+                    src="https://images.pexels.com/photos/3876407/pexels-photo-3876407.jpeg?auto=compress&cs=tinysrgb&w=800" 
                     alt="Banyan tree symbolizing Yanbriksha" 
                     className="w-3/5 h-3/5 object-cover rounded-full border-4 border-santaran-amber shadow-lg"
                   />

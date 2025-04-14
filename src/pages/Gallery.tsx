@@ -25,7 +25,7 @@ const galleryItems: GalleryItem[] = [
     title: "Environmental Harmony",
     category: "Painting",
     subcategory: "Environmental",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/3225529/pexels-photo-3225529.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Rahima Khan",
     year: 2022,
     description: "An exploration of humanity's connection with nature, emphasizing balance and sustainability."
@@ -35,7 +35,7 @@ const galleryItems: GalleryItem[] = [
     title: "Urban Ecology",
     category: "Painting",
     subcategory: "Urban",
-    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/3617500/pexels-photo-3617500.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Salma Begum",
     year: 2022,
     description: "A vibrant depiction of city life intertwined with natural elements."
@@ -45,7 +45,7 @@ const galleryItems: GalleryItem[] = [
     title: "Autumn Reflections",
     category: "Painting",
     subcategory: "Landscape",
-    image: "https://images.unsplash.com/photo-1552083375-1447ce886485?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Mustafa Kamal",
     year: 2023,
     description: "A serene landscape capturing the rich colors of autumn."
@@ -55,7 +55,7 @@ const galleryItems: GalleryItem[] = [
     title: "Abstract Emotions",
     category: "Painting",
     subcategory: "Abstract",
-    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Nadia Rahman",
     year: 2021,
     description: "An abstract exploration of human emotions through color and form."
@@ -67,7 +67,7 @@ const galleryItems: GalleryItem[] = [
     title: "Indigenous Patterns",
     category: "Folk Art",
     subcategory: "Traditional",
-    image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/7605913/pexels-photo-7605913.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Mohammad Ali",
     year: 2021,
     description: "Celebrating the rich patterns and motifs of indigenous craftsmanship."
@@ -77,7 +77,7 @@ const galleryItems: GalleryItem[] = [
     title: "Festival Celebrations",
     category: "Folk Art",
     subcategory: "Festival",
-    image: "https://images.unsplash.com/photo-1581331474665-5921ef6c1f3e?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/1536622/pexels-photo-1536622.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Community Artists",
     year: 2021,
     description: "A collaborative piece capturing the vibrant spirit of traditional festivals."
@@ -87,7 +87,7 @@ const galleryItems: GalleryItem[] = [
     title: "Heritage Symbols",
     category: "Folk Art",
     subcategory: "Symbolic",
-    image: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/2183577/pexels-photo-2183577.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Jamal Uddin",
     year: 2020,
     description: "An exploration of ancestral symbols and their contemporary significance."
@@ -97,7 +97,7 @@ const galleryItems: GalleryItem[] = [
     title: "Rural Narratives",
     category: "Folk Art",
     subcategory: "Narrative",
-    image: "https://images.unsplash.com/photo-1618765405978-014de051c8c0?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Fatima Begum",
     year: 2023,
     description: "Stories of rural life told through traditional artistic techniques."
@@ -109,7 +109,7 @@ const galleryItems: GalleryItem[] = [
     title: "Nature's Calling",
     category: "Sculpture",
     subcategory: "Environmental",
-    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/134402/pexels-photo-134402.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Nusrat Jahan",
     year: 2023,
     description: "A sculptural interpretation of nature's call to humanity."
@@ -119,7 +119,7 @@ const galleryItems: GalleryItem[] = [
     title: "River Spirit",
     category: "Sculpture",
     subcategory: "Elemental",
-    image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Tania Islam",
     year: 2022,
     description: "Embodying the essence and flow of river spirits in sculptural form."
@@ -129,7 +129,7 @@ const galleryItems: GalleryItem[] = [
     title: "Metal Metamorphosis",
     category: "Sculpture",
     subcategory: "Material",
-    image: "https://images.unsplash.com/photo-1544531585-9847b68c8c86?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/1266735/pexels-photo-1266735.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Karim Rahman",
     year: 2023,
     description: "Transformation of industrial materials into organic forms."
@@ -139,7 +139,7 @@ const galleryItems: GalleryItem[] = [
     title: "Human Condition",
     category: "Sculpture",
     subcategory: "Figurative",
-    image: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/3680454/pexels-photo-3680454.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Omar Faruq",
     year: 2021,
     description: "An emotional exploration of the human experience through sculptural form."
@@ -151,7 +151,7 @@ const galleryItems: GalleryItem[] = [
     title: "Cultural Roots",
     category: "Textile Art",
     subcategory: "Heritage",
-    image: "https://images.unsplash.com/photo-1520348275128-bb9843a48871?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/7676524/pexels-photo-7676524.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Kamal Ahmed",
     year: 2020,
     description: "A textile masterpiece honoring cultural heritage and ancestral techniques."
@@ -161,7 +161,7 @@ const galleryItems: GalleryItem[] = [
     title: "Woven Stories",
     category: "Textile Art",
     subcategory: "Narrative",
-    image: "https://images.unsplash.com/photo-1574365569389-a10d488ca3fb?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/6872878/pexels-photo-6872878.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Sabina Akter",
     year: 2022,
     description: "Stories and memories intricately woven into textile form."
@@ -171,7 +171,7 @@ const galleryItems: GalleryItem[] = [
     title: "Modern Traditions",
     category: "Textile Art",
     subcategory: "Contemporary",
-    image: "https://images.unsplash.com/photo-1514454923228-7ef54f9251c9?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/6913135/pexels-photo-6913135.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Nazia Rahman",
     year: 2023,
     description: "A contemporary take on traditional textile techniques and patterns."
@@ -181,7 +181,7 @@ const galleryItems: GalleryItem[] = [
     title: "Fiber Landscapes",
     category: "Textile Art",
     subcategory: "Landscape",
-    image: "https://images.unsplash.com/photo-1520695609521-13588b5a6130?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/7102469/pexels-photo-7102469.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Laila Khatun",
     year: 2022,
     description: "Natural landscapes recreated through fiber and textile techniques."
@@ -193,7 +193,7 @@ const galleryItems: GalleryItem[] = [
     title: "Traditions Reimagined",
     category: "Mixed Media",
     subcategory: "Heritage",
-    image: "https://images.unsplash.com/photo-1613152184920-bc1c4ab4fd66?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Faisal Rahman",
     year: 2023,
     description: "A fresh perspective on traditional art forms through mixed media experimentation."
@@ -203,7 +203,7 @@ const galleryItems: GalleryItem[] = [
     title: "Digital Memories",
     category: "Mixed Media",
     subcategory: "Digital",
-    image: "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/2570059/pexels-photo-2570059.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Zubair Hassan",
     year: 2022,
     description: "Blending digital technology with traditional art materials."
@@ -213,7 +213,7 @@ const galleryItems: GalleryItem[] = [
     title: "Material Conversations",
     category: "Mixed Media",
     subcategory: "Conceptual",
-    image: "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Taslima Begum",
     year: 2021,
     description: "An exploration of dialogue between different materials and techniques."
@@ -223,7 +223,7 @@ const galleryItems: GalleryItem[] = [
     title: "Sustainable Futures",
     category: "Mixed Media",
     subcategory: "Environmental",
-    image: "https://images.unsplash.com/photo-1578302758063-0ef3e048ca89?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/2470903/pexels-photo-2470903.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Rafiq Islam",
     year: 2023,
     description: "A commentary on sustainability through repurposed materials."
@@ -235,7 +235,7 @@ const galleryItems: GalleryItem[] = [
     title: "Child's Imagination",
     category: "Children's Art",
     subcategory: "Imagination",
-    image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/8473893/pexels-photo-8473893.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Youth Program",
     year: 2023,
     description: "A vibrant collection showcasing children's unbounded imagination."
@@ -245,7 +245,7 @@ const galleryItems: GalleryItem[] = [
     title: "Young Visionaries",
     category: "Children's Art",
     subcategory: "Creative",
-    image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/3933871/pexels-photo-3933871.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Kalpapuri School",
     year: 2022,
     description: "Artwork from young visionaries envisioning a brighter future."
@@ -255,7 +255,7 @@ const galleryItems: GalleryItem[] = [
     title: "Playful Expressions",
     category: "Children's Art",
     subcategory: "Expression",
-    image: "https://images.unsplash.com/photo-1577330961172-05c8a5d7587f?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/8535214/pexels-photo-8535214.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Children's Workshop",
     year: 2023,
     description: "Joyful artistic expressions from our youngest creators."
@@ -265,7 +265,7 @@ const galleryItems: GalleryItem[] = [
     title: "Dream Worlds",
     category: "Children's Art",
     subcategory: "Fantasy",
-    image: "https://images.unsplash.com/photo-1555009433-3039e19eb354?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.pexels.com/photos/8474495/pexels-photo-8474495.jpeg?auto=compress&cs=tinysrgb&w=2000",
     artist: "Kalpapuri Program",
     year: 2022,
     description: "Fantastical worlds born from the dreams of children."
