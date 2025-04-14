@@ -18,7 +18,7 @@ const AboutCoreValues: React.FC = () => {
       description: "Children's art and psychology program fostering creativity and cultural awareness in young minds.",
       icon: <Users className="w-4 h-4" />,
       color: "text-santaran-amber",
-      image: "https://images.pexels.com/photos/3933871/pexels-photo-3933871.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      image: "https://images.pexels.com/photos/8294606/pexels-photo-8294606.jpeg?auto=compress&cs=tinysrgb&w=1200"
     },
     {
       title: "Shikar",
@@ -42,7 +42,7 @@ const AboutCoreValues: React.FC = () => {
         <AnimatedHeading
           text="Our Core Programs"
           tag="h2"
-          className="heading-lg text-center mb-12"
+          className="heading-lg text-center mb-12 font-serif"
           color="text-santaran-vermilion"
           animation="wave"
         />
@@ -51,7 +51,7 @@ const AboutCoreValues: React.FC = () => {
           {corePrograms.map((program, index) => (
             <motion.div 
               key={program.title}
-              className="group"
+              className="group art-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -62,9 +62,9 @@ const AboutCoreValues: React.FC = () => {
                   <img 
                     src={program.image} 
                     alt={program.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover art-image"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transform transition-transform duration-500"></div>
                 </div>
                 
                 <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
@@ -73,8 +73,12 @@ const AboutCoreValues: React.FC = () => {
                       {program.icon}
                     </span>
                   </div>
-                  <h4 className="text-xl font-bold mb-2 font-display">{program.title}</h4>
-                  <p className="text-white/90 group-hover:translate-y-0 transition-transform duration-500">{program.description}</p>
+                  <h4 className="text-xl font-serif mb-2 group-hover:text-santaran-amber transition-colors duration-300">
+                    {program.title}
+                  </h4>
+                  <p className="text-white/90 font-sans text-sm group-hover:text-white transition-colors duration-300">
+                    {program.description}
+                  </p>
                 </div>
               </div>
             </motion.div>

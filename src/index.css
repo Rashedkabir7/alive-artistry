@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -79,10 +79,9 @@
     @apply bg-santaran-vermilion/30 text-santaran-vermilion;
   }
 
-  /* Responsive font size adjustments with added color gradients */
   h1, .h1 {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
-    background: linear-gradient(90deg, #DE4D31, #F9A826);
+    @apply font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+    background: linear-gradient(135deg, #DE4D31, #F9A826);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -90,20 +89,31 @@
   }
   
   h2, .h2 {
-    @apply text-2xl sm:text-3xl md:text-4xl;
-    background: linear-gradient(90deg, #158A8A, #6B8E4E);
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-normal;
+    background: linear-gradient(135deg, #158A8A, #6B8E4E);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    transition: all 0.5s ease;
   }
   
   h3, .h3 {
-    @apply text-xl sm:text-2xl md:text-3xl;
+    @apply font-serif text-2xl md:text-3xl lg:text-4xl font-medium leading-snug;
+  }
+  
+  h4, .h4 {
+    @apply font-display text-xl md:text-2xl font-medium leading-snug;
   }
   
   p {
-    @apply text-base sm:text-lg;
+    @apply font-sans text-base md:text-lg leading-relaxed;
+  }
+
+  .artistic-text {
+    @apply font-serif italic tracking-wide;
+  }
+
+  .caption-text {
+    @apply font-display text-sm tracking-wider uppercase;
   }
 }
 
@@ -210,7 +220,6 @@
     @apply inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-santaran-jade/20 text-santaran-jade transition-all duration-300 hover:bg-santaran-jade hover:text-white shadow-md hover:shadow-lg;
   }
   
-  /* New fancy artistic components */
   .artistic-card {
     @apply relative overflow-hidden rounded-xl bg-gradient-to-br from-white to-santaran-cream/50 border border-santaran-jade/10 shadow-lg hover:shadow-xl transition-all duration-500 p-5 sm:p-6;
   }
@@ -258,7 +267,6 @@
     }
   }
   
-  /* Border effects */
   .fancy-underline {
     @apply relative inline-block;
   }
@@ -272,13 +280,11 @@
     @apply scale-x-100;
   }
   
-  /* Image styles */
   .artistic-image {
     @apply rounded-lg overflow-hidden relative;
     clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
   }
   
-  /* Painting-like effect */
   .canvas-texture {
     @apply relative;
   }
@@ -288,19 +294,47 @@
     @apply absolute inset-0 bg-canvas-texture opacity-10 mix-blend-multiply pointer-events-none;
   }
   
-  /* Mobile optimizations */
-  @media (max-width: 640px) {
-    .container {
-      @apply px-4;
-    }
-    
-    .program-card {
-      @apply p-4;
-    }
+  .hover-reveal {
+    @apply relative overflow-hidden;
+  }
+
+  .hover-reveal::after {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 bg-santaran-vermilion transform scale-x-0 origin-left transition-transform duration-300;
+  }
+
+  .hover-reveal:hover::after {
+    @apply scale-x-100;
+  }
+
+  .artistic-link {
+    @apply relative inline-block px-1 py-0.5 overflow-hidden transition-colors duration-300 hover:text-santaran-vermilion;
+  }
+
+  .artistic-link::before {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 bg-current transform origin-right scale-x-0 transition-transform duration-500;
+  }
+
+  .artistic-link:hover::before {
+    @apply transform origin-left scale-x-100;
+  }
+
+  .art-card {
+    @apply relative overflow-hidden rounded-lg transition-all duration-500 hover:shadow-xl;
+  }
+
+  .art-card::before {
+    @apply content-[''] absolute inset-0 bg-gradient-to-b from-transparent to-black/60 opacity-0 transition-opacity duration-300;
+  }
+
+  .art-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .art-image {
+    @apply transition-transform duration-700 hover:scale-110;
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -316,4 +350,14 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #158A8A;
+}
+
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+  
+  .program-card {
+    @apply p-4;
+  }
 }

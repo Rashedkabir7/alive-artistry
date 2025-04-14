@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -80,6 +79,7 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
+				serif: ['Cormorant Garamond', 'serif'],
 				display: ['Playfair Display', 'serif'],
 			},
 			keyframes: {
